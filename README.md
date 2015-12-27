@@ -1,12 +1,13 @@
 # SpaJumpStart
 
 <h3>SPA - using JS Frameworks, EF6/WebAPI 2, following DDD in Visual Studio 2015</h3>
-
+</br>
 <ul><strong>Overview</strong>
-
+</br>
 This is an example of a SPA app(s) using some of the JS Frameworks coupled with WebAPI2 and Entity Framework.
 Two apps to be created using KnockoutJS and AngularJS.
 
+</br></br>
 The following will be used:
 
 <ul><strong>Angular App:</strong>
