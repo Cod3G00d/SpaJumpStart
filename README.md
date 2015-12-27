@@ -17,10 +17,12 @@ The following will be used:
 <li>npm</li>
 <li>tsd</li>
 <li>Gulp</li>
+</ul>
 
 <ul><strong>Knockout App:</strong>
 <li>KnockoutJS</li>
 <li>RequireJS</li>
+</ul>
 
 <ul><strong>Infrastructure and Services Layers:</strong>
 <li>EntityFramework 6</li>
