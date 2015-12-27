@@ -10,3 +10,15 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\SpaJumpstart.Data\bin\
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.csprojResolveAssemblyReference.cache
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\SpaJumpstart.Data.dll.config
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\SpaJumpstart.Data.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\SpaJumpstart.Data.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\EntityFramework.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\SpaJumpstart.Domain.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\SpaJumpstart.Domain.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\EntityFramework.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.csprojResolveAssemblyReference.cache
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.pdb
