@@ -18,12 +18,12 @@ The following will be used:
 <li>tsd</li>
 <li>Gulp</li>
 </ul>
-
+</br>
 <ul><strong>Knockout App:</strong>
 <li>KnockoutJS</li>
 <li>RequireJS</li>
 </ul>
-
+</br>
 <ul><strong>Infrastructure and Services Layers:</strong>
 <li>EntityFramework 6</li>
 <li>Web API2</li>
@@ -32,7 +32,7 @@ The following will be used:
 <li>OWIN</li>
 <li>Cors</li>
 </ul>
-
+</br></br>
 <ul><strong>Instructions</strong>
 <li>Open the solution using <span style="color:brown">Visual Studio 2015</li>
 <li>Build the solution to restore Nuget packages</li>
