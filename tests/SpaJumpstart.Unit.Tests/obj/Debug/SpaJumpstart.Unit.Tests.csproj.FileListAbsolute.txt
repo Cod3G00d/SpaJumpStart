@@ -11,3 +11,4 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\tests\SpaJumpstart.Unit.Tests\bin\Debug\Enti
 C:\WorkArea\GitHub\Spa\SpaJumpStart\tests\SpaJumpstart.Unit.Tests\bin\Debug\EntityFramework.SqlServer.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\tests\SpaJumpstart.Unit.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\tests\SpaJumpstart.Unit.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\tests\SpaJumpstart.Unit.Tests\obj\Debug\SpaJumpstart.Unit.Tests.csprojResolveAssemblyReference.cache

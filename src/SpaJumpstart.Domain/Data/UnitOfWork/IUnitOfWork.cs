@@ -7,6 +7,7 @@ namespace SpaJumpstart.Domain.Data.UnitOfWork
     public interface IUnitOfWork 
     {
         IRepositoryBase<TEntity> Repository<TEntity>() where TEntity : EntityBase;
+
         void BeginTransaction();
 
         int Commit();
