@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace SpaJumpstart.Domain.Entities
 {
-    public class Customer : BaseEntity, IValidatableObject
+    /// <summary>
+    /// Customer Details
+    /// </summary>
+    public class Customer : EntityBase, IValidatableObject
     {
         [Required]
         public string FirstName { get; set; }
@@ -11,11 +15,9 @@ namespace SpaJumpstart.Domain.Entities
         public string Telephone { get; set; }
         public string MobilePhone { get; set; }
         public bool Active { get; set; }
+        public DateTime InceptionDate { get; set; }
 
-
-        public virtual int AddressId { get; set; }
-
-        [Required]
+        public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 
         //This adds a rowversion id to the table for concurrency

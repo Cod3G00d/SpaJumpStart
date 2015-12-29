@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SpaJumpstart.Domain.Entities
 {
-    public class Address : BaseEntity, IValidatableObject
+    public class Address : EntityBase, IValidatableObject
     {
         [Required]
         public string AddressLine1 { get; set; }
@@ -16,6 +16,8 @@ namespace SpaJumpstart.Domain.Entities
         [Required]
         public string Postcode { get; set; }
         public string Email { get; set; }
+
+        public virtual Customer Customer { get; set; }
 
         #region Validation
 

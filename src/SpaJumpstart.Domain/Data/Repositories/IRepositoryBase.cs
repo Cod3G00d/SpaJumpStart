@@ -1,26 +1,25 @@
 ﻿using SpaJumpstart.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SpaJumpstart.Domain.Data.Repositories
 {
-    public interface IRepositoryBase<TEntity> : IDisposable where TEntity : BaseEntity
+    public interface IRepositoryBase<TEntity> : IDisposable where TEntity : EntityBase
     {
-        void Insert(TEntity entity);
+        void Add(TEntity entity);
         void DeleteById(int id);
         void Delete(TEntity entityToDelete);
         void Update(TEntity entityToUpdate);
 
-        Task<List<TEntity>> GetAllAsync();
-        Task<TEntity> GetByIdAsync(int id);
-
-        IEnumerable<TEntity> GetAll();
         //IQueryable<TEntity> GetAllLazy();
         //IEnumerable<TEntity> GetAllEager();
 
-        TEntity GetById(int id);
+        IQueryable<TEntity> GetAll();
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(int id);
 
-        void Dispose();
+        TEntity GetById(int id);
     }
 }
