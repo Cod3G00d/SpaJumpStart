@@ -19,7 +19,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SpaJumpstart.Data.Context.EF
 {
-    public class SpaDbContext : IdentityDbContext<ApplicationUser>
+    public class SpaDbContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
 
         private ObjectContext _objectContext;
@@ -35,7 +35,7 @@ namespace SpaJumpstart.Data.Context.EF
             : base("SpaAppDbConnection")
         {
             //Database.SetInitializer<SpaDbContext>(null);
-            Database.SetInitializer(new SpaDbInitializer());
+            //Database.SetInitializer(new SpaDbInitializer());
 
         }
 

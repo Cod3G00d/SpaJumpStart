@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace SpaJumpstart.Data.Configurations
 {
-    public class EntityBaseConfiguration<T> : EntityTypeConfiguration<T> where T : class, IEntityBase
+    public class EntityBaseConfiguration<T> : EntityTypeConfiguration<T> where T : class, IEntity
     {
         public EntityBaseConfiguration()
         {

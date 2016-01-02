@@ -17,6 +17,8 @@ namespace SpaJumpstart.Domain.Entities
         public bool Active { get; set; }
         public DateTime InceptionDate { get; set; }
 
+        public string ApplicationUserId { get; set; }
+
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 

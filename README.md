@@ -68,3 +68,9 @@ Some useful Entity Framework Migration Commands:
 <li>Add-Migration 'InitialCreate-SpaAppDb'</li>
 <li>Update-Database -verbose -force</li>
 </ul>
+
+</br>
+References:
+<ul>
+<li>WebAPI Documentation - http://codethug.com/2015/01/16/web-api-deep-dive-customizing-auto-generated-documentation-part-1-of-6/</li>
+</ul>
