@@ -35,8 +35,6 @@ namespace SpaJumpstart.Data.Context.EF
             : base("SpaAppDbConnection")
         {
             //Database.SetInitializer<SpaDbContext>(null);
-            //Database.SetInitializer(new SpaDbInitializer());
-
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace SpaJumpstart.Data.Context.EF
         }
 
 
-        #region IDbContext and public methods
+        #region public methods
 
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : EntityBase
         {

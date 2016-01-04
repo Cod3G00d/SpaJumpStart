@@ -105,7 +105,7 @@ namespace SpaJumpstart.Services.Services
         /// Get all data asynchronously from the Data Repository for an Entity 
         /// </summary>
         /// <returns></returns>
-        public async Task<List<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }

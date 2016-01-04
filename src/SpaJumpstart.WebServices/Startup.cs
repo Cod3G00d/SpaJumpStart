@@ -105,7 +105,9 @@ namespace SpaJumpstart.WebServices
 
             const string nameOrConnectionString = "name=SpaAppDbConnection";
             kernel.Bind<IDbContext>().To<SpaDbContext>().InRequestScope().WithConstructorArgument("nameOrConnectionString", nameOrConnectionString);
+
             kernel.Load<RegisterServices>();
+            kernel.Load<RegisterAutoMapper>();
 
         }
     }

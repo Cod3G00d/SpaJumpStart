@@ -44,8 +44,8 @@ namespace SpaJumpstart.Data.Migrations
             defaultCustomers.Add(new Customer
             {
                 Id = 1,
-                FirstName = "Rick",
-                Surname = "Grimes",
+                FirstName = "Nick",
+                Surname = "Rhymes",
                 InceptionDate = DateTime.Now,
                 Active = true,
                 MobilePhone = "0800070530",
@@ -58,7 +58,7 @@ namespace SpaJumpstart.Data.Migrations
                     AddressLine3 = "ZombieTown",
                     AddressLine4 = "ZombieLands",
                     Postcode = "ZLD 5LB",
-                    Email = "RickGrimes@WalkingDead.com"
+                    Email = "RickGrimes@DeadRising.com"
                 },
                 ApplicationUserId = "7212d527-d99e-4fc2-8a9f-1f342ce11e2f"
 

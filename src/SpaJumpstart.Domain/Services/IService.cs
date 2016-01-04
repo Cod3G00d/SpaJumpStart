@@ -8,7 +8,7 @@ namespace SpaJumpstart.Domain.Services
 {
     public interface IService<TEntity> : IDisposable where TEntity : EntityBase
     {
-        Task<List<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
 
         IQueryable<TEntity> GetAll();

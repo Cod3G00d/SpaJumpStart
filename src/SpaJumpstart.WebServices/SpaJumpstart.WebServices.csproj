@@ -219,6 +219,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IoC\Modules\RegisterAutoMapper.cs" />
     <Compile Include="IoC\Modules\RegisterServices.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectConfig.cs" />

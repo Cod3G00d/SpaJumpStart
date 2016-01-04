@@ -153,13 +153,15 @@ namespace SpaJumpstart.WebServices.Controllers
     public class CustomersController : ApiController
     {
         private readonly ICustomerService _customerService;
+        private readonly IMappingEngine _mappingEngine;
         private string _user { get; set; }
 
         public CustomersController() { }
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, IMappingEngine mappingEngine)
         {
             _customerService = customerService;
+            _mappingEngine = mappingEngine;
             _user = User.Identity.GetUserId();
         }
 
@@ -175,11 +177,13 @@ namespace SpaJumpstart.WebServices.Controllers
         [ResponseType(typeof(CustomerDto))]
         public async Task<HttpResponseMessage> GetAllCustomersAsync()
         {
-            List<Customer> customers = await _customerService.GetAllAsync();
+            IEnumerable<Customer> customers = await _customerService.GetAllAsync();
 
-            List<CustomerDto> customersDto = new List<CustomerDto>();
+            //IEnumerable<CustomerDto> customersDto = new List<CustomerDto>();
 
-            Mapper.Map(customers, customersDto);
+            // map domain objects to populate dto objects
+            var customersDto = _mappingEngine.Map<IEnumerable<Customer>, IEnumerable<CustomerDto>>(customers);
+            _mappingEngine.Map(customers, customersDto);
 
             if (customersDto == null)
             {
@@ -213,7 +217,7 @@ namespace SpaJumpstart.WebServices.Controllers
             {
                 //AutoMapper mappings
                 customerDto = new CustomerDto();
-                Mapper.Map<Customer, CustomerDto>(customer);
+                _mappingEngine.Map<Customer, CustomerDto>(customer);
             }
             catch (Exception ex)
             {
@@ -243,7 +247,7 @@ namespace SpaJumpstart.WebServices.Controllers
             Customer customer = new Customer();
             try
             {
-                Mapper.Map(customerDto, customer);
+                _mappingEngine.Map(customerDto, customer);
 
                 customer.ApplicationUserId = User.Identity.GetUserId();
                 customer = await _customerService.AddAsync(customer);
@@ -283,7 +287,7 @@ namespace SpaJumpstart.WebServices.Controllers
 
                 Customer customer = await _customerService.GetByIdAsync(id);
 
-                Mapper.Map(customerDto, customer);
+                _mappingEngine.Map(customerDto, customer);
 
                 await _customerService.UpdateAsync(customer);
             }
