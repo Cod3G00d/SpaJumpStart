@@ -4,11 +4,6 @@
         <name>SpaJumpstart.WebServices</name>
     </assembly>
     <members>
-        <member name="T:SpaJumpstart.WebServices.App_Start.NinjectDependencyScope">
-            <summary>
-            Updated from https://gist.github.com/2417226/040dd842d3dadb810065f1edad7f2594eaebe806
-            </summary>
-        </member>
         <member name="M:SpaJumpstart.WebServices.Startup.Configuration(Owin.IAppBuilder)">
             <summary>
             Application Configuration for the Owin Server

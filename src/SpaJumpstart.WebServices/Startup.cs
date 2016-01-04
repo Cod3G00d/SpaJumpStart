@@ -3,20 +3,14 @@ using Microsoft.Owin;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
-using Ninject.Web.WebApi;
 using Ninject.Web.WebApi.OwinHost;
 using Owin;
 using SpaJumpstart.Data.Context.EF;
 using SpaJumpstart.Data.UnitOfWork;
 using SpaJumpstart.Domain.Data.UnitOfWork;
-using SpaJumpstart.Domain.Entities;
-using SpaJumpstart.Domain.Logging;
-using SpaJumpstart.Domain.Services;
-using SpaJumpstart.Services.Services;
-using SpaJumpstart.WebServices.App_Start;
+
 using SpaJumpstart.WebServices.IoC.Modules;
 using SpaJumpstart.WebServices.Mappings.AutoMappings;
-using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -41,7 +35,7 @@ namespace SpaJumpstart.WebServices
         /// <param name="app">IAppBuilder Interface used to compose the application for the Owin Server</param>
         public void Configuration(IAppBuilder app)
         {
-            //ConfigureAuth(app);
+            ConfigureAuth(app);
             //ConfigureCors(app);
 
             //Register mapping definitions for Automapper
@@ -69,7 +63,7 @@ namespace SpaJumpstart.WebServices
             app.UseNinjectMiddleware(() => kernel)
                .UseNinjectWebApi(httpConfig);
 
-            ConfigureAuth(app);
+            //ConfigureAuth(app);
 
             WebApiConfig.Register(httpConfig);
 
@@ -101,7 +95,7 @@ namespace SpaJumpstart.WebServices
                 throw;
             }
         }
-       // http://social.gseosem.com/resolving-dependencies-in-owin-web-api-startup-cs-with-ninject/
+        // http://social.gseosem.com/resolving-dependencies-in-owin-web-api-startup-cs-with-ninject/
         private static void Register(IKernel kernel)
         {
 
@@ -111,9 +105,6 @@ namespace SpaJumpstart.WebServices
 
             const string nameOrConnectionString = "name=SpaAppDbConnection";
             kernel.Bind<IDbContext>().To<SpaDbContext>().InRequestScope().WithConstructorArgument("nameOrConnectionString", nameOrConnectionString);
-
-            //kernel.Bind<SpaDbContext>().To<SpaDbContext>().InRequestScope();
-
             kernel.Load<RegisterServices>();
 
         }
