@@ -90,8 +90,8 @@
       <Project>{abdb3d82-15a2-4072-94da-7b8c051ef0c8}</Project>
       <Name>SpaJumpstart.WebServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\tests\SpaJumpstart.Common.Testing\SpaJumpstart.Common.Testing.csproj">
-      <Project>{0a1bb581-ab9a-432a-b3ee-07f78ed07235}</Project>
+    <ProjectReference Include="..\..\SpaJumpstart.Common.Testing\SpaJumpstart.Common.Testing.csproj">
+      <Project>{4ccc1cf2-0997-4923-a55f-b03f4361120e}</Project>
       <Name>SpaJumpstart.Common.Testing</Name>
     </ProjectReference>
   </ItemGroup>
