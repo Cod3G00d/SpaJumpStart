@@ -234,13 +234,19 @@ namespace SpaJumpstart.WebServices.Controllers
         /// </example>
         /// <param name="id">The customerid of the data.</param>
 
+        /*
+        Here I have swapped across to using the new IHttpActionResult which is a new feature of Web API 2 making 
+        unit testing of controllers and apicontrollers easier
+        I need to consider swapping all out, but at the moment I'm happy to show case both ways in the code
+        */
         //[HttpOptions]
         [HttpPost]
-        public async Task<HttpResponseMessage> PostCreateCustomersAsync(CustomerDto customerDto)
+        public async Task<IHttpActionResult> PostCreateCustomersAsync(CustomerDto customerDto)
         {
             if (customerDto == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "customer cannot be null");
+                //return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "customer cannot be null");
+                return BadRequest("Customer cannot be null");
             }
 
             Customer customer = new Customer();
@@ -255,11 +261,16 @@ namespace SpaJumpstart.WebServices.Controllers
             catch (Exception ex)
             {
                 var errMessage = string.Format("Customer could not be created by user: {1}, errormessage: ", _user, ex.Message);
-                return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, errMessage);
+                //return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, errMessage);
+
+                var error = new HttpError(errMessage);
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, error));
             }
             
             var results =  CreatedAtRoute("ApiRoute", new { id = customerDto.Id }, customerDto);
-            return Request.CreateResponse(HttpStatusCode.OK, results);
+            return results;
+            //return Request.CreateResponse(HttpStatusCode.Created, results);
+            //return Ok(results);
         }
 
         /// <summary>
@@ -308,7 +319,7 @@ namespace SpaJumpstart.WebServices.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, errMessage);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, customerDto);
+            return Request.CreateResponse(HttpStatusCode.Accepted, customerDto);
         }
 
         /// <summary>

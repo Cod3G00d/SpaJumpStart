@@ -2,9 +2,12 @@
 using Rhino.Mocks;
 using SpaJumpstart.DataContracts.Dtos;
 using SpaJumpstart.Domain.Entities;
+using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 
 namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
 {
@@ -24,7 +27,9 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
             StubAutoMapper.Stub(m => m.Map<CustomerDto, Customer>(NewCustomerDto)).Return(NewCustomer);
 
             ConfigureApi(HttpMethod.Post, "http://localhost/api/customers/");
-            
+
+            //Create a new user, need to swap this to a Mock Object
+            CustomerControllerApi.User = new ClaimsPrincipal(new GenericPrincipal(new GenericIdentity("user"), null));
         }
 
         #endregion
@@ -34,7 +39,7 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
         protected override async void ArrangeAndAct()
         {
             Setup();
-            Response = await CustomerControllerApi.PostCreateCustomersAsync(NewCustomerDto);
+            PostResult = await CustomerControllerApi.PostCreateCustomersAsync(NewCustomerDto) as CreatedAtRouteNegotiatedContentResult<CustomerDto>;
         }
 
         #endregion
@@ -47,12 +52,42 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
             ArrangeAndAct();
             StubAutoMapper.AssertWasCalled(m => m.Map<CustomerDto, Customer>(NewCustomerDto));
         }
+        [Test]
+        public void CreateAsync_ItShouldCallTheCustomerService()
+        {
+            ArrangeAndAct();
+            StubCustomerService.AssertWasCalled(s => s.AddAsync(NewCustomer));
+        }
+        [Test]
+        public void CreateAsync_ItShouldNotReturnANullResult()
+        {
+            ArrangeAndAct();
+            Assert.IsNotNull(PostResult, "Post Response was empty");
+        }
+        [Test]
+        public void CreateAsync_ItShouldNotReturnANullContent()
+        {
+            ArrangeAndAct();
+            Assert.IsNotNull(PostResult.Content, "Post Content was empty");
+        }
         //[Test]
-        //public void CreateAsync_ItShouldCallTheCustomerService()
+        //public void CreateAsync_ItShouldReturnStatusCreated()
         //{
         //    ArrangeAndAct();
-        //    StubCustomerService.AssertWasCalled(s => s.AddAsync(NewCustomer));
+        //    Assert.AreEqual(HttpStatusCode.Created, Response.StatusCode, "Expecting a 201 Message");
         //}
+        [Test]
+        public void CreateAsync_ItShouldReturnTheCorrectRoutename()
+        {
+            ArrangeAndAct();
+            Assert.AreEqual("ApiRoute", PostResult.RouteName);
+        }
+        [Test]
+        public void CreateAsync_ItShouldReturnAnTheCorrectId()
+        {
+            ArrangeAndAct();
+            Assert.AreEqual(1, PostResult.RouteValues["id"]);
+        }
 
         #endregion
     }

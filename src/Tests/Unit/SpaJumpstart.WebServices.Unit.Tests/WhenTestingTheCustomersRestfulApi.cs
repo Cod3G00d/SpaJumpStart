@@ -17,6 +17,7 @@ using SpaJumpstart.Domain.Data.UnitOfWork;
 using SpaJumpstart.WebServices.Controllers;
 using SpaJumpstart.DataContracts.Dtos;
 using SpaJumpstart.Domain.Services;
+using System.Web.Http.Results;
 
 namespace SpaJumpstart.WebServices.Unit.Tests
 {
@@ -33,6 +34,7 @@ namespace SpaJumpstart.WebServices.Unit.Tests
 
         //protected IEnumerable<Customer> Response { get; set; }
         //protected Task<IEnumerable<Customer>> Response { get; set; }
+        protected CreatedAtRouteNegotiatedContentResult<CustomerDto> PostResult { get; set; }
         protected HttpResponseMessage Response { get; set; }
 
         protected IEnumerable<Customer> ActualCustomers { get; set; }
