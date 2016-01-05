@@ -10,16 +10,16 @@
 <ul><strong>Overview</strong>
 </br>
 This is a project to showcase what I have learned so far on a SPA app(s) using some of the JS Frameworks coupled with Web API2 and Entity Framework 6.
-
+</br>
 The main focus was to learn some of the JavaScript Frameworks being used at the moment, along with Entity Framework (Code First) approaches.
-
+</br>
 The solution has been architectured using DDD, and the onion skin approach, and makes use of SOLID principles including Separation of Concerns, Inversion Of Control Containers and Dependency Injection (IOC/DI).  
-
+</br>
 I have also used Repository and Unit Of Work patterns, and DTO's alongside EF6 for the ORM (an approach I have used in the past with Fluent NHibernate).
-
+</br>
 These are approaches that I have used throughout my career.
-
-The Angular project makes use of node modules, npm, bower and gulp rather than Nuget Packages. It's also written in Typescript, as well as tsd manager.
+</br>
+The Angular project makes use of node modules, npm, bower and gulp, and tsd manager. rather than Nuget Packages. It's also written in Typescript.
 
 </br>
 
