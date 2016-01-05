@@ -5,6 +5,7 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
 {
     public class CustomerBuilder : Builder<CustomerBuilder, Customer>
     {
+        int _customerId = 1;
         string _firstname = "Nick";
         string _surname = "Rhymes";
         string _telephone = "";
@@ -17,6 +18,7 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
         public override Customer AnInstance()
         {
             return new Customer {
+                Id = _customerId,
                 FirstName = _firstname,
                 Surname = _surname,
                 Telephone = _telephone,
@@ -24,7 +26,8 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
                 Active = _active,
                 InceptionDate = _inceptionDate,
                 ApplicationUserId = _applicationUserId,
-                Address = _address
+                Address = _address,
+                AddressId = _address.Id
             };
         }
 
@@ -33,7 +36,11 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
             _active = active;
             return this;
         }
-
+        public CustomerBuilder WithCustomerId(int id)
+        {
+            _customerId = id;
+            return this;
+        }
         public CustomerBuilder WithFirstname(string firstname)
         {
             _firstname = firstname;

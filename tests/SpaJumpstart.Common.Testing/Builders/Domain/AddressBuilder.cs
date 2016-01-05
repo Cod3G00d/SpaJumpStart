@@ -10,11 +10,12 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
         string _addressLine3 = "ZombieTown";
         string _addressLine4 = "ZombieLands";
         string _postcode = "ZLD 5LB";
-        string _email = "RickRhymes@DeadRising.com";
+        string _email = "NickRhymes@DeadRising.com";
 
         public override Address AnInstance()
         {
-            return new Address {
+            return new Address
+            {
                 Id = _addressId,
                 AddressLine1 = _addressLine1,
                 AddressLine2 = _addressLine2,

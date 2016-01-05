@@ -216,8 +216,7 @@ namespace SpaJumpstart.WebServices.Controllers
             try
             {
                 //AutoMapper mappings
-                customerDto = new CustomerDto();
-                _mappingEngine.Map<Customer, CustomerDto>(customer);
+                customerDto = _mappingEngine.Map<Customer, CustomerDto>(customer);
             }
             catch (Exception ex)
             {

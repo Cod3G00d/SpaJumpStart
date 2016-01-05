@@ -15,3 +15,4 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Domain\bin\Debug\Microsoft.
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Domain\obj\Debug\SpaJumpstart.Domain.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Domain\obj\Debug\SpaJumpstart.Domain.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Domain\obj\Debug\SpaJumpstart.Domain.csprojResolveAssemblyReference.cache
