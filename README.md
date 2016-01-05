@@ -8,6 +8,8 @@ This is a project to showcase what I have learned so far on a SPA app(s) using s
 
 The main focus was to learn some of the JavaScript Frameworks being used at the moment, along with Entity Framework (Code First) approaches.
 
+<ul><strong>N.B. this is currentlu under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
+
 The solution has been architectured using DDD, and the onion skin approach, and makes use of SOLID principles including Separation of Concerns, Inversion Of Control Containers and Dependency Injection (IOC/DI).  
 
 I have also used Repository and Unit Of Work patterns, and DTO's alongside EF6 for the ORM (an approach I have used in the past with Fluent NHibernate).
@@ -64,7 +66,7 @@ The following frameworks are used for the Presentation Layers:
 </br>
 Some useful Entity Framework Migration Commands:
 <ul>
-<li>Enable-Migrations –EnableAutomaticMigrations -ContextTypeName SpaJumpstart.Data.Context.EF.SpaDbContext -force</li>
+<li>Enable-Migrations â€“EnableAutomaticMigrations -ContextTypeName SpaJumpstart.Data.Context.EF.SpaDbContext -force</li>
 <li>Add-Migration 'InitialCreate-SpaAppDb'</li>
 <li>Update-Database -verbose -force</li>
 </ul>
