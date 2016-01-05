@@ -1,0 +1,13 @@
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\SpaJumpstart.Services.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\SpaJumpstart.Services.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\SpaJumpstart.Domain.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\EntityFramework.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\SpaJumpstart.Domain.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\bin\Debug\EntityFramework.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\obj\Debug\SpaJumpstart.Services.csprojResolveAssemblyReference.cache
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\obj\Debug\SpaJumpstart.Services.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Services\obj\Debug\SpaJumpstart.Services.pdb
