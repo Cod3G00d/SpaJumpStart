@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaJumpstart.WebServices.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaJumpstart.Common.Testing", "..\tests\SpaJumpstart.Common.Testing\SpaJumpstart.Common.Testing.csproj", "{0A1BB581-AB9A-432A-B3EE-07F78ED07235}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaJumpstart.WebService.Unit.Tests", "UnitTests\SpaJumpstart.WebService.Unit.Tests\SpaJumpstart.WebService.Unit.Tests.csproj", "{650866EF-DB48-4813-804E-308C48D71BFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{0A1BB581-AB9A-432A-B3EE-07F78ED07235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1BB581-AB9A-432A-B3EE-07F78ED07235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1BB581-AB9A-432A-B3EE-07F78ED07235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{650866EF-DB48-4813-804E-308C48D71BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{650866EF-DB48-4813-804E-308C48D71BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{650866EF-DB48-4813-804E-308C48D71BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{650866EF-DB48-4813-804E-308C48D71BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,5 +113,6 @@ Global
 		{CB49BBFC-69AB-419E-80C0-208E7F261B4E} = {2C2C3BA1-0F9E-4B35-802A-D41C9077C397}
 		{3A591F47-476E-48B6-A2CC-08003D503728} = {C7B15785-A4AE-4FAF-91E2-4B173BB6BCEB}
 		{0A1BB581-AB9A-432A-B3EE-07F78ED07235} = {2C2C3BA1-0F9E-4B35-802A-D41C9077C397}
+		{650866EF-DB48-4813-804E-308C48D71BFD} = {C7B15785-A4AE-4FAF-91E2-4B173BB6BCEB}
 	EndGlobalSection
 EndGlobal
