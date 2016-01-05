@@ -1,5 +1,10 @@
 # SpaJumpStart
 
+</br>
+<i><ul><strong>N.B. this is currently under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
+</br></i>
+
+
 <h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio 2015</h3>
 </br>
 <ul><strong>Overview</strong>
@@ -7,8 +12,6 @@
 This is a project to showcase what I have learned so far on a SPA app(s) using some of the JS Frameworks coupled with Web API2 and Entity Framework 6.
 
 The main focus was to learn some of the JavaScript Frameworks being used at the moment, along with Entity Framework (Code First) approaches.
-
-<ul><strong>N.B. this is currentlu under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
 
 The solution has been architectured using DDD, and the onion skin approach, and makes use of SOLID principles including Separation of Concerns, Inversion Of Control Containers and Dependency Injection (IOC/DI).  
 
