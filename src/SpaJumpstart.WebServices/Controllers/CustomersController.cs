@@ -238,6 +238,7 @@ namespace SpaJumpstart.WebServices.Controllers
         Here I have swapped across to using the new IHttpActionResult which is a new feature of Web API 2 making 
         unit testing of controllers and apicontrollers easier
         I need to consider swapping all out, but at the moment I'm happy to show case both ways in the code
+        see: http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
         */
         //[HttpOptions]
         [HttpPost]
