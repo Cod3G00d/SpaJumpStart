@@ -246,12 +246,11 @@ namespace SpaJumpstart.WebServices.Controllers
             Customer customer = new Customer();
             try
             {
-                _mappingEngine.Map(customerDto, customer);
+                customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
 
                 customer.ApplicationUserId = User.Identity.GetUserId();
                 customer = await _customerService.AddAsync(customer);
                 customerDto.Id = customer.Id;
-
             }
             catch (Exception ex)
             {
@@ -286,7 +285,8 @@ namespace SpaJumpstart.WebServices.Controllers
 
                 Customer customer = await _customerService.GetByIdAsync(id);
 
-                _mappingEngine.Map(customerDto, customer);
+                //_mappingEngine.Map(customerDto, customer);
+                customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
 
                 await _customerService.UpdateAsync(customer);
             }
