@@ -6,7 +6,7 @@
 
 
 <h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio 2015</h3>
-</br></br>
+</br>
 <ul><strong>Overview</strong>
 </br></br>
 This is a project to showcase what I have learned so far on a SPA app(s) using some of the JS Frameworks coupled with Web API2 and Entity Framework 6.
