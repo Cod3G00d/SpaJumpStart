@@ -207,7 +207,7 @@ namespace SpaJumpstart.WebServices.Controllers
         public async Task<HttpResponseMessage> GetCustomerByIdAsync(int id)
         {
             Customer customer = await _customerService.GetByIdAsync(id);
-            if (customer == null)
+            if (customer.Id == 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid Customer Id");
             }
