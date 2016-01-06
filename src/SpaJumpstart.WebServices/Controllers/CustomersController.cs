@@ -239,6 +239,7 @@ namespace SpaJumpstart.WebServices.Controllers
         unit testing of controllers and apicontrollers easier
         I need to consider swapping all out, but at the moment I'm happy to show case both ways in the code
         see: http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
+        http://www.c-sharpcorner.com/UploadFile/2b481f/unit-testing-in-web-api2-using-entity-framework/
         */
         //[HttpOptions]
         [HttpPost]
