@@ -15,8 +15,11 @@ var app;
     in the class constructor
 
     */
+    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch']);
+    mainApp.config(Config);
+    Config.$inject = ['$routeProvider', ' $modalProvider', '$httpProvider'];
     var Config = (function () {
-        function Config($routeProvider, $modalProvider) {
+        function Config($routeProvider, $modalProvider, $httpProvider) {
             $routeProvider
                 .when("/", {
                 templateUrl: "/app/templates/customers/customersDetails.html",
@@ -26,10 +29,13 @@ var app;
                 templateUrl: "/app/templates/about.html"
             })
                 .otherwise({ redirectTo: '/' });
+            $httpProvider.interceptors.push('xmlHttpInteceptor');
+            //if (!$httpProvider.defaults.headers.get) {
+            //    $httpProvider.defaults.headers.get = {};
+            //};
+            $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+            $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
         }
         return Config;
     })();
-    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls']);
-    mainApp.config(Config);
-    Config.$inject = ['$routeProvider'];
 })(app || (app = {}));

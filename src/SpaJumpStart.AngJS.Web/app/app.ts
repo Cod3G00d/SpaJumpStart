@@ -17,9 +17,17 @@ module app {
 
     */
 
+    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch']);
+    mainApp.config(Config);
+
+    Config.$inject = ['$routeProvider', ' $modalProvider', '$httpProvider'];
+
     class Config {
-        constructor($routeProvider: ng.route.IRouteProvider,
-            $modalProvider: ng.ui.bootstrap.IModalProvider) {
+        constructor(
+            $routeProvider: ng.route.IRouteProvider,
+            $modalProvider: ng.ui.bootstrap.IModalProvider,
+            $httpProvider: ng.IHttpProvider) {
+
             $routeProvider
                 .when("/", {
                     templateUrl: "/app/templates/customers/customersDetails.html",
@@ -29,12 +37,19 @@ module app {
                     templateUrl: "/app/templates/about.html"
                 })
                 .otherwise({ redirectTo: '/' });
+
+            $httpProvider.interceptors.push('xmlHttpInteceptor');
+            //if (!$httpProvider.defaults.headers.get) {
+            //    $httpProvider.defaults.headers.get = {};
+            //};
+            
+            $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+            $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
         }
-
     }
-
-    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls']);
-    mainApp.config(Config);
-
-    Config.$inject = ['$routeProvider'];
+    
+    //errorHandler(status, message): void {
+    //    var scope = angular.element($('html')).scope();
+    //    scope.errorHandler(status, message);
+    //};
 }

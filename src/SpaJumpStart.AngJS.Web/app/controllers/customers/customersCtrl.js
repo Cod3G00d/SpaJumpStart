@@ -19,17 +19,16 @@ var app;
                     this.constantsService = constantsService;
                     this.dataService = dataService;
                     this.$modal = $modal;
-                    var self = this;
                     this.resource = constantsService.baseUri + constantsService.postUri;
                     //this.scope = $scope;
                     //self.pageClass = 'page-customers';
-                    self.page = 0;
-                    self.pagesCount = 5;
-                    self.totalCount = 0;
+                    this.page = 0;
+                    this.pagesCount = 5;
+                    this.totalCount = 0;
                     this.scope = $scope;
-                    self.Customers = [];
+                    this.Customers = [];
                     //Load Customers
-                    self.getCustomers(true);
+                    this.getCustomers(true);
                 }
                 CustomersCtrl.prototype.search = function () {
                 };

@@ -45,7 +45,7 @@ module app.controllers.customers {
         totalCount: number;
 
         resource: string;
-        scope: any;
+        scope: ng.IScope;
 
         /*
         Injected our custom services constantsService and dataService to make the Web API calls
@@ -54,27 +54,26 @@ module app.controllers.customers {
         static $inject = ['$scope', 'constantsService', 'dataService', '$modal'];
 
         constructor(
-            public $scope: any,
+            public $scope: ng.IScope,
             //private $scope: ICustomersViewModel,
             private constantsService: app.common.services.ConstantsService,
             private dataService: app.common.services.DataService,
             private $modal: ng.ui.bootstrap.IModalService)
         {
 
-            var self = this;
             this.resource = constantsService.baseUri + constantsService.postUri;
             //this.scope = $scope;
             //self.pageClass = 'page-customers';
-            self.page = 0;
-            self.pagesCount = 5;
-            self.totalCount = 0;
+            this.page = 0;
+            this.pagesCount = 5;
+            this.totalCount = 0;
 
             this.scope = $scope;
 
-            self.Customers = [];
+            this.Customers = [];
 
             //Load Customers
-            self.getCustomers(true);
+            this.getCustomers(true);
         }
 
         search(): void
