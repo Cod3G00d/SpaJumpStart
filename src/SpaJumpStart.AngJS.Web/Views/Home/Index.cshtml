@@ -1,0 +1,150 @@
+﻿@*http://bendetat.com/a-useful-build-pipeline-using-gulp-and-bower.html*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="sampleAngularApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Spa App</title>
+    @*@Styles.Render("~/Assets/Styles/CSS")*@
+
+    <!-- Bootstrap Material Design -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="~/Styles/site.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.css">
+
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery-validate.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    @*<script src="~/bower_components/angular-material/angular-material.js"></script>
+    <script src="~/bower_components/angular-animate/angular-animate.js"></script>*@
+
+</head>
+
+<body ng-controller="CustomersCtrl as vm">
+    <div id="wrap">
+
+        @*<nav class="navbar navbar-default navbar-fixed-top " role="navigation">*@
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="#/">TypeScript Angular - SPA</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home<i class="fa fa-info-circle fa-fw pull-right"></i></a></li>
+                    <li><a href="#/about">About<i class="fa fa-info-circle fa-fw pull-right"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-if="userData.isUserLoggedIn">
+                    <li class="userinfo"><a href="#/">{{username}}<i class="fa fa-user fa-fw"></i></a></li>
+                </ul>
+            </div>
+
+            <div id="main" class="container body-content">
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="bs-component">
+                            <div class="input-group">
+                                <span class="pull-left">
+                                    <a class="btn btn-primary" ng-click="vm.add()">Add<span class="mdi-social-person-user"></span></a>
+                                </span>
+                                <span class="pull-left">
+                                    <a class="btn btn-primary" ng-click="vm.refresh()">Refresh<span class="glyphicon glyphicon-refresh"></span></a>
+                                </span>
+
+                                <section class="col-md-4 pull-right">
+                                    <input id="inputSearchCustomers" type="search" class="form-control input-sm" placeholder="search customers..." ng-model="search">
+
+                                </section>
+                                <span class="pull-right">
+                                    <a class="btn btn-primary" ng-click="vm.search()">Search<span class="glyphicon glyphicon-search"></span></a>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="btn btn-primary" ng-click="vm.clearSearch()">Clear<span class="glyphicon glyphicon-remove-sign"></span></a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    @*</nav>*@
+                    <section>
+                        <ng-view>
+
+                        </ng-view>
+                        <hr />
+
+                    </section>
+
+                    @*<footer class="navbar-inverse navbar-fixed-bottom">*@
+                    <footer class="footer">
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <h4 class="white">
+                                    <i>ASP.NET, Web API, Entity Framework 6, AngularJS, Typescript & C#</i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                &copy; DEC @DateTime.Now.Year - Developed by D.Troughear
+                            </div>
+                            <div class="col-md-6 pull-right">
+                                <a href="https://github.com/TheTalkingDev" class="pull-right">
+                                    Check me out on
+                                    <img src="~/Styles/Images/Octocat.png" style="vertical-align:top; margin-right:1em" width="30" height="30" border="0" alt="Check me out on GitHub">
+                                </a>
+                                <a href="https://www.linkedin.com/in/dave-troughear-a1959a14" class="pull-right">
+                                    <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x33.png" style="vertical-align:top; margin-right:1em" width="156" height="29" border="0" alt="Check me out on LinkedIn">
+                                </a>
+                            </div>
+
+                        </div>
+                    </footer>
+                    <br />
+                </div>
+            </div>
+        </div>
+        @*@Scripts.Render("~/assets/scripts/SpaApp")*@
+        @*<script src="~/App/Services/Account/storageHandler.js"></script>
+        <script src="~/App/Services/Account/tokenHandler.js"></script>
+        <script src="~/App/Services/Account/authService.js"></script>*@
+        @*<script src="~/App/Route/routeConfig.js"></script>*@
+        <script src="~/app/app.js"></script>
+        <script src="~/app/domain/IEntity.js"></script>
+        <script src="~/app/domain/IAddress.js"></script>
+        <script src="~/app/domain/Address.js"></script>
+        <script src="~/app/domain/Customer.js"></script>
+        <script src="~/app/common/services/constantsService.js"></script>
+        <script src="~/app/common/services/dataService.js"></script>
+        @*<script src="~/app/controllers/global/globalController.js"></script>*@
+        @*<script src="~/app/controllers/account/loginController.js"></script>
+        <script src="~/app/controllers/account/registerController.js"></script>*@
+        <script src="~/app/controllers/customers/customerCtrl.js"></script>
+        <script src="~/app/controllers/customers/customerModalCtrl.js"></script>
+
+        @*<script type="text/javascript">
+                $(document).ready(function () {
+                    $.material.init();
+                });
+            </script>*@
+    </div>
+</body>
+</html>

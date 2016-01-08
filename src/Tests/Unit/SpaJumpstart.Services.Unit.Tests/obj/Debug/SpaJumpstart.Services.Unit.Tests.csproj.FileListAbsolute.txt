@@ -1,0 +1,5 @@
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.Services.Unit.Tests\bin\Debug\SpaJumpstart.Services.Unit.Tests.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.Services.Unit.Tests\bin\Debug\SpaJumpstart.Services.Unit.Tests.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.Services.Unit.Tests\obj\Debug\SpaJumpstart.Services.Unit.Tests.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.Services.Unit.Tests\obj\Debug\SpaJumpstart.Services.Unit.Tests.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.Services.Unit.Tests\obj\Debug\SpaJumpstart.Services.Unit.Tests.csprojResolveAssemblyReference.cache

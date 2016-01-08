@@ -1,0 +1,17 @@
+﻿/* 3rd party stylesheets */
+
+/*@import url("../bower_components/bootstrap/dist/css/bootstrap.min.css");
+@import url("../bower_components/bootstrap/dist/css/bootstrap-theme.css");*/
+
+@import "bootstrap";
+@import "font-awesome";
+
+/*
+    3rd party style sheets cannot go in a subfolder esp. bootstrap css as they have references to the Fonts folder  ../fonts/ dont want
+    to mess with minimisation etc
+    Get errors finding glyphs etc, if moved
+    ref : http://stackoverflow.com/questions/18369036/bootstrap-3-glyphicons-are-not-working
+*/
+
+/* Application stylesheets */
+@import url("site.css");
