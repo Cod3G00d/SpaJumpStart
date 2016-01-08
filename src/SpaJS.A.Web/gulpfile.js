@@ -3,10 +3,6 @@ This file in the main entry point for defining Gulp tasks and using Gulp plugins
 Click here to learn more. 
 */
 
-/*
- * Picked up in Github checkin?
- */
-
 var gulp = require('gulp'),
     notify = require('gulp-notify')
     inject = require('gulp-inject'),
@@ -162,25 +158,10 @@ gulp.task('vendors-scripts', function () {
 
 gulp.task('spa-scripts', function () {
 
-    //var appDomainStream = gulp.src(['./app/domain/*.js']);
-    //var appServicesStream = gulp.src(['./app/common/services/*.js']);
-    //var appCustomerControllersStream = gulp.src(['./app/*.js', './app/controllers/customers/*.js']);
-    //var appStream = gulp.src(['./app/*.js', './app/customers/*.js']);
-    //var appDomainStream = gulp.src(['./app/domain/*.js']);
-
     var appStream = gulp.src(['./app/*.js', './app/common/services/*.js', './app/domain/*.js', './app/customers/*.js']);
 
     var target = gulp.src(config.targetViewsDir);
     return target
-        //.pipe(inject(appDomainStream
-        //        .pipe(print())
-        //        .pipe(concat('domain.js'))
-        //        //.pipe(rename({ suffix: '.min' }))
-        //        .pipe(uglify())
-        //        .pipe(gulp.dest('.build/spa')), { name: 'domain' }))
-        //        .pipe(gulp.dest('./views/home/'))
-
-
         .pipe(inject(
             appStream.pipe(print())
                 //.pipe(tslint())
@@ -243,11 +224,11 @@ gulp.task('clean', function () {
 //gulp.task('default', ['bower-task', 'css', 'fonts', 'vendors-scripts', 'spa-scripts']);
 gulp.task('default', ['css', 'vendors-scripts', 'spa-scripts', 'images', 'fonts']);
 
-// Watch
+// Watch and reload in Browser if they change
 gulp.task('watch', function () {
 
     // Watch .scss files
-    //gulp.watch('src/styles/**/*.scss', ['styles']);
+    //gulp.watch('src/styles/**/*.css', ['styles']);
 
     // Watch .js files
     //gulp.watch('src/scripts/**/*.js', ['scripts']);
