@@ -1,0 +1,80 @@
+﻿<!--<div class="row">
+    <div class="panel panel-primary">-->
+        <!--<div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Existing Customer View</h4>
+            <input id="inputSearchCustomers" type="search" ng-model="filterCustomers" class="form-control shortInputSearch" placeholder="Filter, search customers..">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="vm.add();">Add<i class="glyphicon glyphicon-user"></i></button>
+                    <button class="btn btn-primary" ng-click="vm.refresh();">Refresh<i class="glyphicon glyphicon-refresh"></i></button>
+
+                    <section class="col-md-4 pull-right"><input type="text" class="form-control input-lg" placeholder="Search" ng-model="search"></section>
+                    <button class="btn btn-primary" ng-click="search();">Search<i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();">Clear<i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+
+            </div>
+        </div>-->
+
+
+        <!--<div class="panel-body">-->
+        <hr />
+        <div class="row">
+            <div class="bs-component">
+                <div class="list-group">
+                        <div class="col-md-4 col-sm-3" ng-repeat="customer in vm.Customers | filter:search | orderBy:'Surname' track by customer.CustomerId">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="list-group-item">
+                                        <div class="row-content">
+                                            <span class="pull-right"><i class="glyphicon glyphicon-user"></i></span><h4 class="list-group-item-heading"> {{customer.FirstName}} {{customer.Surname}}</h4>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-4 col-sm-3 col-xs-3 col-xs-offset-1">
+                                                <label class="control-label">Active:</label>
+                                                <p class="list-group-item-text">{{customer.Active}}</p>
+                                            </div>
+                                            <!--<div class="col-md-12 col-md-6">-->
+                                            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4">
+
+                                                <label class="control-label">Address Details</label>
+                                                <p class="list-group-item-text">{{customer.Address.AddressLine1}}</p>
+                                                <p class="list-group-item-text">{{customer.Address.AddressLine2}}</p>
+                                                <p class="list-group-item-text">{{customer.Address.AddressLine3}}</p>
+                                                <p class="list-group-item-text">{{customer.Address.AddressLine4}}</p>
+                                                <p class="list-group-item-text">{{customer.Address.Address.Postcode}}</p>
+                                                <p class="list-group-item-text">{{customer.Address.Email}}</p>
+                                            </div>
+                                        </div>
+
+                                        <!--issues where at certain breakpoints, the columns don't clear quite right as one is taller than the other. To fix that,
+                        use a combination of a class .clearfix and the responsive utility classes-->
+                                        <div class="clearfix visible-xs pull-right"></div>
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-4 col-sm-3 col-xs-4 pull-right">
+                                                <a class=" btn btn-xs btn-warning" ng-click="vm.remove(customer.CustomerId)">
+                                                    <span class="glyphicon glyphicon-trash"> Delete</span>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-3 pull-right">
+                                                <a class="btn btn-xs btn-primary" ng-click="vm.edit(customer)">
+                                                    <span class="glyphicon glyphicon-edit"> Edit</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="panel-footer">
+                <div class="text-center">
+                    <custom-pager page="{{vm.page}}" pages-count="{{vm.pagesCount}}" total-count="{{vm.totalCount}}" search-func="search(page)"></custom-pager>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+    <!--</div>
+</div>-->

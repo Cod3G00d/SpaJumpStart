@@ -1,0 +1,79 @@
+﻿<div class="modal-header">
+    <i class="material-icons">face</i> 
+    <h3 class="modal-title">Customer Information</h3>
+</div>
+
+<div class="modal-body">
+    <!-- edit form column -->
+    <div class="alert alert-danger alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        <i class="fa fa-pencil-square-o"></i>
+        Add New Customer
+    </div>
+        <form class="form-horizontal" name="customerForm" method="post">
+            <fieldset>
+                <legend></legend>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-xs-5 col-xs-offset-1">
+                            <label for="FirstName" class="control-label">First name</label>
+                            <input type="text" class="form-control" id="FirstName" name="Firstname" placeholder="First name" ng-model="modal.modalCustomer.FirstName" required>
+                            <p ng-show="customerForm.Firstname.$invalid && !customerForm.Firstname.$pristine" class="help-block">First name is required.</p>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-xs-5">
+                            <label class="control-label">Address Line 1</label>
+                            <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" placeholder="Addresss line 1" ng-model="modal.modalCustomer.Address.AddressLine1" required>
+                            <p ng-show="customerForm.AddressLine1.$invalid && !customerForm.AddressLine1.$pristine" class="help-block">The first line of the address is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-xs-5 col-xs-offset-1">
+                            <label class="control-label">Surname</label>
+                            <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Surname" ng-model="modal.modalCustomer.Surname" required>
+                            <p ng-show="customerForm.Surname.$invalid && !customerForm.Surname.$pristine" class="help-block">The Surname is required.</p>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-xs-5">
+                            <label class="control-label">Address Line 2</label>
+                            <input type="text" class="form-control" id="AddressLine2" name="AddressLine2" placeholder="Addresss line 2" ng-model="modal.modalCustomer.Address.AddressLine2">
+                            <!--<p ng-show="customerForm.AddressLine2.$invalid && !customerForm.AddressLine2.$pristine" class="help-block">The first line of the address is required.</p>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-xs-5 col-xs-offset-1" >
+                            <label class="control-label">Active</label>
+                            <input type="text" class="form-control" id="Active" name="Active" placeholder="" ng-model="modal.modalCustomer.Active">
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-xs-5">
+                            <label class="control-label">Town</label>
+                            <input type="text" class="form-control" id="AddressLine1" name="Town" placeholder="Town" ng-model="modal.modalCustomer.Address.AddressLine3" required>
+                            <p ng-show="customerForm.Town.$invalid && !customerForm.Town.$pristine" class="help-block">The Town is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-xs-5 col-xs-offset-1">
+                            <label class="control-label">Email</label>
+                            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email address" ng-model="modal.modalCustomer.Address.Email">
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-xs-5">
+                            <label class="control-label">County</label>
+                            <input type="text" class="form-control" id="County" name="County" placeholder="County" ng-model="modal.modalCustomer.Address.AddressLine4" required>
+                            <p ng-show="customerForm.County.$invalid && !customerForm.County.$pristine" class="help-block">The County is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-xs-5 col-xs-offset-1">
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-xs-5">
+                            <label class="control-label">Postcode</label>
+                            <input type="text" class="form-control" id="Postcode" name="Postcode" placeholder="Postcode" ng-model="modal.modalCustomer.Address.Postcode" required>
+                            <p ng-show="customerForm.Postcode.$invalid && !customerForm.Postcode.$pristine" class="help-block">The first line of the address is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="modal.cancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary" ng-click="modal.ok()" ng-disabled="customerForm.$invalid">Submit</button>
+</div>
