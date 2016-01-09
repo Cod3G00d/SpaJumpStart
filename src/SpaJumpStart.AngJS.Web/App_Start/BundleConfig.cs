@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace KiksApp.Web
+namespace SpaJumpStart.AngJS.Web.Web
 {
     public class BundleConfig
     {

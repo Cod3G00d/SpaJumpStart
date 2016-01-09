@@ -36,3 +36,4 @@ var app;
         domain.Address = Address;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=Address.js.map

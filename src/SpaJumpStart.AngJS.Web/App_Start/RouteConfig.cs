@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace HTML5.ScratchPad.AngularGrid.Web
+namespace SpaJumpStart.AngJS.Web.Web
 {
     public class RouteConfig
     {

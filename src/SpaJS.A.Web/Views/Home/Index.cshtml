@@ -36,13 +36,21 @@
     <!-- endinject -->
 
     <script src="~/app/app.js"></script>
+    <script src="~/app/domain/common/IMessage.js"></script>
+    <script src="~/app/domain/common/Message.js"></script>
     <script src="~/app/domain/IEntity.js"></script>
     <script src="~/app/domain/EntityBase.js"></script>
     <script src="~/app/domain/IAddress.js"></script>
     <script src="~/app/domain/Address.js"></script>
     <script src="~/app/domain/Customer.js"></script>
+    <script src="~/app/domain/accounts/ILoginData.js"></script>
+    <script src="~/app/domain/accounts/LoginData.js"></script>
+    <script src="~/app/domain/accounts/IRegistrationData.js"></script>
+    <script src="~/app/domain/accounts/registrationData.js"></script>
+    <script src="~/app/domain/Customer.js"></script>
     <script src="~/app/services/common/constantsService.js"></script>
     <script src="~/app/services/common/dataService.js"></script>
+    <script src="~/app/services/accounts/userAccountService.js"></script>
     <script src="~/app/controllers/customers/customersCtrl.js"></script>
     <script src="~/app/controllers/customers/customerModalCtrl.js"></script>
 
@@ -66,8 +74,8 @@
                     <li><a href="#/">Home<i class="fa fa-info-circle fa-fw pull-right"></i></a></li>
                     <li><a href="#/about">About<i class="fa fa-info-circle fa-fw pull-right"></i></a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" ng-if="userData.isUserLoggedIn">
-                    <li class="userinfo"><a href="#/">{{username}}<i class="fa fa-user fa-fw"></i></a></li>
+                <ul class="nav navbar-nav navbar-right" ng-if="loginData.isUserLoggedIn">
+                    <li class="userinfo"><a href="#/">{{registrationData.username}}<i class="fa fa-user fa-fw"></i></a></li>
                 </ul>
             </div>
 

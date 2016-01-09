@@ -31,3 +31,4 @@ var app;
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=customerModalCtrl.js.map

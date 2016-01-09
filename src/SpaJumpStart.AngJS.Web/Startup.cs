@@ -1,4 +1,7 @@
-﻿namespace KiksApp.Web
+﻿using SpaJumpStart.AngJS.Web.Web;
+using System.Web.Optimization;
+
+namespace KiksApp.Web
 {
     public partial class Startup
     {

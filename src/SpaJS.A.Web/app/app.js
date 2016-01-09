@@ -46,8 +46,14 @@ var app;
         'ngAnimate', 'ngCookies', 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls'
     ]);
     //'ngRoute', 'ngAnimate', 'ui.bootstrap', , 'ngCookies']);
-    //.service('constantsService', app.common.services.ConstantsService)
-    //.controller('AuthService', app.common.services.UserAccountService);
+    //.service('constantsService', app.services.common.ConstantsService);
+    //.service('dataService', app.services.common.DataService);
+    //.service('userAccountService', app.services.accounts.UserAccountService);
+    //.controller('registerUserCtrl', app.controllers.accounts.RegisterUserCtrl);
+    //.controller('loginCtrl', app.controllers.accounts.LoginCtrl);
+    //.controller("customerModalCtrl", app.controllers.customers.CustomerModalCtrl);
+    //.controller("customersCtrl", app.controllers.customers.CustomersCtrl);
     mainApp.config(Config);
     Config.$inject = ['$routeProvider', '$httpProvider'];
 })(app || (app = {}));
+//# sourceMappingURL=app.js.map

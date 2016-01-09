@@ -5,3 +5,4 @@ outside this module, because we used the export keyword
 */
 ///<reference path="../../Scripts/typings/jquery/jquery.d.ts" />
 ///<reference path="../../Scripts/typings/angularjs/angular.d.ts" />
+//# sourceMappingURL=IEntity.js.map

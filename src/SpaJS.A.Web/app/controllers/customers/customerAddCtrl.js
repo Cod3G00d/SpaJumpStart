@@ -8,8 +8,6 @@ var app;
     (function (controllers) {
         var customers;
         (function (customers) {
-            angular.module('sampleAngularApp')
-                .controller('customerAddCtrl', CustomerAddCtrl);
             var CustomerAddCtrl = (function () {
                 function CustomerAddCtrl($location, constantsService, dataService) {
                     this.$location = $location;
@@ -30,6 +28,9 @@ var app;
                 CustomerAddCtrl.$inject = ['$location', 'constantsService', 'dataService'];
                 return CustomerAddCtrl;
             })();
+            angular.module('sampleAngularApp')
+                .controller('customerAddCtrl', CustomerAddCtrl);
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=customerAddCtrl.js.map

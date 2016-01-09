@@ -5,9 +5,6 @@
 
 module app.controllers.customers {
 
-    angular.module('sampleAngularApp')
-        .controller('customerAddCtrl', CustomerAddCtrl);
-
     interface IAddCustomerViewModel {
         customer: app.domain.ICustomer;
         add(): void;
@@ -37,4 +34,6 @@ module app.controllers.customers {
         }
     }
 
+    angular.module('sampleAngularApp')
+        .controller('customerAddCtrl', CustomerAddCtrl);
 }
