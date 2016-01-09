@@ -1,11 +1,11 @@
-﻿module app.common.services {
+module app.common.services {
     'use strict';
-
+    
     angular.module('sampleAngularApp')
         .controller('AuthService', app.common.services.UserAccountService);
 
     export interface IUserAccountService {
-        registerUser(resource: string, registration: any): ng.IPromise<any>;
+        registerUser(registration: app.domain.account.IRegistrationData): ng.IPromise<any>;
         logInUser(userData: app.domain.account.IUserData): ng.IPromise<any>;
         logOutUser(): ng.IPromise<any>;
         userIsAuthenticated(): boolean;
@@ -41,7 +41,7 @@
         }
 
         //register(T): ng.IPromise<T> {
-        registerUser(registration: any): ng.IPromise<any> {
+        registerUser(registration: app.domain.account.IRegistrationData): ng.IPromise<any> {
             var self = this;
 
             var deferred = self._$q.defer();

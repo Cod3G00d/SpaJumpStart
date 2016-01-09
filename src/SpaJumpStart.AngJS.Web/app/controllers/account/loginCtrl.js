@@ -8,9 +8,9 @@ var app;
             angular.module('sampleAngularApp')
                 .controller('LoginCtrl', app.controllers.account.LoginCtrl);
             var LoginCtrl = (function () {
-                function LoginCtrl($scope, location, userAccountService) {
+                function LoginCtrl($scope, $location, userAccountService) {
                     this.$scope = $scope;
-                    this.location = location;
+                    this.$location = $location;
                     this.userAccountService = userAccountService;
                     this._$scope = $scope;
                     this._userData = new app.domain.account.UserData("", "");
@@ -19,7 +19,7 @@ var app;
                     var self = this;
                     self._userAccountService.logInUser(self._userData)
                         .then(function (response) {
-                        self._$scope.Global.isAuthenticated = true;
+                        self.$scope.Global.userIsAuthenticated = true;
                         self._$location.path('/');
                     }, function (data) {
                         self._$scope.message = data.error_description;
@@ -32,3 +32,4 @@ var app;
         })(account = controllers.account || (controllers.account = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=loginCtrl.js.map

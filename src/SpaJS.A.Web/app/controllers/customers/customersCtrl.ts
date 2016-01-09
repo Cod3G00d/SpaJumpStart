@@ -1,9 +1,11 @@
-﻿///<reference path="../common/services/dataService.ts"/>
-///<reference path="../common/services/constantsService.ts"/>
-///<reference path="../domain/Customer.ts"/>
-///<reference path="../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="../../services/common/dataService.ts"/>
+///<reference path="../../services/common/constantsService.ts"/>
+///<reference path="../../domain/Customer.ts"/>
 
-module app.customers {
+module app.controllers.customers {
 
     /*
     Any property you need to be exposed through your controller needs to be declared in the interface being implemented
@@ -27,10 +29,9 @@ module app.customers {
     */
 
     //interface ICustomersViewModel extends ng.IScope {
-    interface ICustomersViewModel {
-        //Customers: app.domain.Customer[]; //app.domain.Customers
+    export interface ICustomersViewModel {
         Customers: Array<app.domain.ICustomer>
-        customer: app.domain.Customer;
+        customer: app.domain.ICustomer;
         edit(customer: app.domain.Customer): void;
         remove(Id: number): void;
         add(): void;
@@ -45,12 +46,9 @@ module app.customers {
     }
 
     export class CustomersCtrl implements ICustomersViewModel {
-    //export class CustomersCtrl {
-        //Customers: app.domain.Customer[];
         Customers: Array<app.domain.ICustomer>
-        customer: app.domain.Customer;
+        customer: app.domain.ICustomer;
         
-
         //pageClass: string 
         loadingCustomers: boolean;
         page: number;
@@ -63,15 +61,13 @@ module app.customers {
         /*
         Injected our custom services constantsService and dataService to make the Web API calls
         */
-        //static $inject = ["constantsService", "dataService", "$uibModal"];
-        //static $inject = ['constantsService', 'dataService', '$modal'];
         static $inject = ['$scope','constantsService', 'dataService', '$modal'];
         
         constructor(
             public $scope: any,
             //private $scope: ICustomersViewModel,
-            private constantsService: app.common.services.ConstantsService,
-            private dataService: app.common.services.DataService,
+            private constantsService: app.services.common.IConstantsService,
+            private dataService: app.services.common.IDataService,
             private $modal: ng.ui.bootstrap.IModalService) {
 
             var self = this;
@@ -272,5 +268,5 @@ module app.customers {
         }
     }
     angular.module("sampleAngularApp")
-        .controller("CustomersCtrl", app.customers.CustomersCtrl);
+        .controller("customersCtrl", app.controllers.customers.CustomersCtrl);
 }

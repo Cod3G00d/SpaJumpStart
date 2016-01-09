@@ -49,7 +49,7 @@ gulp.task('css', function () {
                                     //config.bowerDir + '/bootstrap-material-design/dist/ripples/ripples.css',
                                     config.bowerDir + '/angular-material/angular-material.css',
                                     //config.bowerDir + '/https://fonts.googleapis.com/icon?family=Material+Icons',
-                                    config.bowerDir + '/fontawesome/scss',
+                                    config.bowerDir + '/font-awesome/font-awesome.css',
                                     './Styles/site.css',
 
     ]);
@@ -94,9 +94,9 @@ gulp.task('vendors-scripts', function () {
             config.bowerDir + '/angular-bootstrap/ui-bootstrap.js',
             config.bowerDir + '/angular-bootstrap/ui-bootstrap-tpls.js',
 
-            config.bowerDir + '/angular-resource/angular-resource.js',
+            //config.bowerDir + '/angular-resource/angular-resource.js',
             config.bowerDir + '/angular-animate/angular-animate.js',
-            config.bowerDir + '/angular-loader/angular-loader.js',
+            //config.bowerDir + '/angular-loader/angular-loader.js',
             config.bowerDir + '/angular-aria/angular-aria.js',
             config.bowerDir + '/angular-cookies/angular-cookies.js',
             config.bowerDir + '/angular-message-format/angular-message-format.js',
@@ -158,7 +158,15 @@ gulp.task('vendors-scripts', function () {
 
 gulp.task('spa-scripts', function () {
 
-    var appStream = gulp.src(['./app/*.js', './app/common/services/*.js', './app/domain/*.js', './app/customers/*.js']);
+    var appStream = gulp.src([
+        './app/*.js',
+        './app/services/common/*.js',
+        './app/services/accounts/*.js',
+        './app/domain/**.js',
+        './app/domain/common/**.js',
+        './app/domain/accounts/*.js',
+        './app/controllers/customers/*.js',
+        './app/controllers/accounts/*.js']);
 
     var target = gulp.src(config.targetViewsDir);
     return target
@@ -185,7 +193,7 @@ gulp.task('spa-scripts', function () {
 ////Font-awesome install
 gulp.task('fonts', function () {
 
-    var src = gulp.src(config.bowerDir + '/bootstrap/dist/fonts/**/*.*',                     config.bowerDir + '/font-awesome/fonts/**/*.*')
+    var src = gulp.src(config.bowerDir + '/bootstrap/dist/fonts/**.*',                     config.bowerDir + '/font-awesome/fonts/**.*')
 
     return src         .pipe(print())         .pipe($.flatten())         .pipe(gulp.dest('./build/fonts'))
         .pipe(notify({ message: 'Fonts task complete' }));
@@ -218,7 +226,8 @@ gulp.task('images', function () {
 
 // Clean
 gulp.task('clean', function () {
-    return del(['.build/css', '.build/vendors', '.build/spa', '.build/images']);
+    return del(['.build/vendors', '.build/spa']);
+    //return del(['.build/css', '.build/vendors', '.build/spa', '.build/images']);
 });
 
 //gulp.task('default', ['bower-task', 'css', 'fonts', 'vendors-scripts', 'spa-scripts']);

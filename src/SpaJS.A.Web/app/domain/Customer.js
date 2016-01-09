@@ -1,3 +1,5 @@
+///<reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../Scripts/typings/angularjs/angular.d.ts" />
 ///<reference path="IEntity.ts" />
 ///<reference path="IAddress.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
@@ -35,4 +37,3 @@ var app;
         domain.Customer = Customer;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
-//# sourceMappingURL=Customer.js.map

@@ -17,7 +17,11 @@ module app {
 
     */
 
-    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch']);
+    var mainApp =
+        angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch'])
+            //.service('constantsService', app.common.services.ConstantsService)
+            //.controller('AuthService', app.common.services.UserAccountService);
+
     mainApp.config(Config);
 
     Config.$inject = ['$routeProvider', ' $modalProvider', '$httpProvider'];
@@ -46,10 +50,12 @@ module app {
             $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
             $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
         }
+
+        //errorHandler(status, message): void {
+        //    var scope = angular.element($('html')).scope();
+        //    $scope.errorHandler(status, message);
+        //};
+
     }
-    
-    //errorHandler(status, message): void {
-    //    var scope = angular.element($('html')).scope();
-    //    scope.errorHandler(status, message);
-    //};
+
 }

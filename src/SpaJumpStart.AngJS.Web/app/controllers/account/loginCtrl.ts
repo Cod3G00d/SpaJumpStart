@@ -4,8 +4,12 @@
     angular.module('sampleAngularApp')
         .controller('LoginCtrl', app.controllers.account.LoginCtrl);
 
+    export interface ILoginCtrlScope extends ng.IScope {
+        message: string;
+    }
+
     export class LoginCtrl {
-        private _$scope: any; //ng.IScope;
+        private _$scope: ILoginCtrlScope;
         private _$location: ng.ILocationService;
         private _userAccountService: app.common.services.IUserAccountService;
         private _userData: app.domain.account.IUserData;
@@ -13,8 +17,8 @@
         static $inject = ['$scope', '$location', 'UserAccountService'];
 
         constructor(
-            public $scope: ng.IScope,
-            private location: ng.ILocationService,
+            public $scope: any,
+            private $location: ng.ILocationService,
             private userAccountService: app.common.services.IUserAccountService)
         {
             this._$scope = <any> $scope;
@@ -26,7 +30,7 @@
 
             self._userAccountService.logInUser(self._userData)
                 .then((response) => {
-                    self._$scope.Global.isAuthenticated = true;
+                    self.$scope.Global.userIsAuthenticated = true;
                     self._$location.path('/');
                 }, (data) => {
                     self._$scope.message = data.error_description;

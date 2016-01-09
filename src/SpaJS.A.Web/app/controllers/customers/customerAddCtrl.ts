@@ -1,4 +1,12 @@
-﻿module app.postAdd {
+﻿///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="../../domain/Customer.ts"/>
+
+module app.controllers.customers {
+
+    angular.module('sampleAngularApp')
+        .controller('customerAddCtrl', CustomerAddCtrl);
 
     interface IAddCustomerViewModel {
         customer: app.domain.ICustomer;
@@ -12,8 +20,8 @@
 
         static $inject = ['$location', 'constantsService', 'dataService'];
         constructor(private $location: ng.ILocationService,
-            private constantsService: app.common.services.ConstantsService,
-            private dataService: app.common.services.DataService) {
+            private constantsService: app.services.common.IConstantsService,
+            private dataService: app.services.common.IDataService) {
 
             var self = this;
             self.resource = self.constantsService.baseUri + this.constantsService.postUri;
@@ -28,6 +36,5 @@
                 });
         }
     }
-    angular.module('sampleAngularApp')
-        .controller('customerAddCtrl', CustomerAddCtrl);
+
 }

@@ -224,6 +224,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\controllers\accounts\" />
+    <Folder Include="app\domain\accounts\" />
+    <Folder Include="app\domain\common\" />
+    <Folder Include="app\services\accounts\" />
+    <Folder Include="app\templates\accounts\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -254,16 +259,19 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.ts" />
-    <TypeScriptCompile Include="app\common\services\constantsService.ts" />
-    <TypeScriptCompile Include="app\common\services\dataService.ts" />
-    <TypeScriptCompile Include="app\customers\customerAddCtrl.ts" />
-    <TypeScriptCompile Include="app\customers\customerModalCtrl.ts" />
-    <TypeScriptCompile Include="app\customers\customersCtrl.ts" />
+    <TypeScriptCompile Include="app\domain\EntityBase.ts" />
+    <TypeScriptCompile Include="app\services\common\constantsService.ts" />
+    <TypeScriptCompile Include="app\services\common\dataService.ts" />
+    <TypeScriptCompile Include="app\controllers\customers\customerAddCtrl.ts" />
+    <TypeScriptCompile Include="app\controllers\customers\customerModalCtrl.ts" />
+    <TypeScriptCompile Include="app\controllers\customers\customersCtrl.ts" />
     <TypeScriptCompile Include="app\domain\Address.ts" />
     <TypeScriptCompile Include="app\domain\Customer.ts" />
     <TypeScriptCompile Include="app\domain\IAddress.ts" />
     <TypeScriptCompile Include="app\domain\IEntity.ts" />
     <TypeScriptCompile Include="app\route\routeConfig.ts" />
+    <TypeScriptCompile Include="app\services\common\IConstantsService.ts" />
+    <TypeScriptCompile Include="app\services\common\IDataService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
@@ -287,13 +295,13 @@
     <Content Include="app\domain\IEntity.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\customers\customerAddCtrl.js.map" />
-    <Content Include="app\customers\customerModalCtrl.js.map" />
-    <Content Include="app\customers\customersCtrl.js.map" />
+    <Content Include="app\controllers\customers\customerAddCtrl.js.map" />
+    <Content Include="app\controllers\customers\customerModalCtrl.js.map" />
+    <Content Include="app\controllers\customers\customersCtrl.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\common\services\constantsService.js.map" />
-    <Content Include="app\common\services\dataService.js.map" />
+    <Content Include="app\services\common\constantsService.js.map" />
+    <Content Include="app\services\common\dataService.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.1.4.min.map" />

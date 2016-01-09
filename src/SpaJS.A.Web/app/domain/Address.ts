@@ -1,4 +1,7 @@
-﻿///<reference path="IAddress.ts" />
+﻿///<reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="IAddress.ts" />
+///<reference path="EntityBase.ts" />
 
 module app.domain {
 

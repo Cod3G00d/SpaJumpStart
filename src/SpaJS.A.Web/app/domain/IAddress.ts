@@ -1,5 +1,7 @@
-﻿
-//<reference path="../app/domain/IEntity.ts">
+﻿///<reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../Scripts/typings/angularjs/angular.d.ts" />
+//<reference path="IEntity.ts">
+
 module app.domain {
 
     //By implementing an interface we force a class to define certain properties or functions

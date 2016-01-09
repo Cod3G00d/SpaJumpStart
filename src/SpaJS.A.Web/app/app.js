@@ -16,23 +16,38 @@ var app;
 
     */
     var Config = (function () {
-        function Config($routeProvider, $modalProvider) {
+        function Config($routeProvider, $modalProvider, 
+            //$http: ng.IHttpService,
+            $httpProvider) {
             $routeProvider
                 .when("/", {
                 templateUrl: "/app/templates/customers/customersView.html",
-                controller: "CustomersCtrl as vm"
+                controller: "customersCtrl as vm"
             })
                 .when("/about", {
                 templateUrl: "/app/templates/about.html"
             })
                 .otherwise({ redirectTo: '/' });
+            //$httpProvider.interceptors.push('xmlHttpInteceptor');
+            ////if (!$httpProvider.defaults.headers.get) {
+            ////    $httpProvider.defaults.headers.get = {};
+            ////};
+            //$http.defaults.headers.get['Cache-Control'] = 'no-cache';
+            //$http.defaults.headers.get['Pragma'] = 'no-cache'
+            //$httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+            //$httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
         }
         return Config;
     })();
-    //var modules = ['ngRoute', '$routeProvider', 'ngAnimate', 'ui.bootstrap'];
-    //var mainApp = angular.module('sampleAngularApp', ['ngRoute']);
-    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls']);
+    app.Config = Config;
+    var mainApp = 
+    //angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch'])
+    angular.module('sampleAngularApp', [
+        'ngAnimate', 'ngCookies', 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls'
+    ]);
+    //'ngRoute', 'ngAnimate', 'ui.bootstrap', , 'ngCookies']);
+    //.service('constantsService', app.common.services.ConstantsService)
+    //.controller('AuthService', app.common.services.UserAccountService);
     mainApp.config(Config);
-    Config.$inject = ['$routeProvider'];
+    Config.$inject = ['$routeProvider', '$httpProvider'];
 })(app || (app = {}));
-//# sourceMappingURL=app.js.map

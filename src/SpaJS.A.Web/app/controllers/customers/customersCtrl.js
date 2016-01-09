@@ -1,16 +1,15 @@
-///<reference path="../../common/services/dataService.ts"/>
-///<reference path="../../common/services/constantsService.ts"/>
+///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="../../services/common/dataService.ts"/>
+///<reference path="../../services/common/constantsService.ts"/>
 ///<reference path="../../domain/Customer.ts"/>
-///<reference path="../../../Scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 var app;
 (function (app) {
     var controllers;
     (function (controllers) {
         var customers;
         (function (customers) {
-            'use strict';
-            angular.module("sampleAngularApp")
-                .controller("CustomersCtrl", app.controllers.customers.CustomersCtrl);
             var CustomersCtrl = (function () {
                 function CustomersCtrl($scope, 
                     //private $scope: ICustomersViewModel,
@@ -19,16 +18,17 @@ var app;
                     this.constantsService = constantsService;
                     this.dataService = dataService;
                     this.$modal = $modal;
+                    var self = this;
                     this.resource = constantsService.baseUri + constantsService.postUri;
                     //this.scope = $scope;
                     //self.pageClass = 'page-customers';
-                    this.page = 0;
-                    this.pagesCount = 5;
-                    this.totalCount = 0;
+                    self.page = 0;
+                    self.pagesCount = 5;
+                    self.totalCount = 0;
                     this.scope = $scope;
-                    this.Customers = [];
+                    self.Customers = [];
                     //Load Customers
-                    this.getCustomers(true);
+                    self.getCustomers(true);
                 }
                 CustomersCtrl.prototype.search = function () {
                 };
@@ -128,7 +128,7 @@ var app;
                     var self = this;
                     var options = {
                         animation: true,
-                        templateUrl: 'app/templates/customers/addCustomer.html',
+                        templateUrl: 'app/templates/customers/addCustomerView.html',
                         controller: 'customerModalCtrl',
                         controllerAs: 'modal',
                         size: 'lg',
@@ -176,12 +176,12 @@ var app;
                 /*
                 Injected our custom services constantsService and dataService to make the Web API calls
                 */
-                //static $inject = ['constantsService', 'dataService', '$modal'];
                 CustomersCtrl.$inject = ['$scope', 'constantsService', 'dataService', '$modal'];
                 return CustomersCtrl;
             })();
             customers.CustomersCtrl = CustomersCtrl;
+            angular.module("sampleAngularApp")
+                .controller("customersCtrl", app.controllers.customers.CustomersCtrl);
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=customersCtrl.js.map

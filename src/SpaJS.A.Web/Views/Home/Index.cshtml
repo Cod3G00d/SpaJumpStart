@@ -32,26 +32,23 @@
     <!-- domain:js -->
     <!-- endinject -->
     <!-- app:js -->
-    <script src="/.build/spa/app.js"></script>
+    @*<script src="/.build/spa/app.js"></script>*@
     <!-- endinject -->
-
-
 
     <script src="~/app/app.js"></script>
     <script src="~/app/domain/IEntity.js"></script>
+    <script src="~/app/domain/EntityBase.js"></script>
     <script src="~/app/domain/IAddress.js"></script>
     <script src="~/app/domain/Address.js"></script>
-    @*<script src="~/app/domain/ICustomer.js"></script>*@
     <script src="~/app/domain/Customer.js"></script>
-    <script src="~/app/common/services/constantsService.js"></script>
-    <script src="~/app/common/services/dataService.js"></script>
-    <script src="~/app/customers/customersCtrl.js"></script>
-    @*<script src="~/app/customers/customerAddCtrl.js"></script>*@
-    <script src="~/app/customers/customerModalCtrl.js"></script>
+    <script src="~/app/services/common/constantsService.js"></script>
+    <script src="~/app/services/common/dataService.js"></script>
+    <script src="~/app/controllers/customers/customersCtrl.js"></script>
+    <script src="~/app/controllers/customers/customerModalCtrl.js"></script>
 
 </head>
 
-<body ng-controller="CustomersCtrl as vm">
+<body ng-controller="customersCtrl as vm">
     <div id="wrap">
 
         @*<nav class="navbar navbar-default navbar-fixed-top " role="navigation">*@
@@ -123,12 +120,12 @@
                                 &copy; DEC @DateTime.Now.Year - Developed by D.Troughear
                             </div>
                             <div class="col-md-6 pull-right">
-                                <a href="https://github.com/TheTalkingDev" class="pull-right">
-                                    Check me out on
+                                Check me out on
+                                <a href="https://github.com/dtro-devuk" class="pull-right">
                                     <img src="~/Styles/Images/Octocat.png" style="vertical-align:top; margin-right:1em" width="30" height="30" border="0" alt="Check me out on GitHub">
                                 </a>
                                 <a href="https://www.linkedin.com/in/dave-troughear-a1959a14" class="pull-right">
-                                    <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x33.png" style="vertical-align:top; margin-right:1em" width="156" height="29" border="0" alt="Check me out on LinkedIn">
+                                    <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x33.png" style="vertical-align:top; margin-right:1em" width="256" height="58" border="0" alt="Check me out on LinkedIn">
                                 </a>
                             </div>
 

@@ -1,4 +1,7 @@
+///<reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../Scripts/typings/angularjs/angular.d.ts" />
 ///<reference path="IAddress.ts" />
+///<reference path="EntityBase.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -33,4 +36,3 @@ var app;
         domain.Address = Address;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
-//# sourceMappingURL=Address.js.map

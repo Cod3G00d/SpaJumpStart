@@ -20,4 +20,3 @@ var app;
         return Config;
     })();
 })(app || (app = {}));
-//# sourceMappingURL=routeConfig.js.map

@@ -6,3 +6,4 @@ var app;
         'use strict';
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=IAddress.js.map

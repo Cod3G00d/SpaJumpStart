@@ -36,3 +36,4 @@ var app;
         domain.Customer = Customer;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=Customer.js.map

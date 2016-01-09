@@ -16,6 +16,8 @@ var app;
 
     */
     var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch']);
+    //.service('constantsService', app.common.services.ConstantsService)
+    //.controller('AuthService', app.common.services.UserAccountService);
     mainApp.config(Config);
     Config.$inject = ['$routeProvider', ' $modalProvider', '$httpProvider'];
     var Config = (function () {
@@ -39,3 +41,4 @@ var app;
         return Config;
     })();
 })(app || (app = {}));
+//# sourceMappingURL=app.js.map

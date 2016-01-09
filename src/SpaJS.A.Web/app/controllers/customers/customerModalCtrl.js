@@ -1,20 +1,20 @@
+///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="../../domain/Customer.ts"/>
 var app;
 (function (app) {
     var controllers;
     (function (controllers) {
         var customers;
         (function (customers) {
-            'use strict';
-            angular.module("sampleAngularApp").controller("customerModalCtrl", app.controllers.customers.CustomerModalCtrl);
             var CustomerModalCtrl = (function () {
-                function CustomerModalCtrl($modalInstance, customer) {
+                function CustomerModalCtrl($scope, $modalInstance, customer) {
+                    this.$scope = $scope;
                     this.$modalInstance = $modalInstance;
                     this.customer = customer;
                     this.modalCustomer = customer;
                 }
-                //constructor(public $scope: any, private $modalInstance: ng.ui.bootstrap.IModalServiceInstance) {
-                //    this.scope = $scope;
-                //}
                 CustomerModalCtrl.prototype.ok = function () {
                     this.$modalInstance.close(this.modalCustomer);
                 };
@@ -22,12 +22,12 @@ var app;
                     this.$modalInstance.dismiss('cancel');
                 };
                 CustomerModalCtrl.controllerId = 'customerModalCtrl';
-                //static $inject = ['$scope', '$modalInstance', 'customer'];
-                CustomerModalCtrl.$inject = ['$modalInstance', 'customer'];
+                CustomerModalCtrl.$inject = ['$scope', '$modalInstance', 'customer'];
                 return CustomerModalCtrl;
             })();
             customers.CustomerModalCtrl = CustomerModalCtrl;
+            angular.module("sampleAngularApp")
+                .controller("customerModalCtrl", app.controllers.customers.CustomerModalCtrl);
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=customerModalCtrl.js.map

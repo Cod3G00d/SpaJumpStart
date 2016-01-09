@@ -3,7 +3,6 @@
 ///<reference path="../Scripts/typings/angularjs/angular.d.ts"/>
 ///<reference path="../Scripts/typings/angularjs/angular-route.d.ts" />
 
-
 /*
 Typescript module to define the main app module
 */
@@ -18,37 +17,53 @@ module app {
 
     */
 
-    class Config {
+    export class Config {
         constructor($routeProvider: ng.route.IRouteProvider,
-            $modalProvider: ng.ui.bootstrap.IModalProvider) {
+            $modalProvider: ng.ui.bootstrap.IModalProvider,
+            //$http: ng.IHttpService,
+            $httpProvider: ng.IHttpProvider) {
+        
             $routeProvider
                 .when("/", {
                     templateUrl: "/app/templates/customers/customersView.html",
-                    controller: "CustomersCtrl as vm"
+                    controller: "customersCtrl as vm"
                 })
-                //.when("/edit/:id", {
-                //templateUrl: "/app/templates/customers/editCustomerView.html",
-                //    controller: "CustomerEditCtrl as vm"
-                //})
                 .when("/about", {
                 templateUrl: "/app/templates/about.html"
-                    //controller: "CustomerAddCtrl as vm"
+                    //controller: "customerAddCtrl as vm"
                 })
                 .otherwise({ redirectTo: '/' })
+                ;
 
+            //$httpProvider.interceptors.push('xmlHttpInteceptor');
+            ////if (!$httpProvider.defaults.headers.get) {
+            ////    $httpProvider.defaults.headers.get = {};
+            ////};
+            
+            //$http.defaults.headers.get['Cache-Control'] = 'no-cache';
+            //$http.defaults.headers.get['Pragma'] = 'no-cache'
 
-            ;
+            //$httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+            //$httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
         }
 
     }
 
-    //var modules = ['ngRoute', '$routeProvider', 'ngAnimate', 'ui.bootstrap'];
-    //var mainApp = angular.module('sampleAngularApp', ['ngRoute']);
+    var mainApp =
+        //angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngCookies', 'ngSanitize', 'ngTouch'])
+        angular.module('sampleAngularApp', [
+            'ngAnimate', 'ngCookies', 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls'
+        ]);
+            //'ngRoute', 'ngAnimate', 'ui.bootstrap', , 'ngCookies']);
+   
+    
+    
+     //.service('constantsService', app.common.services.ConstantsService)
+    //.controller('AuthService', app.common.services.UserAccountService);
 
-    var mainApp = angular.module('sampleAngularApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.tpls']);
     mainApp.config(Config);
 
-
-    Config.$inject = ['$routeProvider'];
-
+    Config.$inject = ['$routeProvider', '$httpProvider'];
+    //var modules = ['ngRoute', '$routeProvider', 'ngAnimate', 'ui.bootstrap'];
+    //var mainApp = angular.module('sampleAngularApp', ['ngRoute']);
 }

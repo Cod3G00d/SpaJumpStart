@@ -1,4 +1,9 @@
-﻿module app.common.services {
+﻿///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
+///<reference path="../../domain/EntityBase.ts" />
+///<reference path="IDataService.ts" />
+
+module app.services.common {
 
     //An interface declares the functionality you want to expose through the class that implements it
 
@@ -48,34 +53,33 @@
     https://docs.angularjs.org/api/ng/service/$q
     https://github.com/kriskowal/uncommonjs/blob/master/promises/specification.md
 
-    Depends on $rootScope
-    */
-    interface IDataService {
-        get(resource: string, fetchFromService?: boolean): ng.IPromise<app.domain.EntityBase[]>;
-        getSingle(resource: string): ng.IPromise<app.domain.EntityBase>;
-        add(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase>;
-        update(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase>;
-        remove(resource: string): ng.IPromise<any>;
-    }
-
-    /*
     The DataService is being injected with two services $http and $q using the relative Typescript definitions
     */
-    export class DataService implements IDataService {
 
+    export class DataService implements IDataService {
         //Relative Typescript definitions (ng.IHttpService and ng.IQService)
 
-        private httpService: ng.IHttpService;
-        private qService: ng.IQService;
+        private _httpService: ng.IHttpService;
+        private _qService: ng.IQService;
+        private _localCachedEntityData:  Array<app.domain.EntityBase>;
 
-        private localCachedEntityData:  Array<app.domain.EntityBase>;
+        /*
+        We are using the static injection pattern above the constructor declaration
 
-        //We are using the static injection pattern above the constructor declaration
+        A well-known issue occurs with the Angular Dependency Injection resolution mechanism when working with minified code: 
+        -once renamed, the parameters cannot be properly resolved as it cannot retrieve the proper object to inject to the constructor. 
+        This issue is traditionally solved using inline annotation (i.e. an array containing a list of the service names, 
+        followed by the function itself). However with strong typing, 
+        the TypeScript compilation of the class forces us to use a second solution which is to create an $inject property 
+        to the controller function:
+        ref: http://blog.scottlogic.com/2014/08/26/StrongTypingWithAngularJS.html
+        */
 
         static $inject = ['$http', '$q'];
+
         constructor($http: ng.IHttpService, $q: ng.IQService) {
-            this.httpService = $http;
-            this.qService = $q;
+            this._httpService = $http;
+            this._qService = $q;
         }
 
         /*
@@ -91,9 +95,9 @@
             //if (fetchFromService) {
             //    return getAllFromService();
             //} else {
-            //    if (self.localCachedEntityData !== undefined) {
+            //    if (self._localCachedEntityData !== undefined) {
             //        return
-            //        self.qService.when(self.localCachedEntityData);
+            //        self.qService.when(self._localCachedEntityData);
             //    } else {
             //        return getAllFromService();
             //    }
@@ -102,15 +106,15 @@
             function getAllFromService(): ng.IPromise<any> {
 
                 //deferred represents a TASK that will finish some point in the future.
-                var deferred = self.qService.defer();
+                var deferred = self._qService.defer();
 
                 //deferred.notify("about to call service");
 
-                self.httpService.get(resource).then(
+                self._httpService.get(resource).then(
                     function (result: any) {
-                        //self.localCachedEntityData = result.data;
+                        //self._localCachedEntityData = result.data;
                         JSON.stringify(result.data);
-                        //deferred.resolve(self.localCachedEntityData);
+                        //deferred.resolve(self._localCachedEntityData);
                         deferred.resolve(result.data);
                     },
                     function (error) {
@@ -124,9 +128,9 @@
         getSingle(resource: string): ng.IPromise<app.domain.EntityBase> {
             var self = this;
 
-            var deferred = self.qService.defer();
+            var deferred = self._qService.defer();
 
-            self.httpService.get(resource).then(
+            self._httpService.get(resource).then(
                 function (result: any) {
                     deferred.resolve(result.data);
                 },
@@ -138,9 +142,9 @@
 
         add(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> {
             var self = this;
-            var deferred = self.qService.defer();
+            var deferred = self._qService.defer();
 
-            self.httpService.post(resource, entity).then(
+            self._httpService.post(resource, entity).then(
                 function (result) {
                     deferred.resolve(result.data);
                 },
@@ -152,9 +156,9 @@
 
         update(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> {
             var self = this;
-            var deferred = self.qService.defer();
+            var deferred = self._qService.defer();
 
-            self.httpService.put(resource, entity).then(
+            self._httpService.put(resource, entity).then(
                 function (data) {
                     deferred.resolve(data);
                 },
@@ -167,9 +171,9 @@
         remove(resource: string): ng.IPromise<any> {
             var self = this;
 
-            var deferred = self.qService.defer();
+            var deferred = self._qService.defer();
 
-            self.httpService.delete(resource).then(
+            self._httpService.delete(resource).then(
                 function (data) {
                     deferred.resolve(data);
                 },
@@ -180,5 +184,5 @@
         }
     }       
     angular.module("sampleAngularApp")
-        .service("dataService", app.common.services.DataService);
+        .service("dataService", app.services.common.DataService);
 }
