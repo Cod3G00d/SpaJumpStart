@@ -1,7 +1,3 @@
-///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
-///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
-///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
-///<reference path="../../domain/Customer.ts"/>
 var app;
 (function (app) {
     var controllers;
@@ -33,4 +29,3 @@ var app;
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=customerAddCtrl.js.map

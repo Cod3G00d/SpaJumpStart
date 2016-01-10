@@ -10,17 +10,19 @@
 module app.controllers.accounts {
     'use strict'
 
+    import IRegistrationData = app.domain.accounts.IRegistrationData;
+    import IUserAccountService = app.services.accounts.IUserAccountService;
+    import IMessage = app.domain.common.IMessage;
+    import Message = app.domain.common.Message;
+    import registrationData = app.domain.accounts.registrationData;
+
     export interface IRegisterUserCtrlScope extends ng.IScope {
         savedSuccessfully: boolean;
         message: app.domain.common.IMessage;
-        registrationData: app.domain.accounts.IRegistrationData;
+        registrationData: IRegistrationData;
     }
 
     export class RegisterUserCtrl {
-        private _$scope: IRegisterUserCtrlScope;
-        private _$location: ng.ILocationService;
-        //private _$timeout: ng.ITimeoutService;
-        private _userAccountService: app.services.accounts.IUserAccountService;
 
         static $inject = ['$scope', '$location', '$timeout', 'UserAccountService'];
 
@@ -28,28 +30,24 @@ module app.controllers.accounts {
             private $scope: app.controllers.accounts.IRegisterUserCtrlScope,
             private $location: ng.ILocationService,
             private $timeout: ng.ITimeoutService,
-            private userAccountService: app.services.accounts.IUserAccountService) {
+            private userAccountService: IUserAccountService) {
 
-            this._$scope = $scope;
-            this._$location = $location;
-            this._userAccountService = userAccountService;
-            //this._$timeout = $timeout;
+            this.$scope.savedSuccessfully = false;
+            this.$scope.message = new Message(false, "");
 
-            this._$scope.savedSuccessfully = false;
-            this._$scope.message = new app.domain.common.Message(false, "");
-
-            this._$scope.registrationData = new app.domain.accounts.registrationData("", "", "", "", "");
+            this.$scope.registrationData = new registrationData("", "", "", "", "");
         }
 
         register(): void {
             var self = this;
 
-            var data = self._$scope.registrationData;
+            var data = self.$scope.registrationData;
 
-            self._userAccountService.registerUser(data)
+            self.userAccountService.registerUser(data)
                 .then((response) => {
-                    self._$scope.savedSuccessfully = true;
-                    self._$scope.message = new app.domain.common.Message(true, "Registered successfully, you will be redicted to login page shortly");
+                    self.$scope.savedSuccessfully = true;
+                    self.$scope.message = new Message(true,
+                                                        "Registered successfully, you will be redicted to login page shortly");
                     self.startTimer();
                 }, (errorRes) => {
                     var errors: any[];
@@ -59,7 +57,7 @@ module app.controllers.accounts {
                         }
                     }
 
-                    self._$scope.message = new app.domain.common.Message(false, "Failed to register user : " + errors.join(' '))
+                    self.$scope.message = new Message(false, "Failed to register user : " + errors.join(' '))
                 });
         }
 

@@ -1,9 +1,3 @@
-///<reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
-///<reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
-///<reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
-///<reference path="../../services/common/dataService.ts"/>
-///<reference path="../../services/common/constantsService.ts"/>
-///<reference path="../../domain/Customer.ts"/>
 var app;
 (function (app) {
     var controllers;
@@ -11,23 +5,18 @@ var app;
         var customers;
         (function (customers) {
             var CustomersCtrl = (function () {
-                function CustomersCtrl($scope, 
-                    //private $scope: ICustomersViewModel,
-                    constantsService, dataService, $modal) {
+                function CustomersCtrl($scope, constantsService, dataService, $modal) {
                     this.$scope = $scope;
                     this.constantsService = constantsService;
                     this.dataService = dataService;
                     this.$modal = $modal;
                     var self = this;
                     this.resource = constantsService.baseUri + constantsService.postUri;
-                    //this.scope = $scope;
-                    //self.pageClass = 'page-customers';
                     self.page = 0;
                     self.pagesCount = 5;
                     self.totalCount = 0;
                     this.scope = $scope;
                     self.Customers = [];
-                    //Load Customers
                     self.getCustomers(true);
                 }
                 CustomersCtrl.prototype.search = function () {
@@ -35,17 +24,12 @@ var app;
                 CustomersCtrl.prototype.refresh = function () {
                     alert('length:' + this.Customers.length);
                     this.getCustomers(true);
-                    //this.scope.$apply();
                 };
-                //Queries 
-                //Customers not updating on refresh
-                //Take a look at : http://kwilson.me.uk/blog/writing-cleaner-angularjs-with-typescript-and-controlleras/
                 CustomersCtrl.prototype.getCustomers = function (fetchFromService) {
                     var _this = this;
-                    var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
+                    var self = this;
                     this.loadingCustomers = true;
                     this.dataService.get(this.resource, fetchFromService).then(function (data) {
-                        //this.Customers = data;
                         if (_this.Customers.length == 0) {
                             _this.Customers = data;
                         }
@@ -60,16 +44,6 @@ var app;
                                     }
                                 }
                             }
-                            //if (data != null) {
-                            //    //if (self.Customers != null) {
-                            //    //    self.Customers.splice(0, self.Customers.length);
-                            //    //    self.Customers = self.Customers.concat(data);
-                            //    //}
-                            //    //else {
-                            //    //    self.Customers = data;
-                            //    //}
-                            //    self.Customers = data;
-                            //}
                             _this.loadingCustomers = false;
                             _this.totalCount = self.Customers.length;
                             alert('retreived:' + self.Customers.length);
@@ -83,7 +57,6 @@ var app;
                         _this.customer = result;
                     });
                 };
-                //Commands
                 CustomersCtrl.prototype.saveCustomer = function (customer) {
                     var self = this;
                     this.dataService.add(this.resource, customer).then(function (result) {
@@ -96,7 +69,6 @@ var app;
                 CustomersCtrl.prototype.updateCustomer = function (customer) {
                     var self = this;
                     this.dataService.update(this.resource, customer).then(function (result) {
-                        //this.Customers.push(customer);
                     }, function (response) {
                         self.getCustomers(true);
                         console.log(response);
@@ -115,14 +87,13 @@ var app;
                     });
                 };
                 CustomersCtrl.prototype.remove = function (customerId) {
-                    var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
+                    var self = this;
                     if (confirm('Are you sure you want to delete this customer?')) {
                         self.deleteCustomer(customerId);
                         self.getCustomers(true);
                     }
                     ;
                 };
-                //Modals
                 CustomersCtrl.prototype.add = function () {
                     var _this = this;
                     var self = this;
@@ -149,7 +120,6 @@ var app;
                 };
                 CustomersCtrl.prototype.edit = function (editCustomer) {
                     var self = this;
-                    //this.scope.customer = editCustomer;
                     var options = {
                         animation: true,
                         templateUrl: 'app/templates/customers/addCustomerView.html',
@@ -157,8 +127,6 @@ var app;
                         controllerAs: 'modal',
                         size: 'lg',
                         backdrop: 'static',
-                        //scope: this.scope,
-                        //this should pass in customer from the customer view         
                         resolve: {
                             customer: function () { return editCustomer; }
                         }
@@ -173,9 +141,6 @@ var app;
                         }
                     });
                 };
-                /*
-                Injected our custom services constantsService and dataService to make the Web API calls
-                */
                 CustomersCtrl.$inject = ['$scope', 'constantsService', 'dataService', '$modal'];
                 return CustomersCtrl;
             })();
@@ -185,4 +150,3 @@ var app;
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=customersCtrl.js.map

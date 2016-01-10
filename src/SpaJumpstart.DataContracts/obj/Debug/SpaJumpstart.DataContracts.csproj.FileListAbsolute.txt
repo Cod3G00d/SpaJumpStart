@@ -2,3 +2,4 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.DataContracts\bin\Debug\Spa
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.DataContracts\bin\Debug\SpaJumpstart.DataContracts.pdb
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.DataContracts\obj\Debug\SpaJumpstart.DataContracts.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.DataContracts\obj\Debug\SpaJumpstart.DataContracts.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.DataContracts\obj\Debug\SpaJumpstart.DataContracts.csprojResolveAssemblyReference.cache

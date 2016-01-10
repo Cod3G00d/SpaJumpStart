@@ -8,25 +8,30 @@
 module app.controllers.accounts {
     'use strict';
 
+    import IUserAccountService = app.services.accounts.IUserAccountService;
+    import ILoginData = app.domain.accounts.ILoginData;
+    import loginData = app.domain.accounts.loginData;
+
     export interface ILoginCtrlScope extends ng.IScope {
         message: string;
     }
 
     export class LoginCtrl {
-        private _$scope: ILoginCtrlScope;
-        private _$location: ng.ILocationService;
-        private _userAccountService: app.services.accounts.IUserAccountService;
-        private _loginData: app.domain.accounts.ILoginData;
+        //Dont need these as declared private and useable - it's overkill and redundant code
+        //private _$scope: ILoginCtrlScope;
+        //private _$location: ng.ILocationService;
+        private _userAccountService: IUserAccountService;
+        private _loginData: ILoginData;
 
         static $inject = ['$scope', '$location', 'UserAccountService'];
 
         constructor(
-            public $scope: any,
+            private $scope: any,
             private $location: ng.ILocationService,
-            private userAccountService: app.services.accounts.IUserAccountService)
+            private userAccountService: IUserAccountService)
         {
-            this._$scope = <any> $scope;
-            this._loginData = new app.domain.accounts.loginData("","");
+            this.$scope = <any> $scope;
+            this._loginData = new loginData("","");
         }
 
         login(): void {
@@ -35,9 +40,9 @@ module app.controllers.accounts {
             self._userAccountService.logInUser(self._loginData)
                 .then((response) => {
                     self.$scope.Global.userIsAuthenticated = true;
-                    self._$location.path('/');
+                    self.$location.path('/');
                 }, (data) => {
-                    self._$scope.message = data.error_description;
+                    self.$scope.message = data.error_description;
                 });
         }
     }
