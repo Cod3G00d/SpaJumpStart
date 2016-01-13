@@ -103,3 +103,6 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Ninject.Web
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Ninject.Web.WebApi.OwinHost.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Ninject.Extensions.Conventions.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Ninject.Extensions.Conventions.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Cors.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Http.Cors.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Http.Cors.xml

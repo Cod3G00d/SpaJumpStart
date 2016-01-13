@@ -1,3 +1,6 @@
+var UserAccountService = app.services.accounts.UserAccountService;
+var loginData = app.domain.accounts.loginData;
+var Message = app.domain.common.Message;
 var app;
 (function (app) {
     var controllers;
@@ -5,26 +8,28 @@ var app;
         var accounts;
         (function (accounts) {
             'use strict';
-            var loginData = app.domain.accounts.loginData;
             var LoginCtrl = (function () {
                 function LoginCtrl($scope, $location, userAccountService) {
+                    var _this = this;
                     this.$scope = $scope;
                     this.$location = $location;
                     this.userAccountService = userAccountService;
-                    this.$scope = $scope;
-                    this._loginData = new loginData("", "");
+                    this.logIn = function () {
+                        var self = _this;
+                        self.userAccountService.logInUser(self.$scope.loginData)
+                            .then(function (response) {
+                            self.$scope.Global.userIsAuthenticated = true;
+                            _this.$scope.loginData.IsUserLoggedIn = true;
+                            self.$location.path('/');
+                        }, function (data) {
+                            self.$scope.message.Success = true;
+                            self.$scope.message.Description = data.error_description;
+                        });
+                    };
+                    this.$scope.loginData = new loginData("", "", false);
+                    this.$scope.message = new Message(false, "");
                 }
-                LoginCtrl.prototype.login = function () {
-                    var self = this;
-                    self._userAccountService.logInUser(self._loginData)
-                        .then(function (response) {
-                        self.$scope.Global.userIsAuthenticated = true;
-                        self.$location.path('/');
-                    }, function (data) {
-                        self.$scope.message = data.error_description;
-                    });
-                };
-                LoginCtrl.$inject = ['$scope', '$location', 'UserAccountService'];
+                LoginCtrl.$inject = ['$scope', '$location', 'userAccountService'];
                 return LoginCtrl;
             })();
             accounts.LoginCtrl = LoginCtrl;

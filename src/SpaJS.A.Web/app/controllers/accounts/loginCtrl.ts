@@ -4,45 +4,51 @@
 ///<reference path="../../services/accounts/IuserAccountService.ts" />
 ///<reference path="../../domain/accounts/ILoginData.ts" />
 ///<reference path="../../domain/accounts/loginData.ts" />
+///<reference path="../../domain/common/IMessage.ts" />
+///<reference path="../../domain/common/Message.ts" />
+
+import IUserAccountService = app.services.accounts.IUserAccountService;
+import UserAccountService = app.services.accounts.UserAccountService;
+import ILoginData = app.domain.accounts.ILoginData;
+import loginData = app.domain.accounts.loginData;
+import Message = app.domain.common.Message;
 
 module app.controllers.accounts {
     'use strict';
 
-    import IUserAccountService = app.services.accounts.IUserAccountService;
-    import ILoginData = app.domain.accounts.ILoginData;
-    import loginData = app.domain.accounts.loginData;
-
     export interface ILoginCtrlScope extends ng.IScope {
-        message: string;
+        message: app.domain.common.IMessage;
     }
 
     export class LoginCtrl {
-        //Dont need these as declared private and useable - it's overkill and redundant code
+        //Dont need these as declared private and useable - it's overkill and # code
         //private _$scope: ILoginCtrlScope;
         //private _$location: ng.ILocationService;
-        private _userAccountService: IUserAccountService;
-        private _loginData: ILoginData;
+        //private _userAccountService: IUserAccountService;
+        //private _loginData: ILoginData;
 
-        static $inject = ['$scope', '$location', 'UserAccountService'];
+        static $inject = ['$scope', '$location', 'userAccountService'];
 
         constructor(
             private $scope: any,
             private $location: ng.ILocationService,
-            private userAccountService: IUserAccountService)
-        {
-            this.$scope = <any> $scope;
-            this._loginData = new loginData("","");
+            private userAccountService: IUserAccountService) {
+
+            this.$scope.loginData = new loginData("", "", false);
+            this.$scope.message = new Message(false, "");
         }
 
-        login(): void {
+        logIn = (): void => {
             var self = this;
 
-            self._userAccountService.logInUser(self._loginData)
+            self.userAccountService.logInUser(self.$scope.loginData)
                 .then((response) => {
                     self.$scope.Global.userIsAuthenticated = true;
+                    this.$scope.loginData.IsUserLoggedIn = true;
                     self.$location.path('/');
                 }, (data) => {
-                    self.$scope.message = data.error_description;
+                    self.$scope.message.Success = true;
+                    self.$scope.message.Description = data.error_description;
                 });
         }
     }

@@ -6,5 +6,6 @@ module app.domain.accounts {
     export interface ILoginData {
         Username: string;
         Password: string;
+        IsUserLoggedIn: boolean;
     }
 }

@@ -24,7 +24,7 @@ module app.controllers.accounts {
 
     export class RegisterUserCtrl {
 
-        static $inject = ['$scope', '$location', '$timeout', 'UserAccountService'];
+        static $inject = ['$scope', '$location', '$timeout', 'userAccountService'];
 
         constructor(
             private $scope: app.controllers.accounts.IRegisterUserCtrlScope,
@@ -35,19 +35,31 @@ module app.controllers.accounts {
             this.$scope.savedSuccessfully = false;
             this.$scope.message = new Message(false, "");
 
-            this.$scope.registrationData = new registrationData("", "", "", "", "");
+            this.$scope.registrationData = new registrationData("", "", "", "", "", "");
         }
 
-        register(): void {
+        private _getUserData = (): IRegistrationData => {
             var self = this;
 
-            var data = self.$scope.registrationData;
+            var userData = self.$scope.registrationData;
+            //if (userData.ConfirmPassword == "" && userData.Password != "") {
+                userData.ConfirmPassword = userData.Password;
+            //}
+            if (userData.UserName == "" && userData.Email != "") {
+                userData.UserName = userData.Email;
+            }
+            return userData;
+        } 
+
+        register = (): void => {
+            var self = this;
+
+            var data = this._getUserData();
 
             self.userAccountService.registerUser(data)
                 .then((response) => {
                     self.$scope.savedSuccessfully = true;
-                    self.$scope.message = new Message(true,
-                                                        "Registered successfully, you will be redicted to login page shortly");
+                    self.$scope.message = new Message(true, "Registered successfully, you will be redicted to login page shortly");
                     self.startTimer();
                 }, (errorRes) => {
                     var errors: any[];
@@ -61,7 +73,7 @@ module app.controllers.accounts {
                 });
         }
 
-        private startTimer(): void {
+        private startTimer = (): void => {
             var self = this;
 
             var timer = self.$timeout(function () {

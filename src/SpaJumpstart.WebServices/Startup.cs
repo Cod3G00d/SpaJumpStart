@@ -36,7 +36,7 @@ namespace SpaJumpstart.WebServices
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //ConfigureCors(app);
+            ConfigureCors(app);
 
             //Register mapping definitions for Automapper
 

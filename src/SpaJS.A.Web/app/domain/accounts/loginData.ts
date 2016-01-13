@@ -7,9 +7,12 @@ module app.domain.accounts {
     export class loginData implements ILoginData {
         Username: string;
         Password: string;
-        constructor(username: string, password: string) {
+        IsUserLoggedIn: boolean;
+
+        constructor(username: string, password: string, isUserLoggedIn: boolean  = false) {
             this.Username = username;
             this.Password = password;
+            this.IsUserLoggedIn = false;
         }
     }
 

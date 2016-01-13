@@ -213,7 +213,7 @@ module app.controllers.customers {
 
             var options: ng.ui.bootstrap.IModalSettings = {
                 animation: true,
-                templateUrl: 'app/templates/customers/addCustomerView.html',
+                templateUrl: 'app/views/customers/addCustomerView.html',
                 controller: 'customerModalCtrl',
                 controllerAs: 'modal',
                 size: 'lg',
@@ -242,7 +242,7 @@ module app.controllers.customers {
 
             var options: ng.ui.bootstrap.IModalSettings = {
                 animation: true,
-                templateUrl: 'app/templates/customers/addCustomerView.html',
+                templateUrl: 'app/views/customers/addCustomerView.html',
                 controller: 'customerModalCtrl',
                 controllerAs: 'modal',
                 size: 'lg',

@@ -3,6 +3,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http.Formatting;
+using System.Web.Http.Cors;
 
 namespace SpaJumpstart.WebServices
 {
@@ -13,6 +14,7 @@ namespace SpaJumpstart.WebServices
             // Web API configuration and services
 
             config.ApplyTo(
+                ConfigureAuth,
                 //ConfigureCors,
                 //ConfigureFilters,
                 ConfigureRoutes,
@@ -49,22 +51,24 @@ namespace SpaJumpstart.WebServices
         }
 
 
-        //private static void ConfigureAuth(HttpConfiguration config)
-        //{
-        //    // Configure Web API to use only bearer token authentication.
-        //    config.SuppressDefaultHostAuthentication();
-        //    config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-        //}
+        private static void ConfigureAuth(HttpConfiguration config)
+        {
+            // Configure Web API to use only bearer token authentication.
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+        }
 
-        //private static void ConfigureCors(HttpConfiguration config)
-        //{
-        //    //config.EnableCors();
-        //    var corsConfig = new EnableCorsAttribute(AppCorsConstants.AllowedOrigins, AppCorsConstants.AllowedHeaders, AppCorsConstants.AllowedMethods);
-        //    config.EnableCors(corsConfig);
+        private static void ConfigureCors(HttpConfiguration config)
+        {
+            //var corsConfig = new EnableCorsAttribute(AppCorsConstants.AllowedOrigins, AppCorsConstants.AllowedHeaders, AppCorsConstants.AllowedMethods);
 
-        //    // Add handler to deal with preflight requests, this is the important part
-        //    config.MessageHandlers.Add(new CorsHandler());
-        //}
+            //defaults - customise to requirements
+            //var corsConfig = new EnableCorsAttribute("*", "*", "*");
+            // config.EnableCors(corsConfig);
+
+            // Add handler to deal with preflight requests, this is the important part
+            //config.MessageHandlers.Add(new CorsHandler());
+        }
 
 
         private static void ApplyTo<T>(this T source, params System.Action<T>[] targets)

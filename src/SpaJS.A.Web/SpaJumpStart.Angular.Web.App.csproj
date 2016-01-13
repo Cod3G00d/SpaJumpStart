@@ -184,10 +184,11 @@
     <Content Include="app\controllers\accounts\loginCtrl.js" />
     <Content Include="app\domain\accounts\IRegistrationData.js" />
     <Content Include="app\services\accounts\userAccountService.js" />
-    <Content Include="app\templates\about.html" />
-    <Content Include="app\templates\accounts\login.html" />
-    <Content Include="app\templates\customers\addCustomerView.html" />
-    <Content Include="app\templates\customers\customersView.html" />
+    <Content Include="app\views\about.html" />
+    <Content Include="app\views\accounts\login.html" />
+    <Content Include="app\views\accounts\register.html" />
+    <Content Include="app\views\customers\addCustomerView.html" />
+    <Content Include="app\views\customers\customersView.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -205,8 +206,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="app\domain\accounts\IRegistrationData.js.map" />
-    <Content Include="app\services\accounts\userAccountService.js.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -230,7 +229,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\interceptors\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +261,7 @@
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\controllers\accounts\loginCtrl.ts" />
     <TypeScriptCompile Include="app\controllers\accounts\registerUserCtrl.ts" />
+    <TypeScriptCompile Include="app\controllers\global\globalCtrl.ts" />
     <TypeScriptCompile Include="app\domain\accounts\IRegistrationData.ts" />
     <TypeScriptCompile Include="app\domain\accounts\ILoginData.ts" />
     <TypeScriptCompile Include="app\domain\accounts\registrationData.ts" />
@@ -270,6 +269,10 @@
     <TypeScriptCompile Include="app\domain\common\IMessage.ts" />
     <TypeScriptCompile Include="app\domain\common\Message.ts" />
     <TypeScriptCompile Include="app\domain\EntityBase.ts" />
+    <TypeScriptCompile Include="app\factories\accounts\tokenHandlerFactory.ts" />
+    <TypeScriptCompile Include="app\services\routes\IRouteAuthenticationService.ts" />
+    <TypeScriptCompile Include="app\services\routes\routeAuthenticationService.ts" />
+    <TypeScriptCompile Include="app\services\accounts\ITokenHandlerService.ts" />
     <TypeScriptCompile Include="app\services\accounts\IUserAccountService.ts" />
     <TypeScriptCompile Include="app\services\accounts\userAccountService.ts" />
     <TypeScriptCompile Include="app\services\common\constantsService.ts" />
@@ -284,6 +287,16 @@
     <TypeScriptCompile Include="app\route\routeConfig.ts" />
     <TypeScriptCompile Include="app\services\common\IConstantsService.ts" />
     <TypeScriptCompile Include="app\services\common\IDataService.ts" />
+    <TypeScriptCompile Include="app\services\common\ILogService.ts" />
+    <TypeScriptCompile Include="app\services\common\logService.ts" />
+    <TypeScriptCompile Include="app\services\interceptors\errorHandlerService.ts" />
+    <TypeScriptCompile Include="app\services\interceptors\IErrorHandlerService.ts" />
+    <TypeScriptCompile Include="app\services\interceptors\IXmlHttpInterceptorService.ts" />
+    <TypeScriptCompile Include="app\services\interceptors\xmlHttpInterceptorService.ts" />
+    <TypeScriptCompile Include="app\services\accounts\IStorageHandler.ts" />
+    <TypeScriptCompile Include="app\services\accounts\storageHandler.ts" />
+    <TypeScriptCompile Include="app\services\accounts\tokenHandlerService.ts" />
+    <Content Include="app\views\shared\_404.html" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
@@ -298,22 +311,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\route\routeConfig.js.map" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="app\domain\Address.js.map" />
     <Content Include="app\domain\Customer.js.map" />
     <Content Include="app\domain\IAddress.js.map" />
     <Content Include="app\domain\IEntity.js.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="app\controllers\customers\customerAddCtrl.js.map" />
-    <Content Include="app\controllers\customers\customerModalCtrl.js.map" />
-    <Content Include="app\controllers\customers\customersCtrl.js.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="app\services\common\constantsService.js.map" />
-    <Content Include="app\services\common\dataService.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.1.4.min.map" />

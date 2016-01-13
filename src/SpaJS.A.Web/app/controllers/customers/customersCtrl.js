@@ -99,7 +99,7 @@ var app;
                     var self = this;
                     var options = {
                         animation: true,
-                        templateUrl: 'app/templates/customers/addCustomerView.html',
+                        templateUrl: 'app/views/customers/addCustomerView.html',
                         controller: 'customerModalCtrl',
                         controllerAs: 'modal',
                         size: 'lg',
@@ -122,7 +122,7 @@ var app;
                     var self = this;
                     var options = {
                         animation: true,
-                        templateUrl: 'app/templates/customers/addCustomerView.html',
+                        templateUrl: 'app/views/customers/addCustomerView.html',
                         controller: 'customerModalCtrl',
                         controllerAs: 'modal',
                         size: 'lg',

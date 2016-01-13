@@ -9,5 +9,6 @@ module app.domain.accounts {
         Email: string;
         UserName: string;
         Password: string;
+        ConfirmPassword: string;
     }
 }

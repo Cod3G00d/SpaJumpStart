@@ -13,6 +13,7 @@ using System;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Infrastructure;
 using AutoMapper;
+using System.Web.Http.Cors;
 
 namespace SpaJumpstart.WebServices.Controllers
 {
@@ -148,7 +149,8 @@ namespace SpaJumpstart.WebServices.Controllers
         */
 
     // Require authorization for all actions on the controller.
-    //[Authorize]
+    [Authorize]
+    [EnableCors("http://localhost:8267", "*", "*")]
     [RoutePrefix("api/Contacts")]
     public class CustomersController : ApiController
     {
@@ -172,7 +174,7 @@ namespace SpaJumpstart.WebServices.Controllers
         /// GET: http://localhost:1625/api/customers
         /// </example>
 
-        // [HttpOptions]
+        [HttpOptions]
         [HttpGet]
         [ResponseType(typeof(CustomerDto))]
         public async Task<HttpResponseMessage> GetAllCustomersAsync()
@@ -201,7 +203,7 @@ namespace SpaJumpstart.WebServices.Controllers
         /// <param name="id">The customerid of the data.</param>
         
         [HttpGet]
-        //[HttpOptions]
+        [HttpOptions]
         [ResponseType(typeof(Customer))]
         [Route("ById/{id:int}")]
         public async Task<HttpResponseMessage> GetCustomerByIdAsync(int id)
@@ -241,7 +243,7 @@ namespace SpaJumpstart.WebServices.Controllers
         see: http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
         http://www.c-sharpcorner.com/UploadFile/2b481f/unit-testing-in-web-api2-using-entity-framework/
         */
-        //[HttpOptions]
+        [HttpOptions]
         [HttpPost]
         public async Task<IHttpActionResult> PostCreateCustomersAsync(CustomerDto customerDto)
         {
@@ -283,7 +285,7 @@ namespace SpaJumpstart.WebServices.Controllers
         /// </example>
         /// <param name="id">The customerid of the data.</param>
 
-        //[HttpOptions]
+        [HttpOptions]
         [HttpPut]
         public async Task<HttpResponseMessage> PutUpdateCustomersAsync(int id, CustomerDto customerDto)
         {
@@ -332,7 +334,7 @@ namespace SpaJumpstart.WebServices.Controllers
         /// </example>
         /// <param name="id">The customerid of the data.</param>
 
-        //[HttpOptions]
+        [HttpOptions]
         [HttpDelete]
         public async Task<HttpResponseMessage> DeleteCustomersByIdAsync(int id)
         {

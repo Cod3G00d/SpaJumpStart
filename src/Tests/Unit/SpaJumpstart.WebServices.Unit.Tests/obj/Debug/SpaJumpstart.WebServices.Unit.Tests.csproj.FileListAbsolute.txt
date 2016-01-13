@@ -166,3 +166,6 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.csprojResolveAssemblyReference.cache
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.pdb
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Cors.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.xml
