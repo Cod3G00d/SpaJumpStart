@@ -28,12 +28,13 @@ module app.controllers.customers {
             var resource = this.constantsService.baseUri + this.constantsService.postUri;
             this.dataService.add(resource, this.customer)
                 .then((result: app.domain.ICustomer) => {
-                    alert(result.CustomerId + ' submitted successfully');
+                    alert(result.Id + ' submitted successfully');
                     this.$location.path('/');
                 });
         }
     }
 
-    angular.module('sampleAngularApp')
+    angular
+        .module('sampleAngularApp')
         .controller('customerAddCtrl', CustomerAddCtrl);
 }

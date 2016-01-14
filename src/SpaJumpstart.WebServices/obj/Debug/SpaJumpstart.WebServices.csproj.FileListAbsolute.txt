@@ -106,3 +106,5 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Ninject.Ext
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Cors.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Http.Cors.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\System.Web.Http.Cors.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Microsoft.Owin.Cors.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.WebServices\bin\Microsoft.Owin.Cors.xml

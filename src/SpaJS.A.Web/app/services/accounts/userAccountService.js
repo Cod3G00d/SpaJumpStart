@@ -31,9 +31,9 @@ var app;
                     };
                     this.logInUser = function (loginData) {
                         var self = _this;
+                        var data = "grant_type=password&username=" + loginData.Username + "&password=" + loginData.Password;
+                        var tokenUrl = self._serviceBase + '/Token';
                         var deferred = self.$q.defer();
-                        var data = "username=" + loginData.Username + "&password=" + loginData.Password + "&grant_type=password";
-                        var tokenUrl = self._serviceBase + '/token';
                         self.$http({
                             url: tokenUrl,
                             method: 'POST',
@@ -63,7 +63,6 @@ var app;
                             self.tokenHandlerService.removeLoginToken();
                             deferred.resolve(successResponse.data);
                         }, function (errorRes) {
-                            self.logOutUser();
                             deferred.reject(errorRes);
                         });
                         return deferred.promise;

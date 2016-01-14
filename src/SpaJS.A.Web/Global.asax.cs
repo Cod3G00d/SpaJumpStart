@@ -12,8 +12,8 @@ namespace SpaJumpStart.Angular.Web.App
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+           // AreaRegistration.RegisterAllAreas();
+            //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

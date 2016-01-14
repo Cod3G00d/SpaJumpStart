@@ -45,9 +45,10 @@ module app.controllers.customers {
 
     }
 
-    export class CustomersCtrl implements ICustomersViewModel {
-        Customers: Array<app.domain.ICustomer>
-        customer: app.domain.ICustomer;
+    //export class CustomersCtrl implements ICustomersViewModel {
+    export class CustomersCtrl {
+        //Customers: Array<app.domain.ICustomer>
+        //customer: app.domain.ICustomer;
         
         //pageClass: string 
         loadingCustomers: boolean;
@@ -56,15 +57,17 @@ module app.controllers.customers {
         totalCount: number;
 
         resource: string;
-        scope: any;
+        //_$scope: any;
 
         /*
         Injected our custom services constantsService and dataService to make the Web API calls
         */
         static $inject = ['$scope','constantsService', 'dataService', '$modal'];
         
+        //see: https://kodeyak.wordpress.com/2014/02/12/angularjs-via-typescript-controllers/
+
         constructor(
-            public $scope: any,
+            private $scope: ICustomersViewModel,
             //private $scope: ICustomersViewModel,
             private constantsService: app.services.common.IConstantsService,
             private dataService: app.services.common.IDataService,
@@ -78,14 +81,14 @@ module app.controllers.customers {
             self.pagesCount = 5;
             self.totalCount = 0;
 
-            this.scope = $scope;
+            //this._$scope = $scope;
             
-            self.Customers = [];
+            //self.Customers = [];
+            self.$scope.Customers = [];
 
             //Load Customers
             self.getCustomers(true);
         }
-
 
         search(): void {
 
@@ -93,7 +96,8 @@ module app.controllers.customers {
 
         refresh(): void {
             
-            alert('length:' + this.Customers.length);
+            //alert('length:' + this.Customers.length);
+            alert('length:' + this.$scope.Customers.length);
 
             this.getCustomers(true);
             //this.scope.$apply();
@@ -105,7 +109,7 @@ module app.controllers.customers {
         //Customers not updating on refresh
         //Take a look at : http://kwilson.me.uk/blog/writing-cleaner-angularjs-with-typescript-and-controlleras/
 
-        getCustomers(fetchFromService: boolean): void {
+        getCustomers = (fetchFromService: boolean): void => {
 
             var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
             this.loadingCustomers = true;
@@ -113,18 +117,21 @@ module app.controllers.customers {
             this.dataService.get(this.resource, fetchFromService).then((data: app.domain.Customer[]) => {
 
                 //this.Customers = data;
-                if (this.Customers.length == 0) {
-                    this.Customers = data;
+                //if (this.Customers.length == 0) {
+                //    this.Customers = data;
+                //}
+                if (this.$scope.Customers.length == 0) {
+                    this.$scope.Customers = data;
                 }
                 else {
                     if (data != null) {
                         for (var i = 0; i < data.length; i++) {
-                            if (self.Customers[i].CustomerId == data[i].CustomerId) {
-                                self.Customers[i] = data[i];
+                            if (self.$scope.Customers[i].Id == data[i].Id) {
+                                self.$scope.Customers[i] = data[i];
 
                             }
                             else {
-                                self.Customers.push(data[i]);
+                                self.$scope.Customers.push(data[i]);
                             }
                         }
                     }
@@ -142,27 +149,27 @@ module app.controllers.customers {
                     //}
 
                     this.loadingCustomers = false;
-                    this.totalCount = self.Customers.length;
-                    alert('retreived:' + self.Customers.length);
+                    this.totalCount = self.$scope.Customers.length;
+                    alert('retreived:' + self.$scope.Customers.length);
                 }
             });
         }
 
-        getCustomersById(Id: number): void {
+        getCustomersById = (Id: number): void => {
             var self = this;
             this.dataService.getSingle(this.resource + Id).then((result: app.domain.Customer) => {
-                this.customer = result;
+                this.$scope.customer = result;
             });
         }
  
 
         //Commands
 
-        saveCustomer(customer): void {
+        saveCustomer = (customer): void => {
             var self = this; 
             this.dataService.add(this.resource, customer).then(
                 function (result) {
-                    self.Customers.push(customer);
+                    self.$scope.Customers.push(customer);
                     self.getCustomers(true);
                 },
                 function (response) {
@@ -170,7 +177,7 @@ module app.controllers.customers {
                 });
         }
 
-        updateCustomer(customer): void {
+        updateCustomer = (customer): void => {
             var self = this; 
             this.dataService.update(this.resource, customer).then(
                 function (result) {
@@ -182,14 +189,14 @@ module app.controllers.customers {
                 });
         }
 
-        deleteCustomer(customerId): void {
+        deleteCustomer = (customerId): void => {
             var self = this;
             this.dataService.remove(this.resource + customerId).then(
                 function (result) {
 
-                    for (var i = 0; i < self.Customers.length; i++) {
-                        if (self.Customers[i].CustomerId == customerId) {
-                            self.Customers.splice(i, 1);
+                    for (var i = 0; i < self.$scope.Customers.length; i++) {
+                        if (self.$scope.Customers[i].Id == customerId) {
+                            self.$scope.Customers.splice(i, 1);
                             return;
                         }
                     }
@@ -197,7 +204,7 @@ module app.controllers.customers {
                 });
         }
 
-        remove(customerId: number): void {
+        remove = (customerId: number): void => {
             var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
 
             if (confirm('Are you sure you want to delete this customer?')) {
@@ -208,7 +215,7 @@ module app.controllers.customers {
 
         //Modals
 
-        add(): void {
+        add = (): void => {
             var self = this; 
 
             var options: ng.ui.bootstrap.IModalSettings = {
@@ -219,7 +226,7 @@ module app.controllers.customers {
                 size: 'lg',
                 backdrop: 'static',
                 resolve: {
-                    customer: () => this.customer
+                    customer: () => this.$scope.customer
                 }
             };
 
@@ -236,7 +243,7 @@ module app.controllers.customers {
                 });
         }
 
-        edit(editCustomer: app.domain.Customer): void {
+        edit = (editCustomer: app.domain.Customer): void => {
             var self = this;
             //this.scope.customer = editCustomer;
 
@@ -267,6 +274,7 @@ module app.controllers.customers {
                 });
         }
     }
-    angular.module("sampleAngularApp")
+    angular
+        .module("sampleAngularApp")
         .controller("customersCtrl", app.controllers.customers.CustomersCtrl);
 }

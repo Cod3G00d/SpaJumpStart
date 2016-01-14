@@ -28,7 +28,6 @@ module app {
             $httpProvider: ng.IHttpProvider) {
 
 
-
             $routeProvider
                 .when("/", {
                     templateUrl: "/app/views/customers/customersView.html",
@@ -44,7 +43,7 @@ module app {
                     templateUrl: '/app/views/accounts/register.html',
                     controller: 'registerUserCtrl as vm'
                 })
-                .when("/about", {
+                .when("/About", {
                     templateUrl: "/app/views/about.html"
                 })
                 .otherwise({
@@ -58,6 +57,8 @@ module app {
                 //$httpProvider.defaults.headers.get = {};
             };
 
+
+            $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'];
 
             //delete $httpProvider.defaults.headers.common['X-Requested-With'];
 

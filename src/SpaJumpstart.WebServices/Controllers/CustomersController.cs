@@ -150,7 +150,8 @@ namespace SpaJumpstart.WebServices.Controllers
 
     // Require authorization for all actions on the controller.
     [Authorize]
-    [EnableCors("http://localhost:8267", "*", "*")]
+    //[EnableCors("http://localhost:8267", "*", "*")]
+    //[EnableCors(origins: "http://localhost:8267", headers: "*",  methods: "GET,PUT,OPTIONS,POST,DELETE", SupportsCredentials = true)]
     [RoutePrefix("api/Contacts")]
     public class CustomersController : ApiController
     {
@@ -171,10 +172,16 @@ namespace SpaJumpstart.WebServices.Controllers
         /// Asynchronously get all customer data and address details
         /// </summary>
         /// <example>
-        /// GET: http://localhost:1625/api/customers
+        /// GET: http://localhost/api/customers
         /// </example>
 
-        [HttpOptions]
+        //[EnableCors("http://http://localhost:8267", // Origin
+        //            "*",                     // Request headers
+        //            "GET",                    // HTTP methods
+        //            //"bar",                    // Response headers
+        //            SupportsCredentials = true  // Allow credentials
+        //)]
+        //[HttpOptions]
         [HttpGet]
         [ResponseType(typeof(CustomerDto))]
         public async Task<HttpResponseMessage> GetAllCustomersAsync()
@@ -203,7 +210,7 @@ namespace SpaJumpstart.WebServices.Controllers
         /// <param name="id">The customerid of the data.</param>
         
         [HttpGet]
-        [HttpOptions]
+        //[HttpOptions]
         [ResponseType(typeof(Customer))]
         [Route("ById/{id:int}")]
         public async Task<HttpResponseMessage> GetCustomerByIdAsync(int id)
@@ -243,7 +250,13 @@ namespace SpaJumpstart.WebServices.Controllers
         see: http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
         http://www.c-sharpcorner.com/UploadFile/2b481f/unit-testing-in-web-api2-using-entity-framework/
         */
-        [HttpOptions]
+        //[EnableCors("http://localhost:8267",       // Origin
+        //                    "Accept, Origin, Content-Type", // Request headers
+        //                    "POST",                         // HTTP methods
+        //                    PreflightMaxAge = 600             // Preflight cache duration
+        //        )]
+
+        //[HttpOptions]
         [HttpPost]
         public async Task<IHttpActionResult> PostCreateCustomersAsync(CustomerDto customerDto)
         {
@@ -285,7 +298,12 @@ namespace SpaJumpstart.WebServices.Controllers
         /// </example>
         /// <param name="id">The customerid of the data.</param>
 
-        [HttpOptions]
+        //[EnableCors("http://localhost:8267",       // Origin
+        //            "Accept, Origin, Content-Type", // Request headers
+        //            "PUT",                          // HTTP methods
+        //            PreflightMaxAge = 600             // Preflight cache duration
+        //)]
+        //[HttpOptions]
         [HttpPut]
         public async Task<HttpResponseMessage> PutUpdateCustomersAsync(int id, CustomerDto customerDto)
         {

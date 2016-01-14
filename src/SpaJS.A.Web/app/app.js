@@ -16,7 +16,7 @@ var app;
                 templateUrl: '/app/views/accounts/register.html',
                 controller: 'registerUserCtrl as vm'
             })
-                .when("/about", {
+                .when("/About", {
                 templateUrl: "/app/views/about.html"
             })
                 .otherwise({
@@ -26,6 +26,7 @@ var app;
             if (!$httpProvider.defaults.headers.get) {
             }
             ;
+            $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'];
         }
         return Config;
     })();

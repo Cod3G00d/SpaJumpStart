@@ -12,7 +12,7 @@ module app.domain {
 
     //By implementing an interface we force a class to define certain properties or functions
     export interface ICustomer {
-        CustomerId?: number;
+        Id?: number;
         FirstName: string;
         Surname: string;
         Active: boolean;
@@ -26,13 +26,13 @@ module app.domain {
             public Surname: string,
             public Active: boolean,
             public Address: Address,
-            public CustomerId?: number // OPTIONAL PARAMS NEED TO GOTO THE END
+            public Id?: number // OPTIONAL PARAMS NEED TO GOTO THE END
             ) {
 
             super();
             
             //Relative properties
-            this.CustomerId = CustomerId;
+            this.Id = Id;
             this.FirstName = FirstName;
             this.Surname = Surname;
             this.Active = Active;

@@ -19,6 +19,7 @@ namespace SpaJumpStart.Angular.Web.App
                     url: "{controller}",
                     defaults: new { controller = "Home", action = "Index" }
                 );
+
         }
     }
 }

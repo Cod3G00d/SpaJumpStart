@@ -64,9 +64,15 @@ module app.services.accounts {
         logInUser = (loginData: app.domain.accounts.ILoginData): ng.IPromise<any> => {
             var self = this; 
 
+            var data = "grant_type=password&username=" + loginData.Username + "&password=" + loginData.Password;
+
+            //if (loginData.useRefreshTokens) {
+            //    data = data + "&client_id=" + ngAuthSettings.clientId;
+            //}
+
+            var tokenUrl = self._serviceBase + '/Token';
+
             var deferred = self.$q.defer();
-            var data = "username=" + loginData.Username + "&password=" + loginData.Password + "&grant_type=password";
-            var tokenUrl = self._serviceBase + '/token';
 
             self.$http({
                 url: tokenUrl,
@@ -75,11 +81,15 @@ module app.services.accounts {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
+
                 }
             }).then((successResponse: any) => {
+
                 self.tokenHandlerService.setLoginToken(successResponse.access_token);
                 self.tokenHandlerService.setLoginName(successResponse.userName);
+
                 deferred.resolve(successResponse);
+
             }, (errorRes) => {
                 self.logOutUser();
                 deferred.reject(errorRes);
@@ -91,7 +101,8 @@ module app.services.accounts {
         logOutUser = (): ng.IPromise<any> => {
             var self = this;
 
-            var resource = self._serviceBase +  '/api/Account/Logout';
+            var resource = self._serviceBase + '/api/Account/Logout';
+
             var deferred = self.$q.defer();
 
             self.$http({
@@ -101,7 +112,7 @@ module app.services.accounts {
                 self.tokenHandlerService.removeLoginToken();
                 deferred.resolve(successResponse.data);
             }, (errorRes) => {
-                self.logOutUser();
+                //self.logOutUser(); otherwise endless loop
                 deferred.reject(errorRes);
             });
             return deferred.promise;

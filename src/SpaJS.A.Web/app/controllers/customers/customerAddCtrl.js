@@ -17,14 +17,15 @@ var app;
                     var resource = this.constantsService.baseUri + this.constantsService.postUri;
                     this.dataService.add(resource, this.customer)
                         .then(function (result) {
-                        alert(result.CustomerId + ' submitted successfully');
+                        alert(result.Id + ' submitted successfully');
                         _this.$location.path('/');
                     });
                 };
                 CustomerAddCtrl.$inject = ['$location', 'constantsService', 'dataService'];
                 return CustomerAddCtrl;
             })();
-            angular.module('sampleAngularApp')
+            angular
+                .module('sampleAngularApp')
                 .controller('customerAddCtrl', CustomerAddCtrl);
         })(customers = controllers.customers || (controllers.customers = {}));
     })(controllers = app.controllers || (app.controllers = {}));

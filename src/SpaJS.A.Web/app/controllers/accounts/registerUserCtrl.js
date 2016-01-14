@@ -38,7 +38,7 @@ var app;
                                     errors.push(errorRes.data.modelState[key][i]);
                                 }
                             }
-                            self.$scope.message = new Message(false, "Failed to register user : " + errors.join(' '));
+                            self.$scope.message = new Message(false, "Failed to register user : ");
                         });
                     };
                     this.startTimer = function () {

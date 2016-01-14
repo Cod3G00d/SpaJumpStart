@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
-
-//[assembly: OwinStartupAttribute(typeof(SpaJumpStart.Angular.Web.App.Startup))]
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace SpaJumpStart.Angular.Web.App
 {
@@ -9,17 +9,8 @@ namespace SpaJumpStart.Angular.Web.App
     {
         public void Configuration(IAppBuilder app)
         {
-            //ConfigureAuth(app);
-
-            //All Web API
-
-            //var config = new HttpConfiguration();
-            //config.MapHttpAttributeRoutes();
-
-            //WebApiConfig.Register(config);
-
-            //app.UseWebApi(config);
-
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

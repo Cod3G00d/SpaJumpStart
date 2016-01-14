@@ -9,14 +9,14 @@ var app;
     (function (domain) {
         var Customer = (function (_super) {
             __extends(Customer, _super);
-            function Customer(FirstName, Surname, Active, Address, CustomerId) {
+            function Customer(FirstName, Surname, Active, Address, Id) {
                 _super.call(this);
                 this.FirstName = FirstName;
                 this.Surname = Surname;
                 this.Active = Active;
                 this.Address = Address;
-                this.CustomerId = CustomerId;
-                this.CustomerId = CustomerId;
+                this.Id = Id;
+                this.Id = Id;
                 this.FirstName = FirstName;
                 this.Surname = Surname;
                 this.Active = Active;

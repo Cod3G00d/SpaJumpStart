@@ -492,7 +492,7 @@
             Asynchronously get all customer data and address details
             </summary>
             <example>
-            GET: http://localhost:1625/api/customers
+            GET: http://localhost/api/customers
             </example>
         </member>
         <member name="M:SpaJumpstart.WebServices.Controllers.CustomersController.GetCustomerByIdAsync(System.Int32)">

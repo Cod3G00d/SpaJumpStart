@@ -69,7 +69,7 @@ module app.controllers.accounts {
                         }
                     }
 
-                    self.$scope.message = new Message(false, "Failed to register user : " + errors.join(' '))
+                    self.$scope.message = new Message(false, "Failed to register user : "); // + errors.join(' '))
                 });
         }
 

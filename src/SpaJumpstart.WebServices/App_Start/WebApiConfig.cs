@@ -4,6 +4,7 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http.Formatting;
 using System.Web.Http.Cors;
+using SpaJumpstart.WebServices.Cors;
 
 namespace SpaJumpstart.WebServices
 {
@@ -14,12 +15,28 @@ namespace SpaJumpstart.WebServices
             // Web API configuration and services
 
             config.ApplyTo(
-                ConfigureAuth,
+                //ConfigureAuth,
                 //ConfigureCors,
                 //ConfigureFilters,
-                ConfigureRoutes,
-                ConfigureFormatters
+                ConfigureFormatters,
+                ConfigureRoutes
              );
+        }
+
+        private static void ConfigureAuth(HttpConfiguration config)
+        {
+            // Configure Web API to use only bearer token authentication.
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+        }
+
+        private static void ConfigureCors(HttpConfiguration config)
+        {
+            var corsConfig = new EnableCorsAttribute(AppCorsConstants.AllowedOrigins, AppCorsConstants.AllowedHeaders, AppCorsConstants.AllowedMethods);
+            config.EnableCors(corsConfig);
+
+            // Add handler to deal with preflight requests, this is the important part
+            //config.MessageHandlers.Add(new CorsHandler());
         }
 
         private static void ConfigureRoutes(HttpConfiguration config)
@@ -32,7 +49,6 @@ namespace SpaJumpstart.WebServices
                 name: "ApiRoute",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-  
             );
         }
 
@@ -50,26 +66,7 @@ namespace SpaJumpstart.WebServices
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
 
-
-        private static void ConfigureAuth(HttpConfiguration config)
-        {
-            // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-        }
-
-        private static void ConfigureCors(HttpConfiguration config)
-        {
-            //var corsConfig = new EnableCorsAttribute(AppCorsConstants.AllowedOrigins, AppCorsConstants.AllowedHeaders, AppCorsConstants.AllowedMethods);
-
-            //defaults - customise to requirements
-            //var corsConfig = new EnableCorsAttribute("*", "*", "*");
-            // config.EnableCors(corsConfig);
-
-            // Add handler to deal with preflight requests, this is the important part
-            //config.MessageHandlers.Add(new CorsHandler());
-        }
-
+ 
 
         private static void ApplyTo<T>(this T source, params System.Action<T>[] targets)
         {

@@ -1,5 +1,6 @@
 ﻿using Antlr.Runtime.Misc;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
@@ -8,11 +9,12 @@ using Owin;
 using SpaJumpstart.Data.Context.EF;
 using SpaJumpstart.Data.UnitOfWork;
 using SpaJumpstart.Domain.Data.UnitOfWork;
-
+using SpaJumpstart.WebServices.Cors;
 using SpaJumpstart.WebServices.IoC.Modules;
 using SpaJumpstart.WebServices.Mappings.AutoMappings;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -35,36 +37,38 @@ namespace SpaJumpstart.WebServices
         /// <param name="app">IAppBuilder Interface used to compose the application for the Owin Server</param>
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
-            ConfigureCors(app);
 
+            
             //Register mapping definitions for Automapper
 
             var mappingDefinitions = new MappedDefinitions();
             mappingDefinitions.Init();
 
-
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
             AreaRegistration.RegisterAllAreas();
-
+            //RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            
             /*
             HttpConfiguration used to configure API routes, so we pass to the "WebAPIConfig" template class.
             */
-
             var httpConfig = new HttpConfiguration();
             httpConfig.MapHttpAttributeRoutes();
 
-            var kernel = CreateKernel();
-            //var httpResolver = new NinjectHttpDependencyResolver(kernel);
-            //httpConfig.DependencyResolver = httpResolver;
+            // Configure Web API to use only bearer token authentication.
+            httpConfig.SuppressDefaultHostAuthentication();
+            httpConfig.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            ConfigureAuth(app);
+            ConfigureCors(app);
+
+            //DI using Ninject
+            var kernel = CreateKernel();
             app.UseNinjectMiddleware(() => kernel)
                .UseNinjectWebApi(httpConfig);
 
-            //ConfigureAuth(app);
-
+            
             WebApiConfig.Register(httpConfig);
 
             /*
@@ -73,6 +77,8 @@ namespace SpaJumpstart.WebServices
             */
 
             app.UseWebApi(httpConfig);
+
+            //GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
 
         }
 

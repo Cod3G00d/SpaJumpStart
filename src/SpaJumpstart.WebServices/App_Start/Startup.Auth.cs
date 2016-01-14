@@ -18,6 +18,7 @@ namespace SpaJumpstart.WebServices
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
@@ -31,16 +32,22 @@ namespace SpaJumpstart.WebServices
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
-                Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                //AuthorizeEndpointPath = new PathString("/Authorize"),
+                AllowInsecureHttp = true,
+                ApplicationCanDisplayErrors = true,
+                TokenEndpointPath = new PathString("/Token"),
+  
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = new ApplicationOAuthProvider(PublicClientId)
+               // Provider = new SimpleAuthorizationServerProvider()
+
                 // In production mode set AllowInsecureHttp = false
-                AllowInsecureHttp = true
             };
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

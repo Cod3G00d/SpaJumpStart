@@ -31,12 +31,11 @@ module app.services.interceptors {
 
             if (self.tokenHandlerService.hasLoginToken()) {
                 localToken = self.tokenHandlerService.getLoginToken();
-                config.headers.Authorization = 'Bearer ' + localToken;
+                if (localToken) {
+                    config.headers.Authorization = 'Bearer ' + localToken;
+                }
             }
 
-            //if (localToken) {
-            //    config.headers.Authorization = 'Bearer ' + localToken;
-            //}
             return config;
         }
 
