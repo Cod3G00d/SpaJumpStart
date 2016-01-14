@@ -87,7 +87,7 @@ module app.services.common {
         NOT call the Web Api again but returned the cached data
         */
 
-        get(resource: string, fetchFromService?: boolean): ng.IPromise<app.domain.EntityBase[]> {
+        get = (resource: string, fetchFromService?: boolean): ng.IPromise<app.domain.EntityBase[]> => {
             var self = this;
 
             return getAllFromService();

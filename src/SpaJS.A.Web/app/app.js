@@ -26,7 +26,6 @@ var app;
             if (!$httpProvider.defaults.headers.get) {
             }
             ;
-            $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'];
         }
         return Config;
     })();

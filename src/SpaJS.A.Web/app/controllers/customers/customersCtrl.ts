@@ -109,50 +109,51 @@ module app.controllers.customers {
         //Customers not updating on refresh
         //Take a look at : http://kwilson.me.uk/blog/writing-cleaner-angularjs-with-typescript-and-controlleras/
 
-        getCustomers = (fetchFromService: boolean): void => {
+        getCustomers = (fetchFromService: boolean): void =>
+        {
 
             var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
             this.loadingCustomers = true;
 
-            this.dataService.get(this.resource, fetchFromService).then((data: app.domain.Customer[]) => {
+            self.dataService.get(self.resource, fetchFromService)
+                .then((data: app.domain.Customer[]) =>
+                {
 
-                //this.Customers = data;
-                //if (this.Customers.length == 0) {
-                //    this.Customers = data;
-                //}
-                if (this.$scope.Customers.length == 0) {
-                    this.$scope.Customers = data;
-                }
-                else {
-                    if (data != null) {
-                        for (var i = 0; i < data.length; i++) {
-                            if (self.$scope.Customers[i].Id == data[i].Id) {
-                                self.$scope.Customers[i] = data[i];
+                    if (this.$scope.Customers.length == 0) {
+                        this.$scope.Customers = data;
+                    }
+                    else {
+                        if (data != null) {
+                            for (var i = 0; i < data.length; i++) {
+                                if (self.$scope.Customers[i].Id == data[i].Id) {
+                                    self.$scope.Customers[i] = data[i];
 
-                            }
-                            else {
-                                self.$scope.Customers.push(data[i]);
+                                }
+                                else {
+                                    self.$scope.Customers.push(data[i]);
+                                }
                             }
                         }
-                    }
-  
+                        //if (data != null) {
+                        //    //if (self.Customers != null) {
+                        //    //    self.Customers.splice(0, self.Customers.length);
+                        //    //    self.Customers = self.Customers.concat(data);
+                        //    //}
+                        //    //else {
+                        //    //    self.Customers = data;
+                        //    //}
+                        //    self.Customers = data;
+                        //}
 
-                    //if (data != null) {
-                    //    //if (self.Customers != null) {
-                    //    //    self.Customers.splice(0, self.Customers.length);
-                    //    //    self.Customers = self.Customers.concat(data);
-                    //    //}
-                    //    //else {
-                    //    //    self.Customers = data;
-                    //    //}
-                    //    self.Customers = data;
-                    //}
-
-                    this.loadingCustomers = false;
-                    this.totalCount = self.$scope.Customers.length;
-                    alert('retreived:' + self.$scope.Customers.length);
-                }
-            });
+                        this.loadingCustomers = false;
+                        this.totalCount = self.$scope.Customers.length;
+                        alert('retreived:' + self.$scope.Customers.length);
+                    }   
+                })
+                .then((reason) => {
+                    alert('An Error occurred:' + self.$scope.Customers.length);
+                    
+                });
         }
 
         getCustomersById = (Id: number): void => {

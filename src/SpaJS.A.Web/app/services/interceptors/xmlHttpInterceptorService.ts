@@ -11,13 +11,14 @@ module app.services.interceptors {
     export class XmlHttpInterceptorService implements app.services.interceptors.IXmlHttpInterceptorService
     {
         //static $inject = ['$rootScope', '$q', '$window', 'tokenHandlerService', 'errorHandlerService'];
-        static $inject = ['$rootScope', '$q', 'tokenHandlerService', 'errorHandlerService'];
+        static $inject = ['$rootScope', '$q', '$location', 'tokenHandlerService', 'errorHandlerService'];
 
         private _self = this;
 
         constructor(
             private $rootScope: ng.IRootScopeService,
             private $q: ng.IQService,
+            private $location: ng.ILocationService,
             //private $window: ng.IWindowService,
             private tokenHandlerService: app.services.accounts.ITokenHandlerService,
             private errorHandlerService: app.services.interceptors.IErrorHandlerService) { }
@@ -49,7 +50,7 @@ module app.services.interceptors {
             } else {
                 self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
             };
-
+            self.$location.path('/Account/Login');
             return self.$q.reject(rejection);
         }
 
@@ -60,6 +61,7 @@ module app.services.interceptors {
 
             if (status === 401) {
                 self.errorHandlerService.logError(status, 'Not authorized.');
+                self.$location.path('/Account/Login');
             };
             return response || self.$q.when(response);
         }
@@ -73,7 +75,7 @@ module app.services.interceptors {
             } else {
                 self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
             };
-
+            self.$location.path('/Account/Login');
             return self.$q.reject(rejection);
         }
     }

@@ -33,6 +33,7 @@ var app;
                         var self = _this;
                         var data = "grant_type=password&username=" + loginData.Username + "&password=" + loginData.Password;
                         var tokenUrl = self._serviceBase + '/Token';
+                        alert('Token: ' + tokenUrl);
                         var deferred = self.$q.defer();
                         self.$http({
                             url: tokenUrl,
@@ -40,11 +41,18 @@ var app;
                             data: data,
                             withCredentials: true,
                             headers: {
+                                'Accept': 'application/json',
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }
                         }).then(function (successResponse) {
-                            self.tokenHandlerService.setLoginToken(successResponse.access_token);
-                            self.tokenHandlerService.setLoginName(successResponse.userName);
+                            if (successResponse.data != null) {
+                                var token = successResponse.data.access_token;
+                                var username = successResponse.data.userName;
+                                var tokenType = successResponse.data.token_type;
+                            }
+                            alert('success: username: ' + username + ' token: ' + token + 'token type:' + tokenType);
+                            self.tokenHandlerService.setLoginToken(token);
+                            self.tokenHandlerService.setLoginName(username);
                             deferred.resolve(successResponse);
                         }, function (errorRes) {
                             self.logOutUser();

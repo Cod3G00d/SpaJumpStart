@@ -60,8 +60,11 @@ namespace SpaJumpstart.WebServices
             httpConfig.SuppressDefaultHostAuthentication();
             httpConfig.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            ConfigureAuth(app);
+            // This must come first to intercept the /Token requests 
             ConfigureCors(app);
+
+            // Enable the application to use bearer tokens to authenticate users 
+            ConfigureAuth(app);
 
             //DI using Ninject
             var kernel = CreateKernel();

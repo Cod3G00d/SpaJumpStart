@@ -7,6 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SpaJumpstart.Domain.Entities;
+using Microsoft.Owin;
 
 namespace SpaJumpstart.WebServices.Providers
 {
@@ -26,10 +27,40 @@ namespace SpaJumpstart.WebServices.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            //Add this Response header as just enabling the Wev API Cors wont enable it for this provider request
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",new[] { "http://localhost:8267" });
+            IOwinRequest req = context.Request;
+            IOwinResponse res = context.Response;
 
-            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //Add this Response header as just enabling the Wev API Cors wont enable it for this provider request
+
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "http://localhost:8267" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Credentials", new[] { "true" });
+
+            var origin = req.Headers.Get("Origin");
+
+            if (!string.IsNullOrEmpty(origin))
+            {
+                // allow the cross-site requests
+
+                if (!string.IsNullOrEmpty(origin))
+                {
+                    res.Headers.Set("Access-Control-Allow-Origin", origin);
+                }
+                if (string.IsNullOrEmpty(res.Headers.Get("Access-Control-Allow-Credentials")))
+                {
+                    res.Headers.Set("Access-Control-Allow-Credentials", "true");
+                }
+            }
+
+            // if this is pre-flight request
+            if (req.Method == "OPTIONS")
+            {
+                //res.Headers.Add("Access-Control-Allow-Headers", new[] { "Content-Type", "X-CSRF-Token", "X-Requested-With", "Accept", "Accept-Version", "Content-Length", "Content-MD5", "Date", "X-Api-Version", "X-File-Name" });
+  
+                // respond immediately with allowed request methods and headers
+                res.StatusCode = 200;
+                res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Methods", "GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS");
+                res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Headers", "authorization", "content-type");
+            }
 
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 

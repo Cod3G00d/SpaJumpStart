@@ -62,10 +62,10 @@ namespace SpaJumpstart.WebServices
                         {
                             res.Headers.Set("Access-Control-Allow-Origin", origin);
                         }
-                        if (string.IsNullOrEmpty(res.Headers.Get("Access-Control-Allow-Credentials")))
-                        {
-                            res.Headers.Set("Access-Control-Allow-Credentials", "true");
-                        }
+                        //if (string.IsNullOrEmpty(res.Headers.Get("Access-Control-Allow-Credentials")))
+                        //{
+                        //    res.Headers.Set("Access-Control-Allow-Credentials", "true");
+                        //}
 
                     }
 
@@ -80,7 +80,14 @@ namespace SpaJumpstart.WebServices
                         res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Headers", "authorization", "content-type");
                         //res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Headers", "Content-Type, Authorization");
                         //res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Credentials", "true");
+
+                        if (string.IsNullOrEmpty(res.Headers.Get("Access-Control-Allow-Credentials")))
+                        {
+                            res.Headers.Set("Access-Control-Allow-Credentials", "true");
+                        }
+
                         // no further processing
+
                         return;
                     }
                 }

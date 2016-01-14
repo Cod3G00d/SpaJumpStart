@@ -14,7 +14,8 @@ var app;
                     this.getCustomers = function (fetchFromService) {
                         var self = _this;
                         _this.loadingCustomers = true;
-                        _this.dataService.get(_this.resource, fetchFromService).then(function (data) {
+                        self.dataService.get(self.resource, fetchFromService)
+                            .then(function (data) {
                             if (_this.$scope.Customers.length == 0) {
                                 _this.$scope.Customers = data;
                             }
@@ -33,6 +34,9 @@ var app;
                                 _this.totalCount = self.$scope.Customers.length;
                                 alert('retreived:' + self.$scope.Customers.length);
                             }
+                        })
+                            .then(function (reason) {
+                            alert('An Error occurred:' + self.$scope.Customers.length);
                         });
                     };
                     this.getCustomersById = function (Id) {

@@ -32,22 +32,29 @@ namespace SpaJumpstart.WebServices
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                //AuthorizeEndpointPath = new PathString("/Authorize"),
-                AllowInsecureHttp = true,
-                ApplicationCanDisplayErrors = true,
-                TokenEndpointPath = new PathString("/Token"),
+               // AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+               // //AuthorizeEndpointPath = new PathString("/Authorize"),
+               // AllowInsecureHttp = true,
+               // ApplicationCanDisplayErrors = true,
+               // TokenEndpointPath = new PathString("/Token"),
   
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new ApplicationOAuthProvider(PublicClientId)
-               // Provider = new SimpleAuthorizationServerProvider()
+               // AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+               // Provider = new ApplicationOAuthProvider(PublicClientId)
+               //// Provider = new SimpleAuthorizationServerProvider()
+
+
+                TokenEndpointPath = new PathString("/Token"),
+                Provider = new ApplicationOAuthProvider(PublicClientId),
+                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
+                AllowInsecureHttp = true
 
                 // In production mode set AllowInsecureHttp = false
             };
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

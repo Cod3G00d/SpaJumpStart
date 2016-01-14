@@ -72,21 +72,30 @@ module app.services.accounts {
 
             var tokenUrl = self._serviceBase + '/Token';
 
+            alert('Token: ' + tokenUrl);
             var deferred = self.$q.defer();
-
+            
             self.$http({
                 url: tokenUrl,
                 method: 'POST',
                 data: data,
                 withCredentials: true,
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/x-www-form-urlencoded'
-
                 }
             }).then((successResponse: any) => {
 
-                self.tokenHandlerService.setLoginToken(successResponse.access_token);
-                self.tokenHandlerService.setLoginName(successResponse.userName);
+                if (successResponse.data != null) {
+                    var token = successResponse.data.access_token;
+                    var username = successResponse.data.userName;
+                    var tokenType = successResponse.data.token_type; 
+                }
+
+                alert('success: username: ' + username + ' token: ' + token + 'token type:' + tokenType);
+
+                self.tokenHandlerService.setLoginToken(token);
+                self.tokenHandlerService.setLoginName(username);
 
                 deferred.resolve(successResponse);
 

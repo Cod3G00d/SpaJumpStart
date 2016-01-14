@@ -6,10 +6,11 @@ var app;
         (function (interceptors) {
             'use strict';
             var XmlHttpInterceptorService = (function () {
-                function XmlHttpInterceptorService($rootScope, $q, tokenHandlerService, errorHandlerService) {
+                function XmlHttpInterceptorService($rootScope, $q, $location, tokenHandlerService, errorHandlerService) {
                     var _this = this;
                     this.$rootScope = $rootScope;
                     this.$q = $q;
+                    this.$location = $location;
                     this.tokenHandlerService = tokenHandlerService;
                     this.errorHandlerService = errorHandlerService;
                     this._self = this;
@@ -35,6 +36,7 @@ var app;
                             self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
                         }
                         ;
+                        self.$location.path('/Account/Login');
                         return self.$q.reject(rejection);
                     };
                     this.response = function (response) {
@@ -42,6 +44,7 @@ var app;
                         var status = response.status;
                         if (status === 401) {
                             self.errorHandlerService.logError(status, 'Not authorized.');
+                            self.$location.path('/Account/Login');
                         }
                         ;
                         return response || self.$q.when(response);
@@ -56,10 +59,11 @@ var app;
                             self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
                         }
                         ;
+                        self.$location.path('/Account/Login');
                         return self.$q.reject(rejection);
                     };
                 }
-                XmlHttpInterceptorService.$inject = ['$rootScope', '$q', 'tokenHandlerService', 'errorHandlerService'];
+                XmlHttpInterceptorService.$inject = ['$rootScope', '$q', '$location', 'tokenHandlerService', 'errorHandlerService'];
                 return XmlHttpInterceptorService;
             })();
             interceptors.XmlHttpInterceptorService = XmlHttpInterceptorService;

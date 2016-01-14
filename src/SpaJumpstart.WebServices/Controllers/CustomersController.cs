@@ -152,7 +152,7 @@ namespace SpaJumpstart.WebServices.Controllers
     [Authorize]
     //[EnableCors("http://localhost:8267", "*", "*")]
     //[EnableCors(origins: "http://localhost:8267", headers: "*",  methods: "GET,PUT,OPTIONS,POST,DELETE", SupportsCredentials = true)]
-    [RoutePrefix("api/Contacts")]
+    [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
         private readonly ICustomerService _customerService;

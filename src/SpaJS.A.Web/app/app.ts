@@ -58,7 +58,11 @@ module app {
             };
 
 
-            $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'];
+           // $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = {};
+   
+            //$httpProvider.defaults.headers.get = 'Access-Control-Allow-Origin';
+            //$httpProvider.defaults.headers.post = 'Access-Control-Allow-Origin';
+            //$httpProvider.defaults.headers.put = 'Access-Control-Allow-Origin';
 
             //delete $httpProvider.defaults.headers.common['X-Requested-With'];
 

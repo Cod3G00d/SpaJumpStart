@@ -6,23 +6,24 @@ var app;
         (function (common) {
             var DataService = (function () {
                 function DataService($http, $q) {
+                    var _this = this;
+                    this.get = function (resource, fetchFromService) {
+                        var self = _this;
+                        return getAllFromService();
+                        function getAllFromService() {
+                            var deferred = self._qService.defer();
+                            self._httpService.get(resource).then(function (result) {
+                                JSON.stringify(result.data);
+                                deferred.resolve(result.data);
+                            }, function (error) {
+                                deferred.reject(error);
+                            });
+                            return deferred.promise;
+                        }
+                    };
                     this._httpService = $http;
                     this._qService = $q;
                 }
-                DataService.prototype.get = function (resource, fetchFromService) {
-                    var self = this;
-                    return getAllFromService();
-                    function getAllFromService() {
-                        var deferred = self._qService.defer();
-                        self._httpService.get(resource).then(function (result) {
-                            JSON.stringify(result.data);
-                            deferred.resolve(result.data);
-                        }, function (error) {
-                            deferred.reject(error);
-                        });
-                        return deferred.promise;
-                    }
-                };
                 DataService.prototype.getSingle = function (resource) {
                     var self = this;
                     var deferred = self._qService.defer();
