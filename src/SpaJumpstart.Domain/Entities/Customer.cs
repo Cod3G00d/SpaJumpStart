@@ -26,8 +26,8 @@ namespace SpaJumpstart.Domain.Entities
         public virtual Address Address { get; set; }
 
         //This adds a rowversion id to the table for concurrency
-        //[Timestamp]
-        //public byte[] RowVersion { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
         #region Validation
         //Belt and Braces validation

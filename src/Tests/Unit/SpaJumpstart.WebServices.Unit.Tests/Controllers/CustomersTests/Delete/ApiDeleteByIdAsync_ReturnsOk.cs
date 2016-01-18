@@ -23,7 +23,8 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Delete
             Stub the interface dependencies, don't need to use the actual objects, but force of habit
             */
             StubCustomerService.Stub(s => s.GetByIdAsync(1)).Return(Task.FromResult(ActualCustomers.FirstOrDefault()));
-            StubCustomerService.Stub(s => s.DeleteAsync(ActualCustomers.FirstOrDefault())).Return(Task.FromResult(ActualCustomers.FirstOrDefault()));
+            //StubCustomerService.Stub(s => s.DeleteAsync(ActualCustomers.FirstOrDefault())).Return(Task.FromResult(ActualCustomers.FirstOrDefault()));
+            StubCustomerService.Stub(s => s.DeleteAsync(ActualCustomers.FirstOrDefault()));
 
             ConfigureApi(HttpMethod.Delete, "http://localhost/api/customers/1");
         }
@@ -52,7 +53,8 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Delete
         public void DeleteByIdAsync_ItShouldCallTheCustomerService_DeleteMethod()
         {
             ArrangeAndAct();
-            StubCustomerService.AssertWasCalled(s => s.DeleteAsync(Arg<Customer>.Is.Anything));
+            //StubCustomerService.AssertWasCalled(s => s.DeleteAsync(Arg<Customer>.Is.Anything));
+            StubCustomerService.AssertWasCalled(s => s.Delete(Arg<Customer>.Is.Anything));
         }
         [Test]
         public void DeleteByIdAsync_ItShouldNotReturnANullResult()

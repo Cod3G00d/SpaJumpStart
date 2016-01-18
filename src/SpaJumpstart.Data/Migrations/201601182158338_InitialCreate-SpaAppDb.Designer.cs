@@ -13,7 +13,7 @@ namespace SpaJumpstart.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201601181743011_InitialCreate-SpaAppDb"; }
+            get { return "201601182158338_InitialCreate-SpaAppDb"; }
         }
         
         string IMigrationMetadata.Source

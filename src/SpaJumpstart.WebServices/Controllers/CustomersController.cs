@@ -387,7 +387,6 @@ namespace SpaJumpstart.WebServices.Controllers
         //)]
         [HttpPut]
         [HttpOptions]
-        //public async Task<HttpResponseMessage> PutUpdateCustomersAsync(int id, CustomerDto customerDto)
         public async Task<HttpResponseMessage> PutUpdateCustomersAsync(CustomerDto customerDto)
         {
             if (customerDto == null)
@@ -399,13 +398,24 @@ namespace SpaJumpstart.WebServices.Controllers
 
             try
             {
-                Customer customer = await _customerService.GetByIdAsync(id);
+                Customer existingCustomer = await _customerService.GetByIdAsync(id);
 
                 //_mappingEngine.Map(customerDto, customer);
-                customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
+                var updatedCustomer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
+
+                existingCustomer.FirstName = updatedCustomer.FirstName;
+                existingCustomer.Surname = updatedCustomer.Surname;
+                existingCustomer.MobilePhone = updatedCustomer.MobilePhone;
+                existingCustomer.Telephone = updatedCustomer.Telephone;
+                existingCustomer.Address.AddressLine1 = updatedCustomer.Address.AddressLine1;
+                existingCustomer.Address.AddressLine2 = updatedCustomer.Address.AddressLine2;
+                existingCustomer.Address.AddressLine3 = updatedCustomer.Address.AddressLine3;
+                existingCustomer.Address.AddressLine4 = updatedCustomer.Address.AddressLine4;
+                existingCustomer.Address.Email = updatedCustomer.Address.Email;
+                existingCustomer.Address.Postcode = updatedCustomer.Address.Postcode;
 
                 //await _customerService.UpdateAsync(customer);
-                _customerService.Update(customer);
+                _customerService.Update(existingCustomer);
             }
             catch (DbUpdateConcurrencyException ex)
             {

@@ -33,6 +33,7 @@ namespace SpaJumpstart.Data.Migrations
                         MobilePhone = c.String(maxLength: 10, unicode: false),
                         Telephone = c.String(maxLength: 20, unicode: false),
                         InceptionDate = c.DateTime(nullable: false),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Active = c.Boolean(nullable: false),
                         ApplicationUserId = c.String(maxLength: 100, unicode: false),
                     })

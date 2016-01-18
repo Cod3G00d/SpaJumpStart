@@ -54,11 +54,11 @@ namespace SpaJumpstart.Data.Configurations
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             //This adds a sql rowversion to the table for -optimistic concurrency
-            //Property(c => c.RowVersion)
-            //    //.IsConcurrencyToken()
-            //    .IsRequired()
-            //    .IsRowVersion()
-            //    .HasColumnOrder(7);
+            Property(c => c.RowVersion)
+                //.IsConcurrencyToken()
+                .IsRequired()
+                .IsRowVersion()
+                .HasColumnOrder(7);
 
             Property(c => c.Active)
                 //.IsOptional()
