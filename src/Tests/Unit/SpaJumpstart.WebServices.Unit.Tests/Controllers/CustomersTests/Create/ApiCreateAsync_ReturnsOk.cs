@@ -23,7 +23,8 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
             /*
             Stub the interface dependencies, don't need to use the actual objects, but force of habit
             */
-            StubCustomerService.Stub(s => s.AddAsync(NewCustomer)).Return(Task.FromResult(ExpectedNewCustomer));
+            //StubCustomerService.Stub(s => s.AddAsync(NewCustomer)).Return(Task.FromResult(ExpectedNewCustomer));
+            StubCustomerService.Stub(s => s.AddCustomerAsync(NewCustomer)).Return(Task.FromResult(ExpectedNewCustomer));
             StubAutoMapper.Stub(m => m.Map<CustomerDto, Customer>(NewCustomerDto)).Return(NewCustomer);
 
             ConfigureApi(HttpMethod.Post, "http://localhost/api/customers/");
@@ -56,7 +57,8 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Post
         public void CreateAsync_ItShouldCallTheCustomerService()
         {
             ArrangeAndAct();
-            StubCustomerService.AssertWasCalled(s => s.AddAsync(NewCustomer));
+            //StubCustomerService.AssertWasCalled(s => s.AddAsync(NewCustomer));
+            StubCustomerService.AssertWasCalled(s => s.AddCustomerAsync(NewCustomer));
         }
         [Test]
         public void CreateAsync_ItShouldNotReturnANullResult()

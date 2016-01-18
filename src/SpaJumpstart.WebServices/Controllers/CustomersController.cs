@@ -294,7 +294,6 @@ namespace SpaJumpstart.WebServices.Controllers
                 customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
 
                 string userId = User.Identity.GetUserId();
-
                 customer.ApplicationUserId = userId;
 
                 //var newcustomer = new Customer
@@ -344,7 +343,7 @@ namespace SpaJumpstart.WebServices.Controllers
 
                 //newcustomer.Address = newAddress;
 
-                var newcustomer = await _customerService.AddCustomerAsync(customer);
+                customer = await _customerService.AddCustomerAsync(customer);
                 //newcustomer = await _customerService.AddCustomerAsync(newcustomer);
 
     
@@ -354,7 +353,7 @@ namespace SpaJumpstart.WebServices.Controllers
                 //await _customerService.UpdateAsync(newcustomer);
 
                 //newcustomer = await _customerService.AddCustomerAsync(newcustomer);
-                customerDto.Id = newcustomer.Id;
+                customerDto.Id = customer.Id;
 
 
             }
