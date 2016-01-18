@@ -513,7 +513,7 @@
             </example>
             <param name="id">The customerid of the data.</param>
         </member>
-        <member name="M:SpaJumpstart.WebServices.Controllers.CustomersController.PutUpdateCustomersAsync(System.Int32,SpaJumpstart.DataContracts.Dtos.CustomerDto)">
+        <member name="M:SpaJumpstart.WebServices.Controllers.CustomersController.PutUpdateCustomersAsync(SpaJumpstart.DataContracts.Dtos.CustomerDto)">
             <summary>
             Asynchronously update an exisiting customer
             </summary>

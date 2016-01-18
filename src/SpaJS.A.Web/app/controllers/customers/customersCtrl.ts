@@ -156,7 +156,7 @@ module app.controllers.customers {
 
         //Commands
 
-        saveCustomer = (customer): void => {
+        private saveCustomer = (customer): void => {
             var self = this; 
             this.dataService.add(this.resource, customer).then(
                 function (result) {
@@ -168,7 +168,7 @@ module app.controllers.customers {
                 });
         }
 
-        updateCustomer = (customer): void => {
+        private updateCustomer = (customer): void => {
             var self = this; 
             this.dataService.update(this.resource, customer).then(
                 function (result) {
@@ -180,7 +180,7 @@ module app.controllers.customers {
                 });
         }
 
-        deleteCustomer = (customerId): void => {
+        private deleteCustomer = (customerId): void => {
             var self = this;
             this.dataService.remove(this.resource + customerId).then(
                 function (result) {

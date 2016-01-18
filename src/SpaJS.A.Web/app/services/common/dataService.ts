@@ -125,7 +125,7 @@ module app.services.common {
             }
         }
 
-        getSingle(resource: string): ng.IPromise<app.domain.EntityBase> {
+        getSingle = (resource: string): ng.IPromise<app.domain.EntityBase> => {
             var self = this;
 
             var deferred = self._qService.defer();
@@ -140,7 +140,7 @@ module app.services.common {
             return deferred.promise;
         }
 
-        add(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> {
+        add = (resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> => {
             var self = this;
             var deferred = self._qService.defer();
 
@@ -154,7 +154,7 @@ module app.services.common {
             return deferred.promise;
         }
 
-        update(resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> {
+        update = (resource: string, entity: app.domain.IEntity): ng.IPromise<app.domain.EntityBase> => {
             var self = this;
             var deferred = self._qService.defer();
 
@@ -168,7 +168,7 @@ module app.services.common {
             return deferred.promise;
         }
 
-        remove(resource: string): ng.IPromise<any> {
+        remove = (resource: string): ng.IPromise<any> => {
             var self = this;
 
             var deferred = self._qService.defer();
@@ -183,6 +183,7 @@ module app.services.common {
             return deferred.promise;
         }
     }       
-    angular.module("sampleAngularApp")
+    angular
+        .module("sampleAngularApp")
         .service("dataService", app.services.common.DataService);
 }

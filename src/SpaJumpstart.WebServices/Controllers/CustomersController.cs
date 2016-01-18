@@ -385,25 +385,27 @@ namespace SpaJumpstart.WebServices.Controllers
         //            "PUT",                          // HTTP methods
         //            PreflightMaxAge = 600             // Preflight cache duration
         //)]
-        //[HttpOptions]
         [HttpPut]
-        public async Task<HttpResponseMessage> PutUpdateCustomersAsync(int id, CustomerDto customerDto)
+        [HttpOptions]
+        //public async Task<HttpResponseMessage> PutUpdateCustomersAsync(int id, CustomerDto customerDto)
+        public async Task<HttpResponseMessage> PutUpdateCustomersAsync(CustomerDto customerDto)
         {
-            if (id != customerDto.Id)
+            if (customerDto == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Id's don't match");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Customer cannot be null");
             }
+
+            var id = customerDto.Id;
 
             try
             {
-                customerDto.Id = id;
-
                 Customer customer = await _customerService.GetByIdAsync(id);
 
                 //_mappingEngine.Map(customerDto, customer);
                 customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
 
-                await _customerService.UpdateAsync(customer);
+                //await _customerService.UpdateAsync(customer);
+                _customerService.Update(customer);
             }
             catch (DbUpdateConcurrencyException ex)
             {
@@ -446,7 +448,8 @@ namespace SpaJumpstart.WebServices.Controllers
 
             try
             {
-                await _customerService.DeleteAsync(customer);
+                //await _customerService.DeleteAsync(customer);
+                 _customerService.Delete(customer);
             }
             catch (Exception ex)
             {

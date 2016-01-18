@@ -32,9 +32,7 @@ namespace SpaJumpstart.Services.Services
         /// <returns></returns>
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-
-            
-_repository.Add(entity);
+            _repository.Add(entity);
             await _unitOfWork.CommitAsync();
 
             return entity;
