@@ -9,22 +9,22 @@ var app;
     (function (domain) {
         var Address = (function (_super) {
             __extends(Address, _super);
-            function Address(AddressLine1, AddressLine2, AddressLine3, AddressLine4, Email, Postcode, AddressId) {
+            function Address(addressLine1, addressLine2, addressLine3, addressLine4, email, postcode, addressId) {
                 _super.call(this);
-                this.AddressLine1 = AddressLine1;
-                this.AddressLine2 = AddressLine2;
-                this.AddressLine3 = AddressLine3;
-                this.AddressLine4 = AddressLine4;
-                this.Email = Email;
-                this.Postcode = Postcode;
-                this.AddressId = AddressId;
-                this.AddressId = AddressId;
-                this.AddressLine1 = AddressLine1;
-                this.AddressLine2 = AddressLine2;
-                this.AddressLine3 = AddressLine3;
-                this.AddressLine4 = AddressLine4;
-                this.Email = Email;
-                this.Postcode = Postcode;
+                this.addressLine1 = addressLine1;
+                this.addressLine2 = addressLine2;
+                this.addressLine3 = addressLine3;
+                this.addressLine4 = addressLine4;
+                this.email = email;
+                this.postcode = postcode;
+                this.addressId = addressId;
+                this.addressId = addressId;
+                this.addressLine1 = addressLine1;
+                this.addressLine2 = addressLine2;
+                this.addressLine3 = addressLine3;
+                this.addressLine4 = addressLine4;
+                this.email = email;
+                this.postcode = postcode;
             }
             return Address;
         })(app.domain.EntityBase);

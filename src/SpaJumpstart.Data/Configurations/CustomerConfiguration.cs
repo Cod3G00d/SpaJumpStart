@@ -9,14 +9,14 @@ namespace SpaJumpstart.Data.Configurations
         {
             Property(c => c.Id).HasColumnName("CustomerId")
                 .HasColumnOrder(1);
-
             
             //Foreign Key Address one-to-one
 
-            HasRequired(s => s.Address) // Must have an address in the relationship
-                .WithRequiredPrincipal(ad => ad.Customer) // Create inverse relationship
+            HasRequired(a => a.Address) // Must have an address in the relationship
+                .WithRequiredPrincipal(a => a.Customer) // Create inverse relationship
                                                           //.Map(s => s.MapKey("AddressId"))
                 .WillCascadeOnDelete();
+
 
             Property(c => c.FirstName)
                 .IsRequired()
@@ -54,17 +54,23 @@ namespace SpaJumpstart.Data.Configurations
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             //This adds a sql rowversion to the table for -optimistic concurrency
-            Property(c => c.RowVersion)
-                //.IsConcurrencyToken()
-                .IsRequired()
-                .IsRowVersion()
-                .HasColumnOrder(7);
+            //Property(c => c.RowVersion)
+            //    //.IsConcurrencyToken()
+            //    .IsRequired()
+            //    .IsRowVersion()
+            //    .HasColumnOrder(7);
 
             Property(c => c.Active)
-                .IsOptional()
-                //.HasColumnType("boolean")
+                //.IsOptional()
                 .HasColumnOrder(8)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            //Property(c => c.ApplicationUserId)
+            //    .IsOptional()
+            //    .HasMaxLength(255)
+            //    .HasColumnType("varchar")
+            //    .HasColumnOrder(9)
+            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             ToTable("Customer");
         }

@@ -46,12 +46,17 @@ module app.controllers.accounts {
                     self.$scope.Global.userIsAuthenticated = true;
                     this.$scope.loginData.IsUserLoggedIn = true;
                     self.$location.path('/');
-                }, (data) => {
-                    self.$scope.message.Success = true;
-                    self.$scope.message.Description = data.error_description;
+                }, (error) => {
+                    if (error.data != null) {
+                        var errorDescription = error.data.error_description;
+
+                        self.$scope.message.Success = false;
+                        self.$scope.message.Description = errorDescription;
+                    }
                 });
         }
     }
-    angular.module('sampleAngularApp')
+    angular
+        .module('sampleAngularApp')
         .controller('loginCtrl', app.controllers.accounts.LoginCtrl);
 }

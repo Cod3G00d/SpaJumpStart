@@ -16,12 +16,6 @@ module app.services.accounts {
     export class UserAccountService implements app.services.accounts.IUserAccountService {
         //Relative Typescript definitions (ng.IHttpService and ng.IQService)
 
-        //private _$http: ng.IHttpService;
-        //private _$q: ng.IQService;
-        //private _errorHandler: any;
-        ////private _constantsService: app.common.services.ConstantsService;
-        //private _tokenHandler: any;
-
         private _serviceBase: string;
 
         static $inject = ['$q', '$window', '$http', 'constantsService', 'errorHandlerService', 'tokenHandlerService'];
@@ -33,11 +27,7 @@ module app.services.accounts {
             private constantsService: IConstantsService,
             private errorHandlerService: app.services.interceptors.IErrorHandlerService,
             private tokenHandlerService: app.services.accounts.ITokenHandlerService) {
-            //this._$http = $http;
-            //this._$q = $q;
-            //this._constantsService = constantsService;
-            //this._errorHandler = errorHandler;
-            //this._tokenHandler = tokenHandler;
+
             this._serviceBase =  constantsService.baseUri;
         }
 
@@ -72,7 +62,7 @@ module app.services.accounts {
 
             var tokenUrl = self._serviceBase + '/Token';
 
-            alert('Token: ' + tokenUrl);
+            //alert('Token: ' + tokenUrl);
             var deferred = self.$q.defer();
             
             self.$http({
@@ -81,7 +71,7 @@ module app.services.accounts {
                 data: data,
                 withCredentials: true,
                 headers: {
-                    'Accept': 'application/json',
+                    //'Accept': 'application/json',
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then((successResponse: any) => {
@@ -92,7 +82,7 @@ module app.services.accounts {
                     var tokenType = successResponse.data.token_type; 
                 }
 
-                alert('success: username: ' + username + ' token: ' + token + 'token type:' + tokenType);
+                //alert('success: username: ' + username + ' token: ' + token + 'token type:' + tokenType);
 
                 self.tokenHandlerService.setLoginToken(token);
                 self.tokenHandlerService.setLoginName(username);
@@ -133,5 +123,6 @@ module app.services.accounts {
         }
     };
 }
-angular.module('sampleAngularApp')
+angular
+    .module('sampleAngularApp')
     .service('userAccountService', app.services.accounts.UserAccountService);

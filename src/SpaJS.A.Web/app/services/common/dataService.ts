@@ -103,7 +103,7 @@ module app.services.common {
             //    }
             //}
  
-            function getAllFromService(): ng.IPromise<any> {
+            function getAllFromService(): ng.IPromise<Array<app.domain.ICustomer>> {
 
                 //deferred represents a TASK that will finish some point in the future.
                 var deferred = self._qService.defer();

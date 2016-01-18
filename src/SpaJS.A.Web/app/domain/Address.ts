@@ -7,25 +7,25 @@ module app.domain {
 
     export class Address extends app.domain.EntityBase implements app.domain.IAddress {
         constructor(
-            public AddressLine1: string,
-            public AddressLine2: string,
-            public AddressLine3: string,
-            public AddressLine4: string,
-            public Email: string,
-            public Postcode: string,
-            public AddressId?: number
+            public addressLine1: string,
+            public addressLine2: string,
+            public addressLine3: string,
+            public addressLine4: string,
+            public email: string,
+            public postcode: string,
+            public addressId?: number
             ) {
 
             super();
             
             //Relative properties
-            this.AddressId = AddressId;
-            this.AddressLine1 = AddressLine1;
-            this.AddressLine2 = AddressLine2;
-            this.AddressLine3 = AddressLine3;
-            this.AddressLine4 = AddressLine4;
-            this.Email = Email;
-            this.Postcode = Postcode;
+            this.addressId = addressId;
+            this.addressLine1 = addressLine1;
+            this.addressLine2 = addressLine2;
+            this.addressLine3 = addressLine3;
+            this.addressLine4 = addressLine4;
+            this.email = email;
+            this.postcode = postcode;
         }
     }
 }

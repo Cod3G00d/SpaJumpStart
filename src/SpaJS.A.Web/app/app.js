@@ -24,6 +24,7 @@ var app;
             });
             $httpProvider.interceptors.push('xmlHttpInterceptorService');
             if (!$httpProvider.defaults.headers.get) {
+                delete $httpProvider.defaults.headers.common['X-Requested-With'];
             }
             ;
         }

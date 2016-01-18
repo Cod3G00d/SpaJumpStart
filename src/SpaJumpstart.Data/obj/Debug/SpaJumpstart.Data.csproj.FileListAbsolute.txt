@@ -37,8 +37,7 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\Microsoft.Ow
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\bin\Debug\Newtonsoft.Json.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.csprojResolveAssemblyReference.cache
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.Migrations.InitialCreateSpaAppDb.resources
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.csproj.GenerateResource.Cache
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.pdb
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.Migrations.UpdateInitial.resources
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.Migrations.InitialCreateSpaAppDb.resources
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\SpaJumpstart.Data\obj\Debug\SpaJumpstart.Data.csproj.GenerateResource.Cache

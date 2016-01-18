@@ -75,6 +75,7 @@ namespace SpaJumpstart.Data.Context.EF
         #region DbSets
 
         public IDbSet<Customer> Customers { get; set; }
+        public IDbSet<Address> Address { get; set; }
         public IDbSet<Error> ErrorSet { get; set; }
 
         #endregion
@@ -96,7 +97,6 @@ namespace SpaJumpstart.Data.Context.EF
                 .Configure(p => p.HasMaxLength(100));
 
             SetupEntityConfigurations(modelBuilder);
-
         }
 
         private static void SetupEntityConfigurations(DbModelBuilder modelBuilder)
@@ -116,9 +116,7 @@ namespace SpaJumpstart.Data.Context.EF
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-
         }
-
 
         #region public methods
 
@@ -183,6 +181,7 @@ namespace SpaJumpstart.Data.Context.EF
                 SetInceptionDate();
 
                 BeginTransaction();
+
                 var saveChangesAsync = await SaveChangesAsync();
                 _transaction.Commit();
 

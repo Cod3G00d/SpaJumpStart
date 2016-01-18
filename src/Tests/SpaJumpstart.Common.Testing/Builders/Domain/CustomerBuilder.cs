@@ -27,7 +27,7 @@ namespace SpaJumpstart.Common.Testing.Builders.Domain
                 InceptionDate = _inceptionDate,
                 ApplicationUserId = _applicationUserId,
                 Address = _address,
-                AddressId = _address.Id
+                //AddressId = _address.Id
             };
         }
 

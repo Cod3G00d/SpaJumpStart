@@ -9,18 +9,18 @@ var app;
     (function (domain) {
         var Customer = (function (_super) {
             __extends(Customer, _super);
-            function Customer(FirstName, Surname, Active, Address, Id) {
+            function Customer(firstName, surname, active, address, id) {
                 _super.call(this);
-                this.FirstName = FirstName;
-                this.Surname = Surname;
-                this.Active = Active;
-                this.Address = Address;
-                this.Id = Id;
-                this.Id = Id;
-                this.FirstName = FirstName;
-                this.Surname = Surname;
-                this.Active = Active;
-                this.Address = Address;
+                this.firstName = firstName;
+                this.surname = surname;
+                this.active = active;
+                this.address = address;
+                this.id = id;
+                this.id = id;
+                this.firstName = firstName;
+                this.surname = surname;
+                this.active = active;
+                this.address = address;
             }
             return Customer;
         })(app.domain.EntityBase);

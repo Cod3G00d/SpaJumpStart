@@ -11,7 +11,8 @@ namespace SpaJumpstart.WebServices
 {
     public partial class Startup
     {
-        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+        public static OAuthAuthorizationServerOptions OAuthServerOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
 
@@ -24,13 +25,15 @@ namespace SpaJumpstart.WebServices
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(SpaDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Configure the application for OAuth based flow
             PublicClientId = "self";
-            OAuthOptions = new OAuthAuthorizationServerOptions
+            OAuthServerOptions = new OAuthAuthorizationServerOptions
             {
                // AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                // //AuthorizeEndpointPath = new PathString("/Authorize"),
@@ -46,14 +49,19 @@ namespace SpaJumpstart.WebServices
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 AllowInsecureHttp = true
 
                 // In production mode set AllowInsecureHttp = false
             };
 
+
+            // Token Generation
+            //app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            //app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+
             // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthBearerTokens(OAuthServerOptions);
             //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             // Uncomment the following lines to enable logging in with third party login providers

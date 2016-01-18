@@ -21,9 +21,12 @@ var app;
                             self.$scope.Global.userIsAuthenticated = true;
                             _this.$scope.loginData.IsUserLoggedIn = true;
                             self.$location.path('/');
-                        }, function (data) {
-                            self.$scope.message.Success = true;
-                            self.$scope.message.Description = data.error_description;
+                        }, function (error) {
+                            if (error.data != null) {
+                                var errorDescription = error.data.error_description;
+                                self.$scope.message.Success = false;
+                                self.$scope.message.Description = errorDescription;
+                            }
                         });
                     };
                     this.$scope.loginData = new loginData("", "", false);
@@ -33,7 +36,8 @@ var app;
                 return LoginCtrl;
             })();
             accounts.LoginCtrl = LoginCtrl;
-            angular.module('sampleAngularApp')
+            angular
+                .module('sampleAngularApp')
                 .controller('loginCtrl', app.controllers.accounts.LoginCtrl);
         })(accounts = controllers.accounts || (controllers.accounts = {}));
     })(controllers = app.controllers || (app.controllers = {}));

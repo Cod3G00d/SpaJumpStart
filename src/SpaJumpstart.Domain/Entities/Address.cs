@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpaJumpstart.Domain.Entities
 {
@@ -17,6 +18,7 @@ namespace SpaJumpstart.Domain.Entities
         public string Postcode { get; set; }
         public string Email { get; set; }
 
+        [ForeignKey("Id")]
         public virtual Customer Customer { get; set; }
 
         #region Validation

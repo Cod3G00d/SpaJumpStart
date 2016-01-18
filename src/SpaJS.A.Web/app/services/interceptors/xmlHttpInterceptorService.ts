@@ -10,7 +10,6 @@ module app.services.interceptors {
 
     export class XmlHttpInterceptorService implements app.services.interceptors.IXmlHttpInterceptorService
     {
-        //static $inject = ['$rootScope', '$q', '$window', 'tokenHandlerService', 'errorHandlerService'];
         static $inject = ['$rootScope', '$q', '$location', 'tokenHandlerService', 'errorHandlerService'];
 
         private _self = this;
@@ -19,7 +18,6 @@ module app.services.interceptors {
             private $rootScope: ng.IRootScopeService,
             private $q: ng.IQService,
             private $location: ng.ILocationService,
-            //private $window: ng.IWindowService,
             private tokenHandlerService: app.services.accounts.ITokenHandlerService,
             private errorHandlerService: app.services.interceptors.IErrorHandlerService) { }
 
@@ -28,7 +26,7 @@ module app.services.interceptors {
 
             config.headers = config.headers || {};
             // if we have a token stored, append it to the headers as an Authorization bearer header
-            var localToken; //= this.$window.localStorage.key("");
+            var localToken; 
 
             if (self.tokenHandlerService.hasLoginToken()) {
                 localToken = self.tokenHandlerService.getLoginToken();
@@ -36,7 +34,6 @@ module app.services.interceptors {
                     config.headers.Authorization = 'Bearer ' + localToken;
                 }
             }
-
             return config;
         }
 
@@ -47,10 +44,11 @@ module app.services.interceptors {
 
             if (status === 401) {
                 self.errorHandlerService.logError(status, 'Not authorized.', rejection);
+                self.$location.path('/Account/Login');
             } else {
                 self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
             };
-            self.$location.path('/Account/Login');
+            
             return self.$q.reject(rejection);
         }
 
@@ -72,14 +70,16 @@ module app.services.interceptors {
 
             if (status === 401) {
                 self.errorHandlerService.logError(status, 'Not authorized.', rejection);
+                self.$location.path('/Account/Login');
             } else {
                 self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
             };
-            self.$location.path('/Account/Login');
+            
             return self.$q.reject(rejection);
         }
     }
 }
 //register the service module with angularjs
-angular.module('sampleAngularApp')
+angular
+    .module('sampleAngularApp')
     .service('xmlHttpInterceptorService', app.services.interceptors.XmlHttpInterceptorService);

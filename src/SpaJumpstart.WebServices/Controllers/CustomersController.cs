@@ -156,14 +156,35 @@ namespace SpaJumpstart.WebServices.Controllers
     public class CustomersController : ApiController
     {
         private readonly ICustomerService _customerService;
+        //private readonly IAddressService _addressService;
         private readonly IMappingEngine _mappingEngine;
         private string _user { get; set; }
 
+        string _addressLine1 = "111 The Garage";
+        string _addressLine2 = "Alexandria";
+        string _addressLine3 = "ZombieTown";
+        string _addressLine4 = "ZombieLands";
+        string _postcode = "ZLD 5LB";
+        string _email = "NickRhymes@DeadRising.com";
+
+        //int _customerId = 1;
+        string _firstname = "Darren";
+        string _surname = "Dixie";
+        string _telephone = "";
+        string _mobilePhone = "0800080530";
+        bool _active = true;
+        DateTime _inceptionDate = DateTime.Now.AddDays(-7);
+
+
         public CustomersController() { }
 
-        public CustomersController(ICustomerService customerService, IMappingEngine mappingEngine)
+        public CustomersController(
+            ICustomerService customerService, 
+            //IAddressService addressService,
+            IMappingEngine mappingEngine)
         {
             _customerService = customerService;
+            //_addressService = addressService;
             _mappingEngine = mappingEngine;
             _user = User.Identity.GetUserId();
         }
@@ -267,13 +288,75 @@ namespace SpaJumpstart.WebServices.Controllers
             }
 
             Customer customer = new Customer();
+            //Address address;
             try
             {
                 customer = _mappingEngine.Map<CustomerDto, Customer>(customerDto);
 
-                customer.ApplicationUserId = User.Identity.GetUserId();
-                customer = await _customerService.AddAsync(customer);
-                customerDto.Id = customer.Id;
+                string userId = User.Identity.GetUserId();
+
+                customer.ApplicationUserId = userId;
+
+                //var newcustomer = new Customer
+                //{
+                //    FirstName = customer.FirstName,
+                //    Surname = customer.Surname,
+                //    Telephone = customer.Telephone,
+                //    MobilePhone = customer.MobilePhone,
+                //    Active = true,
+                //    ApplicationUserId = userId,
+                //};
+
+                //var newAddress = new Address
+                //{
+                //    AddressLine1 = customer.Address.AddressLine1,
+                //    AddressLine2 = customer.Address.AddressLine2,
+                //    AddressLine3 = customer.Address.AddressLine3,
+                //    AddressLine4 = customer.Address.AddressLine4,
+                //    Postcode = customer.Address.Postcode,
+                //    Email = customer.Address.Email,
+                //};
+
+
+
+                //var newcustomer = new Customer
+                //{
+                //    FirstName = _firstname,
+                //    Surname = _surname,
+                //    Telephone = _telephone,
+                //    MobilePhone = _mobilePhone,
+                //    Active = _active,
+                //    //InceptionDate = _inceptionDate,
+                //    ApplicationUserId = userId,
+                //    //Address = newAddress,
+                //};
+                //var newAddress = new Address
+                //{
+                //    AddressLine1 = _addressLine1,
+                //    AddressLine2 = _addressLine2,
+                //    AddressLine3 = _addressLine3,
+                //    AddressLine4 = _addressLine4,
+                //    Postcode = _postcode,
+                //    Email = _email
+                //};
+
+
+
+                //newcustomer.Address = newAddress;
+
+                var newcustomer = await _customerService.AddCustomerAsync(customer);
+                //newcustomer = await _customerService.AddCustomerAsync(newcustomer);
+
+    
+                //newAddress.Id = customer.Id;
+                //newcustomer.Address = newAddress;
+
+                //await _customerService.UpdateAsync(newcustomer);
+
+                //newcustomer = await _customerService.AddCustomerAsync(newcustomer);
+                customerDto.Id = newcustomer.Id;
+
+
             }
             catch (Exception ex)
             {

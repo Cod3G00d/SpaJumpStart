@@ -31,12 +31,12 @@ var app;
                         var status = rejection.status;
                         if (status === 401) {
                             self.errorHandlerService.logError(status, 'Not authorized.', rejection);
+                            self.$location.path('/Account/Login');
                         }
                         else {
                             self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
                         }
                         ;
-                        self.$location.path('/Account/Login');
                         return self.$q.reject(rejection);
                     };
                     this.response = function (response) {
@@ -54,12 +54,12 @@ var app;
                         var status = rejection.status;
                         if (status === 401) {
                             self.errorHandlerService.logError(status, 'Not authorized.', rejection);
+                            self.$location.path('/Account/Login');
                         }
                         else {
                             self.errorHandlerService.logError(status, 'Unhandled error.', rejection);
                         }
                         ;
-                        self.$location.path('/Account/Login');
                         return self.$q.reject(rejection);
                     };
                 }
@@ -70,5 +70,6 @@ var app;
         })(interceptors = services.interceptors || (services.interceptors = {}));
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-angular.module('sampleAngularApp')
+angular
+    .module('sampleAngularApp')
     .service('xmlHttpInterceptorService', app.services.interceptors.XmlHttpInterceptorService);

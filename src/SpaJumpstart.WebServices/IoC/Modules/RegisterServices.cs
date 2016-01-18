@@ -21,8 +21,10 @@ namespace SpaJumpstart.WebServices.IoC.Modules
             //                                   .InheritedFrom<IService<Customer>>()
             //                                   .BindToAllInterfaces());
 
-            this.Bind<IService<Customer>>().To<ServiceBase<Customer>>().InRequestScope();
+            this.Bind<IService<EntityBase>>().To<ServiceBase<EntityBase>>().InRequestScope();
             this.Bind<ICustomerService>().To<CustomerService>().InRequestScope();
+            //this.Bind<IService<Address>>().To<ServiceBase<Address>>().InRequestScope();
+            //this.Bind<IAddressService>().To<AddressService>().InRequestScope();
         }
     }
 }

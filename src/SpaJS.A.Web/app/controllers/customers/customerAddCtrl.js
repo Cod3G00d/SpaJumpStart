@@ -6,21 +6,20 @@ var app;
         (function (customers) {
             var CustomerAddCtrl = (function () {
                 function CustomerAddCtrl($location, constantsService, dataService) {
+                    var _this = this;
                     this.$location = $location;
                     this.constantsService = constantsService;
                     this.dataService = dataService;
+                    this.add = function () {
+                        var resource = _this.constantsService.baseUri + _this.constantsService.postUri;
+                        _this.dataService.add(resource, _this.customer)
+                            .then(function (result) {
+                            _this.$location.path('/');
+                        });
+                    };
                     var self = this;
                     self.resource = self.constantsService.baseUri + this.constantsService.postUri;
                 }
-                CustomerAddCtrl.prototype.add = function () {
-                    var _this = this;
-                    var resource = this.constantsService.baseUri + this.constantsService.postUri;
-                    this.dataService.add(resource, this.customer)
-                        .then(function (result) {
-                        alert(result.Id + ' submitted successfully');
-                        _this.$location.path('/');
-                    });
-                };
                 CustomerAddCtrl.$inject = ['$location', 'constantsService', 'dataService'];
                 return CustomerAddCtrl;
             })();

@@ -83,6 +83,7 @@ namespace SpaJumpstart.WebServices.Unit.Tests.Controllers.CustomersTests.Get
             ArgumentNull or InvalidOperation exceptions
             */
 
+            //CustomerControllerApi = new CustomersController(StubCustomerService, StubAddressService, StubAutoMapper);
             CustomerControllerApi = new CustomersController(StubCustomerService, StubAutoMapper);
             CustomerControllerApi.Request = new HttpRequestMessage(HttpMethod.Get, "http://localhost/api/customers");
             //The line below was needed in WebApi RC as null config causes an issue

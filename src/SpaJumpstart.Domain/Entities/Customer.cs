@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SpaJumpstart.Domain.Entities
 {
     /// <summary>
@@ -18,13 +20,14 @@ namespace SpaJumpstart.Domain.Entities
         public DateTime InceptionDate { get; set; }
 
         public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public int AddressId { get; set; }
+        [ForeignKey("Id")]
         public virtual Address Address { get; set; }
 
         //This adds a rowversion id to the table for concurrency
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        //[Timestamp]
+        //public byte[] RowVersion { get; set; }
 
         #region Validation
         //Belt and Braces validation

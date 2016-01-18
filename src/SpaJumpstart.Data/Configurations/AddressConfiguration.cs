@@ -10,24 +10,24 @@ namespace SpaJumpstart.Data.Configurations
         {
             #region PK and FKS
 
-            Property(c => c.Id).HasColumnName("AddressId")
+            Property(c => c.Id).HasColumnName("CustomerId")
                 .HasColumnOrder(1);
 
             //Foreign Key - Address has to be ICollection<TEntity>, one-to-one relationship
-            HasRequired(ad => ad.Customer)
-                .WithRequiredDependent(c => c.Address);
+            //HasRequired(a => a.Customer)
+            //    .WithRequiredDependent(c => c.Address);
 
             #endregion
 
-            Property(c => c.AddressLine1)
+            Property(a => a.AddressLine1)
                 .IsRequired()
                 .HasMaxLength(150)
-                .HasColumnName("AddressLine1")
+                .HasColumnName("AddressLine1")  
                 .HasColumnOrder(2)
                 .HasColumnType("varchar")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            Property(c => c.AddressLine2)
+            Property(a => a.AddressLine2)
                 .IsOptional()
                 .HasMaxLength(150)
                 .HasColumnName("AddressLine2")
@@ -35,7 +35,7 @@ namespace SpaJumpstart.Data.Configurations
                 .HasColumnType("varchar")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            Property(c => c.AddressLine3)
+            Property(a => a.AddressLine3)
                 .IsRequired()
                 .HasMaxLength(150)
                 .HasColumnName("Town")
@@ -43,7 +43,7 @@ namespace SpaJumpstart.Data.Configurations
                 .HasColumnType("varchar")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            Property(c => c.AddressLine4)
+            Property(a => a.AddressLine4)
                 .IsOptional()
                 .HasMaxLength(150)
                 .HasColumnName("County")
@@ -51,7 +51,7 @@ namespace SpaJumpstart.Data.Configurations
                 .HasColumnType("varchar")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            Property(c => c.Postcode)
+            Property(a => a.Postcode)
                 .IsRequired()
                 .HasMaxLength(11)
                 .HasColumnName("Postcode")
@@ -59,7 +59,7 @@ namespace SpaJumpstart.Data.Configurations
                 .HasColumnType("varchar")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            Property(c => c.Email)
+            Property(a => a.Email)
                 .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("Email")

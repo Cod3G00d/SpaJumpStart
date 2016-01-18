@@ -24,11 +24,11 @@ module app.controllers.customers {
             self.resource = self.constantsService.baseUri + this.constantsService.postUri;
         }
 
-        add(): void {
+        add = (): void => {
             var resource = this.constantsService.baseUri + this.constantsService.postUri;
             this.dataService.add(resource, this.customer)
                 .then((result: app.domain.ICustomer) => {
-                    alert(result.Id + ' submitted successfully');
+                    //alert(result.Id + ' submitted successfully');
                     this.$location.path('/');
                 });
         }

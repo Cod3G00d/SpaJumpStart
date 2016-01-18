@@ -6,4 +6,3 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Acceptance\SpaJumpstart.WebService
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Acceptance\SpaJumpstart.WebServices.Acceptance.Tests\bin\Debug\nunit.framework.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Acceptance\SpaJumpstart.WebServices.Acceptance.Tests\obj\Debug\SpaJumpstart.WebServices.Acceptance.Tests.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Acceptance\SpaJumpstart.WebServices.Acceptance.Tests\obj\Debug\SpaJumpstart.WebServices.Acceptance.Tests.pdb
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Acceptance\SpaJumpstart.WebServices.Acceptance.Tests\obj\Debug\SpaJumpstart.WebServices.Acceptance.Tests.csprojResolveAssemblyReference.cache

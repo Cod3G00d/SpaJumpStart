@@ -37,8 +37,6 @@ namespace SpaJumpstart.WebServices
         /// <param name="app">IAppBuilder Interface used to compose the application for the Owin Server</param>
         public void Configuration(IAppBuilder app)
         {
-
-            
             //Register mapping definitions for Automapper
 
             var mappingDefinitions = new MappedDefinitions();
@@ -49,30 +47,34 @@ namespace SpaJumpstart.WebServices
             AreaRegistration.RegisterAllAreas();
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            
+
+ 
+            // Configure Web API to use only bearer token authentication.
+            //httpConfig.SuppressDefaultHostAuthentication();
+            //httpConfig.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            ConfigureCors(app);
+
+            // Enable the application to use bearer tokens to authenticate users 
+            ConfigureAuth(app);
+
             /*
             HttpConfiguration used to configure API routes, so we pass to the "WebAPIConfig" template class.
             */
             var httpConfig = new HttpConfiguration();
             httpConfig.MapHttpAttributeRoutes();
 
-            // Configure Web API to use only bearer token authentication.
-            httpConfig.SuppressDefaultHostAuthentication();
-            httpConfig.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
-            // This must come first to intercept the /Token requests 
-            ConfigureCors(app);
-
-            // Enable the application to use bearer tokens to authenticate users 
-            ConfigureAuth(app);
-
             //DI using Ninject
             var kernel = CreateKernel();
             app.UseNinjectMiddleware(() => kernel)
                .UseNinjectWebApi(httpConfig);
 
-            
+
             WebApiConfig.Register(httpConfig);
+
+            // This must come first to intercept the /Token requests 
+
+
 
             /*
             We pass the config to the UseWebAPI extension method, which is responsible for wiring up the Web API to our Owin Server Pipeline
@@ -116,6 +118,7 @@ namespace SpaJumpstart.WebServices
             kernel.Bind<IDbContext>().To<SpaDbContext>().InRequestScope().WithConstructorArgument("nameOrConnectionString", nameOrConnectionString);
 
             kernel.Load<RegisterServices>();
+            kernel.Load<RegisterRepositories>();
             kernel.Load<RegisterAutoMapper>();
 
         }

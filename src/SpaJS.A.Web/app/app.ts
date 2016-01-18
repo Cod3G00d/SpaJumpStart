@@ -55,17 +55,34 @@ module app {
             //initialize get if not there
             if (!$httpProvider.defaults.headers.get) {
                 //$httpProvider.defaults.headers.get = {};
+                delete $httpProvider.defaults.headers.common['X-Requested-With'];
+                //delete $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'];
+
+                //$httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+                //$httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+                //$httpProvider.defaults.headers.post['Access-Control-Max-Age'] = '1728000';
+                //$httpProvider.defaults.headers.common['Access-Control-Max-Age'] = '1728000';
+                //$httpProvider.defaults.headers.common['Accept'] = 'application/json, text/javascript';
+                //$httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
             };
 
 
-           // $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = {};
-   
+    
+            //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] ;
+
+
+            //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = "http://localhost:8267";
+    
             //$httpProvider.defaults.headers.get = 'Access-Control-Allow-Origin';
             //$httpProvider.defaults.headers.post = 'Access-Control-Allow-Origin';
             //$httpProvider.defaults.headers.put = 'Access-Control-Allow-Origin';
 
             //delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+
+            //$httpProvider.defaults.headers.common['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+           // $httpProvider.defaults.headers.common['Pragma'] = 'no-cache';
+            //$httpProvider.defaults.headers.common['Expires'] = '0';  
 
             //$httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
             //$httpProvider.defaults.headers.get['Pragma'] = 'no-cache';

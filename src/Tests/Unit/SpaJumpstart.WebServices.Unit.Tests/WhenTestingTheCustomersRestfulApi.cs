@@ -28,6 +28,7 @@ namespace SpaJumpstart.WebServices.Unit.Tests
 
         protected ICustomerService MockCustomerService { get; set; }
         protected ICustomerService StubCustomerService { get; set; }
+        protected IAddressService StubAddressService { get; set; }
 
         protected IMappingEngine StubAutoMapper { get; set; }
         protected IUnitOfWork StubUnitOfWork { get; set; }
@@ -54,6 +55,7 @@ namespace SpaJumpstart.WebServices.Unit.Tests
         {
             StubAutoMapper = null;
             StubCustomerService = null;
+            StubAddressService = null;
             StubUnitOfWork = null;
             CustomerControllerApi.Dispose();
             CustomerControllerApi = null;
@@ -69,9 +71,11 @@ namespace SpaJumpstart.WebServices.Unit.Tests
             MockCustomerService = MockRepository.GenerateMock<ICustomerService>();
 
             StubCustomerService = MockRepository.GenerateStub<ICustomerService>();
+            StubAddressService = MockRepository.GenerateStub<IAddressService>();
             StubAutoMapper = MockRepository.GenerateStub<IMappingEngine>();
             StubUnitOfWork = MockRepository.GenerateStub<IUnitOfWork>();
 
+            //CustomerControllerApi = new CustomersController(StubCustomerService, StubAddressService, StubAutoMapper);
             CustomerControllerApi = new CustomersController(StubCustomerService, StubAutoMapper);
         }
 

@@ -60,13 +60,10 @@ namespace SpaJumpstart.WebServices
 
                         if (!string.IsNullOrEmpty(origin))
                         {
-                            res.Headers.Set("Access-Control-Allow-Origin", origin);
+                            res.Headers.Append("Access-Control-Allow-Origin", origin);
+                            res.Headers.Set("Access-Control-Allow-Credentials", "true");
                         }
-                        //if (string.IsNullOrEmpty(res.Headers.Get("Access-Control-Allow-Credentials")))
-                        //{
-                        //    res.Headers.Set("Access-Control-Allow-Credentials", "true");
-                        //}
-
+    
                     }
 
                     // if this is pre-flight request
@@ -90,6 +87,7 @@ namespace SpaJumpstart.WebServices
 
                         return;
                     }
+         
                 }
                 // continue executing pipeline
                 await next();

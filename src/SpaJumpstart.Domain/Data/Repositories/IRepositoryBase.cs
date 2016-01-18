@@ -18,8 +18,8 @@ namespace SpaJumpstart.Domain.Data.Repositories
 
         IQueryable<TEntity> GetAll();
         Task<List<TEntity>> GetAllAsync();
-        Task<TEntity> GetByIdAsync(int id);
 
+        Task<TEntity> GetByIdAsync(int id);
         TEntity GetById(int id);
     }
 }

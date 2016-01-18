@@ -33,7 +33,6 @@ var app;
                         var self = _this;
                         var data = "grant_type=password&username=" + loginData.Username + "&password=" + loginData.Password;
                         var tokenUrl = self._serviceBase + '/Token';
-                        alert('Token: ' + tokenUrl);
                         var deferred = self.$q.defer();
                         self.$http({
                             url: tokenUrl,
@@ -41,7 +40,6 @@ var app;
                             data: data,
                             withCredentials: true,
                             headers: {
-                                'Accept': 'application/json',
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }
                         }).then(function (successResponse) {
@@ -50,7 +48,6 @@ var app;
                                 var username = successResponse.data.userName;
                                 var tokenType = successResponse.data.token_type;
                             }
-                            alert('success: username: ' + username + ' token: ' + token + 'token type:' + tokenType);
                             self.tokenHandlerService.setLoginToken(token);
                             self.tokenHandlerService.setLoginName(username);
                             deferred.resolve(successResponse);
@@ -89,5 +86,6 @@ var app;
         })(accounts = services.accounts || (services.accounts = {}));
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-angular.module('sampleAngularApp')
+angular
+    .module('sampleAngularApp')
     .service('userAccountService', app.services.accounts.UserAccountService);

@@ -11,32 +11,22 @@ var app;
                     this.constantsService = constantsService;
                     this.dataService = dataService;
                     this.$modal = $modal;
+                    this.refresh = function () {
+                        var self = _this;
+                        self.getCustomers(true);
+                    };
                     this.getCustomers = function (fetchFromService) {
                         var self = _this;
-                        _this.loadingCustomers = true;
+                        self.$scope.loadingCustomers = true;
                         self.dataService.get(self.resource, fetchFromService)
                             .then(function (data) {
-                            if (_this.$scope.Customers.length == 0) {
-                                _this.$scope.Customers = data;
+                            if (data != null) {
+                                self.$scope.Customers = data;
                             }
-                            else {
-                                if (data != null) {
-                                    for (var i = 0; i < data.length; i++) {
-                                        if (self.$scope.Customers[i].Id == data[i].Id) {
-                                            self.$scope.Customers[i] = data[i];
-                                        }
-                                        else {
-                                            self.$scope.Customers.push(data[i]);
-                                        }
-                                    }
-                                }
-                                _this.loadingCustomers = false;
-                                _this.totalCount = self.$scope.Customers.length;
-                                alert('retreived:' + self.$scope.Customers.length);
-                            }
+                            self.$scope.loadingCustomers = false;
+                            self.$scope.totalCount = self.$scope.Customers.length;
                         })
                             .then(function (reason) {
-                            alert('An Error occurred:' + self.$scope.Customers.length);
                         });
                     };
                     this.getCustomersById = function (Id) {
@@ -66,7 +56,7 @@ var app;
                         var self = _this;
                         _this.dataService.remove(_this.resource + customerId).then(function (result) {
                             for (var i = 0; i < self.$scope.Customers.length; i++) {
-                                if (self.$scope.Customers[i].Id == customerId) {
+                                if (self.$scope.Customers[i].id == customerId) {
                                     self.$scope.Customers.splice(i, 1);
                                     return;
                                 }
@@ -129,18 +119,14 @@ var app;
                         });
                     };
                     var self = this;
-                    this.resource = constantsService.baseUri + constantsService.postUri;
-                    self.page = 0;
-                    self.pagesCount = 5;
-                    self.totalCount = 0;
-                    self.$scope.Customers = [];
+                    self.resource = constantsService.baseUri + constantsService.postUri;
+                    self.$scope.page = 0;
+                    self.$scope.pagesCount = 5;
+                    self.$scope.totalCount = 0;
+                    self.$scope.Customers = new Array();
                     self.getCustomers(true);
                 }
                 CustomersCtrl.prototype.search = function () {
-                };
-                CustomersCtrl.prototype.refresh = function () {
-                    alert('length:' + this.$scope.Customers.length);
-                    this.getCustomers(true);
                 };
                 CustomersCtrl.$inject = ['$scope', 'constantsService', 'dataService', '$modal'];
                 return CustomersCtrl;

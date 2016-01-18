@@ -119,6 +119,7 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Mvc.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Owin.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\EntityFramework.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
@@ -131,6 +132,7 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Razor.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.WebPages.dll
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Cors.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Ninject.Web.WebApi.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Ninject.Extensions.NamedScope.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
@@ -149,6 +151,7 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Mvc.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Owin.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\EntityFramework.xml
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
@@ -166,6 +169,3 @@ C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.csprojResolveAssemblyReference.cache
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.dll
 C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\obj\Debug\SpaJumpstart.WebServices.Unit.Tests.pdb
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.dll
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Cors.dll
-C:\WorkArea\GitHub\Spa\SpaJumpStart\src\Tests\Unit\SpaJumpstart.WebServices.Unit.Tests\bin\Debug\System.Web.Http.Cors.xml

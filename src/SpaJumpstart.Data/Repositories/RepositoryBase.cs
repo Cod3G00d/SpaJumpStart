@@ -152,6 +152,7 @@ namespace SpaJumpstart.Data.Repositories
         public void Add(TEntity entity)
         {
             DbContext.SetAsAdded(entity);
+            DbSet.Add(entity);
         }
 
         /// <summary>

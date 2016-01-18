@@ -6,12 +6,12 @@ module app.domain {
 
     //By implementing an interface we force a class to define certain properties or functions
     export interface IAddress {
-        AddressId?: number;
-        AddressLine1: string;
-        AddressLine2: string;
-        AddressLine3: string;
-        AddressLine4: string;
-        Email: string;
-        Postcode: string;
+        addressId?: number;
+        addressLine1: string;
+        addressLine2: string;
+        addressLine3: string;
+        addressLine4: string;
+        email: string;
+        postcode: string;
     }
 }

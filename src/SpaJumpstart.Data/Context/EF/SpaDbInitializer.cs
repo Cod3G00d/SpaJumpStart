@@ -8,11 +8,15 @@ namespace SpaJumpstart.Data.Context.EF
 {
     public class SpaDbInitializer : DropCreateDatabaseIfModelChanges<SpaDbContext>
     {
+
         protected override void Seed(SpaDbContext context)
         {
-            Initialize(context);
             base.Seed(context);
+
+            Initialize(context);
+
         }
+
         public void Initialize(SpaDbContext context)
         {
             try

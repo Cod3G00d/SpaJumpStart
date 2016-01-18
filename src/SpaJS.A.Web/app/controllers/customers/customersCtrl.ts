@@ -29,10 +29,10 @@ module app.controllers.customers {
     */
 
     //interface ICustomersViewModel extends ng.IScope {
-    export interface ICustomersViewModel {
+    export interface ICustomersViewModel extends ng.IScope  {
         Customers: Array<app.domain.ICustomer>
         customer: app.domain.ICustomer;
-        edit(customer: app.domain.Customer): void;
+        edit(customer: app.domain.ICustomer): void;
         remove(Id: number): void;
         add(): void;
         refresh: ()=> void;
@@ -47,18 +47,8 @@ module app.controllers.customers {
 
     //export class CustomersCtrl implements ICustomersViewModel {
     export class CustomersCtrl {
-        //Customers: Array<app.domain.ICustomer>
-        //customer: app.domain.ICustomer;
-        
-        //pageClass: string 
-        loadingCustomers: boolean;
-        page: number;
-        pagesCount: number;
-        totalCount: number;
-
         resource: string;
-        //_$scope: any;
-
+  
         /*
         Injected our custom services constantsService and dataService to make the Web API calls
         */
@@ -68,23 +58,20 @@ module app.controllers.customers {
 
         constructor(
             private $scope: ICustomersViewModel,
-            //private $scope: ICustomersViewModel,
             private constantsService: app.services.common.IConstantsService,
             private dataService: app.services.common.IDataService,
             private $modal: ng.ui.bootstrap.IModalService) {
 
             var self = this;
-            this.resource = constantsService.baseUri + constantsService.postUri;
-            //this.scope = $scope;
-            //self.pageClass = 'page-customers';
-            self.page = 0;
-            self.pagesCount = 5;
-            self.totalCount = 0;
 
-            //this._$scope = $scope;
-            
-            //self.Customers = [];
-            self.$scope.Customers = [];
+            self.resource = constantsService.baseUri + constantsService.postUri;
+
+            //self.pageClass = 'page-customers';
+            self.$scope.page = 0;
+            self.$scope.pagesCount = 5;
+            self.$scope.totalCount = 0;
+
+            self.$scope.Customers = new Array();
 
             //Load Customers
             self.getCustomers(true);
@@ -94,12 +81,12 @@ module app.controllers.customers {
 
         }
 
-        refresh(): void {
-            
-            //alert('length:' + this.Customers.length);
-            alert('length:' + this.$scope.Customers.length);
+        refresh = (): void => {
+            var self = this;
 
-            this.getCustomers(true);
+            //alert('length: ' + self.$scope.Customers.length);
+
+            self.getCustomers(true);
             //this.scope.$apply();
         }
 
@@ -109,49 +96,52 @@ module app.controllers.customers {
         //Customers not updating on refresh
         //Take a look at : http://kwilson.me.uk/blog/writing-cleaner-angularjs-with-typescript-and-controlleras/
 
-        getCustomers = (fetchFromService: boolean): void =>
-        {
+        getCustomers = (fetchFromService: boolean): void => {
+            var self = this; 
 
-            var self = this; // Attention here.. check 'this' in TypeScript and JavaScript
-            this.loadingCustomers = true;
+            self.$scope.loadingCustomers = true;
 
             self.dataService.get(self.resource, fetchFromService)
-                .then((data: app.domain.Customer[]) =>
+                .then((data: Array<app.domain.ICustomer>) =>
                 {
-
-                    if (this.$scope.Customers.length == 0) {
-                        this.$scope.Customers = data;
+                    if (data != null) {
+             
+                        self.$scope.Customers = data;
                     }
-                    else {
-                        if (data != null) {
-                            for (var i = 0; i < data.length; i++) {
-                                if (self.$scope.Customers[i].Id == data[i].Id) {
-                                    self.$scope.Customers[i] = data[i];
 
-                                }
-                                else {
-                                    self.$scope.Customers.push(data[i]);
-                                }
-                            }
-                        }
-                        //if (data != null) {
-                        //    //if (self.Customers != null) {
-                        //    //    self.Customers.splice(0, self.Customers.length);
-                        //    //    self.Customers = self.Customers.concat(data);
-                        //    //}
-                        //    //else {
-                        //    //    self.Customers = data;
-                        //    //}
-                        //    self.Customers = data;
-                        //}
+                    //if (this.$scope.Customers.length == 0) {
+                    //    this.$scope.Customers = data;
+                    //}
+                    //else {
+                    //    if (data != null) {
+                    //        for (var i = 0; i < data.length; i++) {
+                    //            if (self.$scope.Customers[i].Id == data[i].Id) {
+                    //                self.$scope.Customers[i] = data[i];
 
-                        this.loadingCustomers = false;
-                        this.totalCount = self.$scope.Customers.length;
-                        alert('retreived:' + self.$scope.Customers.length);
-                    }   
+                    //            }
+                    //            else {
+                    //                self.$scope.Customers.push(data[i]);
+                    //            }
+                    //        }
+                    //    }
+                    //    //if (data != null) {
+                    //    //    //if (self.Customers != null) {
+                    //    //    //    self.Customers.splice(0, self.Customers.length);
+                    //    //    //    self.Customers = self.Customers.concat(data);
+                    //    //    //}
+                    //    //    //else {
+                    //    //    //    self.Customers = data;
+                    //    //    //}
+                    //    //    self.Customers = data;
+                    //    //}
+                    //}   
+
+                    self.$scope.loadingCustomers = false;
+                    self.$scope.totalCount = self.$scope.Customers.length;
+                        //alert('retreived:' + self.$scope.Customers.length);
                 })
                 .then((reason) => {
-                    alert('An Error occurred:' + self.$scope.Customers.length);
+                    //alert('An Error occurred:' + self.$scope.Customers.length);
                     
                 });
         }
@@ -196,7 +186,7 @@ module app.controllers.customers {
                 function (result) {
 
                     for (var i = 0; i < self.$scope.Customers.length; i++) {
-                        if (self.$scope.Customers[i].Id == customerId) {
+                        if (self.$scope.Customers[i].id == customerId) {
                             self.$scope.Customers.splice(i, 1);
                             return;
                         }
