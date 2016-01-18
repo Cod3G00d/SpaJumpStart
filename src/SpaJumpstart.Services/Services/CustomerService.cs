@@ -35,8 +35,6 @@ namespace SpaJumpstart.Services.Services
 
                 _customerRepository.Add(customer);
 
-                //await _unitOfWork.CommitAsync();
-
                 address.Id = customer.Id;
                _addressrRepository.Add(address);
 
