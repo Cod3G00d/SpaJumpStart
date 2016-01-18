@@ -5,7 +5,7 @@
 </br></i>
 
 
-<h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio 2015</h3>
+<h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio Community 2015</h3>
 </br>
 <ul><strong>Overview</strong>
 </br></br>
@@ -41,7 +41,7 @@ The following frameworks are used for the Presentation Layers:
 <li>Gulp</li>
 </ul>
 </br>
-<ul><strong>Knockout App:</strong>
+<ul><strong>Knockout App:</strong>Not yet copied across see: https://github.com/dtro-devuk/HTML5.ScratchPad 
 <li>KnockoutJS</li>
 <li>RequireJS</li>
 <li>Bootstrap</li>
