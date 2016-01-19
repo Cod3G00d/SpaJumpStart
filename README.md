@@ -14,7 +14,7 @@ The Angular app is written using modules, developed in Typescript, which allows 
 
 The Angular app also uses Modal Forms for Login and some of the CRUD operations.
 
-All of this is secured using a combination of Cors, Owin, and Identity built into the WebAPI Service, which allows Token Authentication.  Customer Data and User data including Logins and Roles is stored in a SQL Server Database, again using Entity Framework as the ORM for data persistence.
+All of this is secured using a combination of Cors, Owin, and Identity built into the WebAPI Service, which allows Token Authentication.  Customer Data and User data including Logins and Roles are stored in a SQL Server Database, again using Entity Framework as the ORM for data persistence.
 
 Finally Bower and Gulp were used to install, build and package the Angular / Typescript spa app.
 </br>
