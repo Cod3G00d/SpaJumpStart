@@ -4,7 +4,7 @@
 <i><ul><strong>N.B. this is currently under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
 </br></i>
 
-Todate, the Angular Spa application, links <strong><i>aysnchronously</></strong> via a set of services to a RESTful WebAPI service written as a mixture of ASPE.NET WebAPI 2 and earlier (mainly to showcase both methods).
+Todate, the Angular Spa application, links <strong><i>aysnchronously</i></strong> via a set of services to a RESTful WebAPI service written as a mixture of ASPE.NET WebAPI 2 and earlier (mainly to showcase both methods).
 
 The WebAPI uses a Repository and Unit of Work patterns, to link to a SQL Express database written using the Code First approach within Entity Framework 6. Requests are made using REST Verbs, asynchronously using Tasks.
 
