@@ -4,6 +4,15 @@
 <i><ul><strong>N.B. this is currently under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
 </br></i>
 
+<h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio Community 2015</h3>
+</br>
+<ul><strong>Overview</strong>
+</br></br>
+This is a project to showcase what I have learned so far on a SPA app(s) using some of the JS Frameworks coupled with Web API2 and Entity Framework 6.
+</br></br>
+The main focus was to learn some of the JavaScript Frameworks being used at the moment, along with Entity Framework (Code First) approaches.
+</br></br>
+
 Todate, the Angular Spa application, links <strong><i>aysnchronously</i></strong> via a set of services to a RESTful WebAPI service written as a mixture of ASP.NET WebAPI 2 and earlier (mainly to showcase both methods).
 
 The WebAPI uses a Repository and Unit of Work patterns, to link to a SQL Express database written using the Code First approach within Entity Framework 6. Requests are made using REST Verbs, asynchronously using Tasks.
@@ -18,14 +27,7 @@ All of this is secured using a combination of Cors, Owin, and Identity built int
 
 Finally Bower and Gulp were used to install, build and package the Angular / Typescript spa app.
 </br>
-<h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio Community 2015</h3>
-</br>
-<ul><strong>Overview</strong>
-</br></br>
-This is a project to showcase what I have learned so far on a SPA app(s) using some of the JS Frameworks coupled with Web API2 and Entity Framework 6.
-</br></br>
-The main focus was to learn some of the JavaScript Frameworks being used at the moment, along with Entity Framework (Code First) approaches.
-</br></br>
+
 The solution has been architectured using DDD, and the onion skin approach, and makes use of SOLID principles including Separation of Concerns, Inversion Of Control Containers and Dependency Injection (IOC/DI).  
 </br></br>
 I have also used Repository and Unit Of Work patterns, and DTO's alongside EF6 for the ORM (an approach I have used in the past with Fluent NHibernate).
