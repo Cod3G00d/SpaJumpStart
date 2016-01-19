@@ -4,7 +4,20 @@
 <i><ul><strong>N.B. this is currently under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
 </br></i>
 
+Todate, the Angular Spa application, links Aysnchronously via a set of services to a RESTful WebAPI service written as a mixture of ASPE.NET WebAPI 2 and earlier (mainly to showcase both methods).
 
+The WebAPI uses a Repository and Unit of Work patterns, to link to a SQL Express database written using the Code First approach within Entity Framework 6. Requests are made using REST Verbs, asynchronously using Tasks.
+
+The CRUD operations are performed on the database context using Transactions.
+
+The Angular app is written using modules, developed in Typescript, which allows use of strongly typed and defined modules that register with themeselves with the  Angular Modules.
+
+The Angular app also uses Modal Forms for Login and some of the CRUD operations.
+
+All of this is secured using a combination of Cors, Owin, and Identity built into the WebAPI Service, which allows Token Authentication.  Customer Data and User data including Logins and Roles is stored in a SQL Server Database, again using Entity Framework as the ORM for data persistence.
+
+Finally Bower and Gulp were used to install, build and package the Angular / Typescript spa app.
+</br>
 <h3>SPA - using JS Frameworks, EF6/WebAPI 2, DDD in Visual Studio Community 2015</h3>
 </br>
 <ul><strong>Overview</strong>
