@@ -10,7 +10,7 @@ The WebAPI uses a Repository and Unit of Work patterns, to link to a SQL Express
 
 The CRUD operations are performed on the database context using Transactions.
 
-The Angular app is written using modules, developed in Typescript, which allows use of strongly typed and defined modules that register with themeselves with the  Angular Modules.
+The Angular app is written using modules, developed in Typescript, which allows use of strongly typed and defined modules that register themselves with the Angular Modules.
 
 The Angular app also uses Modal Forms for Login and some of the CRUD operations.
 
