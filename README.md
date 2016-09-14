@@ -1,5 +1,7 @@
 # SpaJumpStart
 
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/dtro-devuk/my-stack)
+
 </br>
 <i><ul><strong>N.B. this is currently under development, I have full working code that can be made available, in a much rawer state if required in the meantime. Just drop me a mail.</strong>
 </br></i>
